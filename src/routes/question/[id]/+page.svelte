@@ -14,11 +14,13 @@
 
 	let question = $state<Question | undefined>(undefined);
 	let models = $state<ModelDef[]>([]);
+	let notFound = $state(false);
 
 	onMount(async () => {
 		const id = page.params.id;
 		if (!id) return;
 		question = await getQuestion(id);
+		notFound = question === undefined;
 		models = await listModels();
 	});
 
@@ -60,5 +62,7 @@
 				</div>
 			{/if}
 		{/each}
+	{:else if notFound}
+		<p class="mt-4 text-slate-500">Question not found.</p>
 	{/if}
 </main>

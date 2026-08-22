@@ -29,4 +29,10 @@ describe('/question/[id] page', () => {
 		expect(await screen.findByText('Eisenhower Matrix')).toBeTruthy();
 		expect(await screen.findByText('Johari Window')).toBeTruthy();
 	});
+
+	it('shows a not-found message for an unknown question id', async () => {
+		questionId = 'does-not-exist';
+		render(Page);
+		expect(await screen.findByText('Question not found.')).toBeTruthy();
+	});
 });

@@ -2,7 +2,7 @@ import 'fake-indexeddb/auto';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen } from '@testing-library/svelte';
 import { db } from '$lib/db';
-import { seedModelsIfEmpty } from '$lib/db/seed';
+import { syncSeedModels } from '$lib/db/seed';
 import Page from './+page.svelte';
 
 vi.mock('$app/state', () => ({
@@ -12,7 +12,7 @@ vi.mock('$app/state', () => ({
 describe('/models/[slug] page', () => {
 	beforeEach(async () => {
 		await db.models.clear();
-		await seedModelsIfEmpty();
+		await syncSeedModels();
 	});
 
 	it('shows the model name, description, and when to use it', async () => {

@@ -1,13 +1,13 @@
 import 'fake-indexeddb/auto';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { db } from '../db';
-import { seedModelsIfEmpty } from '../db/seed';
+import { syncSeedModels } from '../db/seed';
 import { listModels, listModelsByCategory, getModelBySlug } from './models';
 
 describe('models store', () => {
 	beforeEach(async () => {
 		await db.models.clear();
-		await seedModelsIfEmpty();
+		await syncSeedModels();
 	});
 
 	it('lists all models', async () => {

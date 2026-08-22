@@ -124,4 +124,33 @@ describe('Quadrant2x2Chart', () => {
 		);
 		expect(posClasses.size).toBe(4);
 	});
+
+	it("renders a quadrant's guidance text when the data provides it", () => {
+		const guidedData: Quadrant2x2Data = {
+			...data,
+			quadrants: data.quadrants.map((q, i) =>
+				i === 0 ? { ...q, guidance: 'Act on this now — no gap to close.' } : q
+			)
+		};
+		render(Quadrant2x2Chart, { data: guidedData });
+		expect(screen.getByText('Act on this now — no gap to close.')).toBeTruthy();
+	});
+
+	it('omits the guidance line entirely when a quadrant has no guidance (older/partial data)', () => {
+		const { container } = render(Quadrant2x2Chart, { data });
+		// none of the fixture quadrants set `guidance`
+		expect(container.querySelector('.quadrant-guidance')).toBeNull();
+	});
+
+	it('shows guidance even on an empty quadrant, so a 0-item cell still has real content', () => {
+		const emptyWithGuidance: Quadrant2x2Data = {
+			...data,
+			quadrants: data.quadrants.map((q, i) =>
+				i === 0 ? { ...q, items: [], guidance: 'Sustain this pairing.' } : q
+			)
+		};
+		render(Quadrant2x2Chart, { data: emptyWithGuidance });
+		expect(screen.getByText('Sustain this pairing.')).toBeTruthy();
+		expect(screen.getByText('No items')).toBeTruthy();
+	});
 });

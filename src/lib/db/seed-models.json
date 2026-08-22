@@ -39,7 +39,8 @@
 						"y": "high",
 						"items": [
 							"Resolve the client emergency"
-						]
+						],
+						"guidance": "Act on this now — no gap to close."
 					},
 					{
 						"name": "Schedule",
@@ -48,7 +49,8 @@
 						"items": [
 							"Draft the Friday strategy doc",
 							"Give the teammate real feedback on their draft"
-						]
+						],
+						"guidance": "Protect a real block of time, or it turns into a crisis later."
 					},
 					{
 						"name": "Delegate",
@@ -56,7 +58,8 @@
 						"y": "low",
 						"items": [
 							"Clear the routine status email backlog"
-						]
+						],
+						"guidance": "Hand off or batch — doesn't need to be you."
 					},
 					{
 						"name": "Eliminate",
@@ -64,13 +67,14 @@
 						"y": "low",
 						"items": [
 							"Browse the industry newsletter"
-						]
+						],
+						"guidance": "Drop it. Doing it well doesn't matter if it shouldn't be done."
 					}
 				],
 				"summary": "Handle the client emergency now. Protect real blocks this week for the strategy doc and the teammate's feedback — that Schedule box is the one actually worth defending. Batch the routine emails, skip the newsletter."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Eisenhower Matrix to a decision. Given their question: \"{{question}}\", identify the concrete tasks or considerations implied by it and classify each into one of four quadrants by urgency (x: low or high) and importance (y: low or high). Respond with ONLY JSON matching this shape, no prose outside the JSON: {\"xAxisLabel\": \"Urgency\", \"yAxisLabel\": \"Importance\", \"quadrants\": [{\"name\": \"Do First\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Schedule\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Delegate\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Eliminate\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Eisenhower Matrix to a decision. Given their question: \"{{question}}\", identify the concrete tasks or considerations implied by it and classify each into one of four quadrants by urgency (x: low or high) and importance (y: low or high). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Do First: \"Act on this now — no gap to close.\"; Schedule: \"Protect a real block of time, or it turns into a crisis later.\"; Delegate: \"Hand off or batch — doesn't need to be you.\"; Eliminate: \"Drop it. Doing it well doesn't matter if it shouldn't be done.\". Respond with ONLY JSON matching this shape, no prose outside the JSON: {\"xAxisLabel\": \"Urgency\", \"yAxisLabel\": \"Importance\", \"quadrants\": [{\"name\": \"Do First\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Act on this now — no gap to close.\"}, {\"name\": \"Schedule\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Protect a real block of time, or it turns into a crisis later.\"}, {\"name\": \"Delegate\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Hand off or batch — doesn't need to be you.\"}, {\"name\": \"Eliminate\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Drop it. Doing it well doesn't matter if it shouldn't be done.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -122,6 +126,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -271,7 +278,8 @@
 						"y": "high",
 						"items": [
 							"Brand strategy consulting"
-						]
+						],
+						"guidance": "Keep investing — it funds itself and compounds."
 					},
 					{
 						"name": "Cash Cow",
@@ -279,7 +287,8 @@
 						"y": "low",
 						"items": [
 							"Logo and identity design"
-						]
+						],
+						"guidance": "Milk for cash, fund it minimally — don't starve it or over-invest."
 					},
 					{
 						"name": "Question Mark",
@@ -287,7 +296,8 @@
 						"y": "high",
 						"items": [
 							"AI content tooling"
-						]
+						],
+						"guidance": "Decide deliberately: invest hard to build share, or exit before it drains cash."
 					},
 					{
 						"name": "Dog",
@@ -295,13 +305,14 @@
 						"y": "low",
 						"items": [
 							"Print collateral design"
-						]
+						],
+						"guidance": "Divest or discontinue — rarely worth the resources it ties up."
 					}
 				],
 				"summary": "Double down on brand strategy, keep identity design funding the business, place a small bet on AI tooling, and wind down print work."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the BCG Growth-Share Box to a decision. Given their question: \"{{question}}\", identify the options or initiatives implied by it and classify each by relative share (x: low or high) and market growth (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Relative Market Share\", \"yAxisLabel\": \"Market Growth\", \"quadrants\": [{\"name\": \"Star\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Cash Cow\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Question Mark\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Dog\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the BCG Growth-Share Box to a decision. Given their question: \"{{question}}\", identify the options or initiatives implied by it and classify each by relative share (x: low or high) and market growth (y: low or high). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Star: \"Keep investing — it funds itself and compounds.\"; Cash Cow: \"Milk for cash, fund it minimally — don't starve it or over-invest.\"; Question Mark: \"Decide deliberately: invest hard to build share, or exit before it drains cash.\"; Dog: \"Divest or discontinue — rarely worth the resources it ties up.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Relative Market Share\", \"yAxisLabel\": \"Market Growth\", \"quadrants\": [{\"name\": \"Star\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Keep investing — it funds itself and compounds.\"}, {\"name\": \"Cash Cow\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Milk for cash, fund it minimally — don't starve it or over-invest.\"}, {\"name\": \"Question Mark\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Decide deliberately: invest hard to build share, or exit before it drains cash.\"}, {\"name\": \"Dog\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Divest or discontinue — rarely worth the resources it ties up.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -353,6 +364,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -404,7 +418,8 @@
 						"y": "high",
 						"items": [
 							"You know you interrupt when excited about an idea"
-						]
+						],
+						"guidance": "Shared ground — build on this openly."
 					},
 					{
 						"name": "Blind Spot",
@@ -412,7 +427,8 @@
 						"y": "high",
 						"items": [
 							"Your tone reads as final even when you're open to debate"
-						]
+						],
+						"guidance": "Ask directly; others can see it even though you can't."
 					},
 					{
 						"name": "Facade",
@@ -420,7 +436,8 @@
 						"y": "low",
 						"items": [
 							"You're privately unsure about this direction too"
-						]
+						],
+						"guidance": "Consider disclosing — hiding it usually costs more trust than sharing it."
 					},
 					{
 						"name": "Unknown",
@@ -428,13 +445,14 @@
 						"y": "low",
 						"items": [
 							"How your reaction to past pushback shaped the team's caution"
-						]
+						],
+						"guidance": "Explore through new situations or outside feedback, not introspection alone."
 					}
 				],
 				"summary": "The Blind Spot is likely doing the most damage — ask a trusted colleague directly how your tone lands."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Johari Window to a question about themselves. Given their question: \"{{question}}\", populate the four panes: Arena (known to self, known to others), Blind Spot (unknown to self, known to others), Facade (known to self, unknown to others), Unknown (unknown to self, unknown to others). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to Self\", \"yAxisLabel\": \"Known to Others\", \"quadrants\": [{\"name\": \"Arena\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Blind Spot\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Facade\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Unknown\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Johari Window to a question about themselves. Given their question: \"{{question}}\", populate the four panes: Arena (known to self, known to others), Blind Spot (unknown to self, known to others), Facade (known to self, unknown to others), Unknown (unknown to self, unknown to others). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Arena: \"Shared ground — build on this openly.\"; Blind Spot: \"Ask directly; others can see it even though you can't.\"; Facade: \"Consider disclosing — hiding it usually costs more trust than sharing it.\"; Unknown: \"Explore through new situations or outside feedback, not introspection alone.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to Self\", \"yAxisLabel\": \"Known to Others\", \"quadrants\": [{\"name\": \"Arena\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Shared ground — build on this openly.\"}, {\"name\": \"Blind Spot\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Ask directly; others can see it even though you can't.\"}, {\"name\": \"Facade\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Consider disclosing — hiding it usually costs more trust than sharing it.\"}, {\"name\": \"Unknown\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Explore through new situations or outside feedback, not introspection alone.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -486,6 +504,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -551,7 +572,7 @@
 				"summary": "Owning a visible project is the fastest path from 'strong technically' to 'ready to lead'."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the GROW coaching model (Goal, Reality, Options, Will) to a question. Given their question: \"{{question}}\", produce one step for each of the four stages, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Goal\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Reality\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Options\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Will\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the GROW coaching model (Goal, Reality, Options, Will) to a question. Given their question: \"{{question}}\", produce one step for each of the four stages, in order. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. GROW's four stages run one-way from Goal to Will, so this example omits both. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Goal\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Reality\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Options\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Will\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -578,6 +599,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -719,21 +753,24 @@
 				"sections": [
 					{
 						"heading": "The Conflicting Beliefs",
-						"body": "You believe you're a careful spender, but you spent significantly on something now sitting unused."
+						"body": "You believe you're a careful spender, but you spent significantly on something now sitting unused.",
+						"kind": "tension"
 					},
 					{
 						"heading": "The Rationalization at Work",
-						"body": "Telling yourself 'I'll use it more once things calm down' rather than questioning the purchase."
+						"body": "Telling yourself 'I'll use it more once things calm down' rather than questioning the purchase.",
+						"kind": "insight"
 					},
 					{
 						"heading": "What Resolving It Would Require",
-						"body": "Either genuinely committing to use it, or admitting the purchase missed and adjusting future spending habits."
+						"body": "Either genuinely committing to use it, or admitting the purchase missed and adjusting future spending habits.",
+						"kind": "implication"
 					}
 				],
 				"summary": "The defensiveness is a signal, not noise — it's pointing at a purchase decision worth reassessing honestly."
 			}
 		},
-		"promptTemplate": "You are helping someone examine cognitive dissonance in a question about their own beliefs or behavior. Given their question: \"{{question}}\", write short narrative sections covering: the conflicting beliefs or actions at play, the rationalizations likely being used to reduce the discomfort, and what genuinely resolving the conflict would require. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Conflicting Beliefs\", \"body\": \"...\"}, {\"heading\": \"The Rationalization at Work\", \"body\": \"...\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone examine cognitive dissonance in a question about their own beliefs or behavior. Given their question: \"{{question}}\", write short narrative sections covering: the conflicting beliefs or actions at play, the rationalizations likely being used to reduce the discomfort, and what genuinely resolving the conflict would require. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Conflicting Beliefs\", \"body\": \"...\", \"kind\": \"tension\"}, {\"heading\": \"The Rationalization at Work\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -748,7 +785,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -756,6 +794,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -930,7 +977,8 @@
 						"y": "high",
 						"items": [
 							"Add CSV export, most requested and already scoped"
-						]
+						],
+						"guidance": "Fund immediately — a clear win with no reason to wait."
 					},
 					{
 						"name": "Investigate",
@@ -938,7 +986,8 @@
 						"y": "high",
 						"items": [
 							"Real-time collaboration, high value but needs a new sync architecture"
-						]
+						],
+						"guidance": "Run a scoping spike before committing real budget."
 					},
 					{
 						"name": "Quick Wins",
@@ -946,7 +995,8 @@
 						"y": "low",
 						"items": [
 							"Rename a confusing settings label"
-						]
+						],
+						"guidance": "Ship cheaply for goodwill, but don't over-invest."
 					},
 					{
 						"name": "Drop",
@@ -954,13 +1004,14 @@
 						"y": "low",
 						"items": [
 							"Custom theming engine nobody asked for"
-						]
+						],
+						"guidance": "Don't pursue — low payoff and hard to execute."
 					}
 				],
 				"summary": "CSV export is the clear priority; real-time collaboration deserves a feasibility spike before committing."
 			}
 		},
-		"promptTemplate": "You are helping someone apply a Project Portfolio Matrix to a decision. Given their question: \"{{question}}\", identify the initiatives or options implied by it and classify each by feasibility (x: low or high) and expected value (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Feasibility\", \"yAxisLabel\": \"Expected Value\", \"quadrants\": [{\"name\": \"Do Now\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Investigate\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Quick Wins\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Drop\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply a Project Portfolio Matrix to a decision. Given their question: \"{{question}}\", identify the initiatives or options implied by it and classify each by feasibility (x: low or high) and expected value (y: low or high). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Do Now: \"Fund immediately — a clear win with no reason to wait.\"; Investigate: \"Run a scoping spike before committing real budget.\"; Quick Wins: \"Ship cheaply for goodwill, but don't over-invest.\"; Drop: \"Don't pursue — low payoff and hard to execute.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Feasibility\", \"yAxisLabel\": \"Expected Value\", \"quadrants\": [{\"name\": \"Do Now\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Fund immediately — a clear win with no reason to wait.\"}, {\"name\": \"Investigate\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Run a scoping spike before committing real budget.\"}, {\"name\": \"Quick Wins\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Ship cheaply for goodwill, but don't over-invest.\"}, {\"name\": \"Drop\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Don't pursue — low payoff and hard to execute.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1012,6 +1063,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -1056,21 +1110,24 @@
 				"sections": [
 					{
 						"heading": "What You Expected",
-						"body": "You expected the switch to save the team a few hours a week within the first month, with minor pushback."
+						"body": "You expected the switch to save the team a few hours a week within the first month, with minor pushback.",
+						"kind": "situation"
 					},
 					{
 						"heading": "What Actually Happened",
-						"body": "Adoption took two months, but once it stuck, reported time savings were higher than predicted."
+						"body": "Adoption took two months, but once it stuck, reported time savings were higher than predicted.",
+						"kind": "situation"
 					},
 					{
 						"heading": "The Gap and What It Teaches You",
-						"body": "You tend to underestimate rollout friction but overestimate resistance — a pattern worth remembering before the next tool change."
+						"body": "You tend to underestimate rollout friction but overestimate resistance — a pattern worth remembering before the next tool change.",
+						"kind": "implication"
 					}
 				],
 				"summary": "You consistently underestimate how long change takes to stick, even when the change itself turns out to be worth it."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Peter Drucker's Feedback Analysis to a question about their own decision. Given their question: \"{{question}}\", write narrative sections covering what they likely expected going in, what actually happened (or is likely to happen, if this is forward-looking), and what the gap between the two reveals about their judgment. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What You Expected\", \"body\": \"...\"}, {\"heading\": \"What Actually Happened\", \"body\": \"...\"}, {\"heading\": \"The Gap and What It Teaches You\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Peter Drucker's Feedback Analysis to a question about their own decision. Given their question: \"{{question}}\", write narrative sections covering what they likely expected going in, what actually happened (or is likely to happen, if this is forward-looking), and what the gap between the two reveals about their judgment. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What You Expected\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"What Actually Happened\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"The Gap and What It Teaches You\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1085,7 +1142,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -1093,6 +1151,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -1137,21 +1204,24 @@
 				"sections": [
 					{
 						"heading": "The Vision",
-						"body": "Finishing a first draft of the book within the year."
+						"body": "Finishing a first draft of the book within the year.",
+						"kind": "situation"
 					},
 					{
 						"heading": "Current Reality",
-						"body": "No consistent writing habit, a handful of scattered notes, over a year since starting."
+						"body": "No consistent writing habit, a handful of scattered notes, over a year since starting.",
+						"kind": "situation"
 					},
 					{
 						"heading": "The Tension",
-						"body": "The gap shows up as guilt and avoidance rather than motivation — a sign the vision may be getting quietly lowered instead of reality being moved."
+						"body": "The gap shows up as guilt and avoidance rather than motivation — a sign the vision may be getting quietly lowered instead of reality being moved.",
+						"kind": "insight"
 					}
 				],
 				"summary": "The tension is real, but right now it's resolving by shrinking the vision rather than growing the habit — a small, scheduled writing block would test which way it actually wants to go."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Rubber Band Model (structural tension between current reality and a held vision) to a question. Given their question: \"{{question}}\", write narrative sections covering the vision they're holding, their current reality, and the tension between the two — including which direction that tension seems to be resolving. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Vision\", \"body\": \"...\"}, {\"heading\": \"Current Reality\", \"body\": \"...\"}, {\"heading\": \"The Tension\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Rubber Band Model (structural tension between current reality and a held vision) to a question. Given their question: \"{{question}}\", write narrative sections covering the vision they're holding, their current reality, and the tension between the two — including which direction that tension seems to be resolving. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Vision\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"Current Reality\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"The Tension\", \"body\": \"...\", \"kind\": \"insight\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1166,7 +1236,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -1174,6 +1245,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -1239,7 +1319,7 @@
 				"summary": "Naming the specific meeting and moment makes this land as fixable feedback, not a character judgment."
 			}
 		},
-		"promptTemplate": "You are helping someone prepare structured feedback using the Feedback Box model (Situation, Behavior, Impact, Ask). Given their question: \"{{question}}\", produce one step for each of the four stages, in order, grounded in a specific plausible instance. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Situation\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Behavior\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Impact\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Ask\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone prepare structured feedback using the Feedback Box model (Situation, Behavior, Impact, Ask). Given their question: \"{{question}}\", produce one step for each of the four stages, in order, grounded in a specific plausible instance. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. The Feedback Box structures one piece of feedback one-way, so this example omits both. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Situation\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Behavior\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Impact\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Ask\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1266,6 +1346,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -1499,7 +1592,8 @@
 						"y": "high",
 						"items": [
 							"Diabetic-friendly meal kits — high demand, few dedicated options"
-						]
+						],
+						"guidance": "Enter here — real demand exists and isn't being served."
 					},
 					{
 						"name": "Crowded",
@@ -1507,7 +1601,8 @@
 						"y": "high",
 						"items": [
 							"General healthy meal kits — high demand, saturated market"
-						]
+						],
+						"guidance": "Only enter with real differentiation; the demand here is already being fought over."
 					},
 					{
 						"name": "Niche Risk",
@@ -1515,7 +1610,8 @@
 						"y": "low",
 						"items": [
 							"Ultra-exotic cuisine kits — few competitors, but unclear demand"
-						]
+						],
+						"guidance": "Validate real demand before building — the empty space may be empty for a reason."
 					},
 					{
 						"name": "Avoid",
@@ -1523,13 +1619,14 @@
 						"y": "low",
 						"items": [
 							"Generic snack boxes — low demand, already oversupplied"
-						]
+						],
+						"guidance": "Skip — already oversupplied for the demand that exists."
 					}
 				],
 				"summary": "Diabetic-friendly kits look like the real opportunity — real demand with few dedicated competitors."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Gap in the Market Model to a decision. Given their question: \"{{question}}\", identify the ideas, niches, or offerings implied by it and classify each by current supply (x: low or high) and demand (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Current Supply\", \"yAxisLabel\": \"Demand\", \"quadrants\": [{\"name\": \"Real Opportunity\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Crowded\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Niche Risk\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Avoid\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Gap in the Market Model to a decision. Given their question: \"{{question}}\", identify the ideas, niches, or offerings implied by it and classify each by current supply (x: low or high) and demand (y: low or high). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Real Opportunity: \"Enter here — real demand exists and isn't being served.\"; Crowded: \"Only enter with real differentiation; the demand here is already being fought over.\"; Niche Risk: \"Validate real demand before building — the empty space may be empty for a reason.\"; Avoid: \"Skip — already oversupplied for the demand that exists.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Current Supply\", \"yAxisLabel\": \"Demand\", \"quadrants\": [{\"name\": \"Real Opportunity\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Enter here — real demand exists and isn't being served.\"}, {\"name\": \"Crowded\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Only enter with real differentiation; the demand here is already being fought over.\"}, {\"name\": \"Niche Risk\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Validate real demand before building — the empty space may be empty for a reason.\"}, {\"name\": \"Avoid\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Skip — already oversupplied for the demand that exists.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1581,6 +1678,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -1625,21 +1725,24 @@
 				"sections": [
 					{
 						"heading": "The Difficulty",
-						"body": "Being passed over felt like a clear signal that years of hard work weren't recognized."
+						"body": "Being passed over felt like a clear signal that years of hard work weren't recognized.",
+						"kind": "tension"
 					},
 					{
 						"heading": "What It's Revealing",
-						"body": "It's surfacing that visibility and self-advocacy, not just output, matter more here than previously assumed."
+						"body": "It's surfacing that visibility and self-advocacy, not just output, matter more here than previously assumed.",
+						"kind": "insight"
 					},
 					{
 						"heading": "The Gift",
-						"body": "A concrete, specific gap to close — vocalizing accomplishments — that was invisible before this setback made it obvious."
+						"body": "A concrete, specific gap to close — vocalizing accomplishments — that was invisible before this setback made it obvious.",
+						"kind": "implication"
 					}
 				],
 				"summary": "The setback is real, but it's surfaced a specific, fixable gap rather than just a verdict on their worth."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Gift Model — reframing a difficult situation as containing a hidden lesson or opportunity. Given their question: \"{{question}}\", write narrative sections naming the difficulty honestly, what it's revealing, and the specific 'gift' or lesson within it. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Difficulty\", \"body\": \"...\"}, {\"heading\": \"What It's Revealing\", \"body\": \"...\"}, {\"heading\": \"The Gift\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Gift Model — reframing a difficult situation as containing a hidden lesson or opportunity. Given their question: \"{{question}}\", write narrative sections naming the difficulty honestly, what it's revealing, and the specific 'gift' or lesson within it. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Difficulty\", \"body\": \"...\", \"kind\": \"tension\"}, {\"heading\": \"What It's Revealing\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"The Gift\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1654,7 +1757,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -1662,6 +1766,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -1917,7 +2030,7 @@
 				"summary": "The immediate relief is real, but the long-term trust cost likely outweighs it — worth negotiating a short extension instead."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Consequence Model to a decision. Given their question: \"{{question}}\", trace the choice forward through three time horizons: immediate, short-term, and long-term consequences. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Immediate\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Short-term\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Long-term\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Consequence Model to a decision. Given their question: \"{{question}}\", trace the choice forward through three time horizons: immediate, short-term, and long-term consequences. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. Tracing consequences forward through time is one-way, so this example omits both. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Immediate\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Short-term\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Long-term\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -1944,6 +2057,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -1988,21 +2114,24 @@
 				"sections": [
 					{
 						"heading": "What You've Already Gathered",
-						"body": "You have clear data on pay, commute, and stability for both offers, but a fuzzier read on team fit and growth potential."
+						"body": "You have clear data on pay, commute, and stability for both offers, but a fuzzier read on team fit and growth potential.",
+						"kind": "situation"
 					},
 					{
 						"heading": "Stepping Away",
-						"body": "With the facts in hand, further conscious list-making is producing diminishing new insight — a genuine candidate for stepping back."
+						"body": "With the facts in hand, further conscious list-making is producing diminishing new insight — a genuine candidate for stepping back.",
+						"kind": "insight"
 					},
 					{
 						"heading": "What to Notice After the Break",
-						"body": "Pay attention to which offer you find yourself thinking about unprompted, and which one produces relief versus unease when you imagine declining it."
+						"body": "Pay attention to which offer you find yourself thinking about unprompted, and which one produces relief versus unease when you imagine declining it.",
+						"kind": "implication"
 					}
 				],
 				"summary": "You have enough information — the next useful step is stepping away, not gathering more data."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Unconscious Thought Theory to a complex decision. Given their question: \"{{question}}\", write narrative sections covering: what information they've likely already gathered, why conscious deliberation may be hitting diminishing returns, and what to notice in their gut reaction after deliberately stepping away. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What You've Already Gathered\", \"body\": \"...\"}, {\"heading\": \"Stepping Away\", \"body\": \"...\"}, {\"heading\": \"What to Notice After the Break\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Unconscious Thought Theory to a complex decision. Given their question: \"{{question}}\", write narrative sections covering: what information they've likely already gathered, why conscious deliberation may be hitting diminishing returns, and what to notice in their gut reaction after deliberately stepping away. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What You've Already Gathered\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"Stepping Away\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"What to Notice After the Break\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2017,7 +2146,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -2025,6 +2155,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -2069,21 +2208,24 @@
 				"sections": [
 					{
 						"heading": "What 'Good Enough' Means Here",
-						"body": "Within budget, under 30 minutes from work, and no major deferred maintenance — three non-negotiables, everything else is a bonus."
+						"body": "Within budget, under 30 minutes from work, and no major deferred maintenance — three non-negotiables, everything else is a bonus.",
+						"kind": "situation"
 					},
 					{
 						"heading": "The Stopping Condition",
-						"body": "Stop searching once three good-enough options exist, or after 20 total viewings, whichever comes first."
+						"body": "Stop searching once three good-enough options exist, or after 20 total viewings, whichever comes first.",
+						"kind": "insight"
 					},
 					{
 						"heading": "The Cost of Continuing Past That",
-						"body": "Each extra week of searching risks losing already-good-enough places to other renters, for uncertain marginal improvement."
+						"body": "Each extra week of searching risks losing already-good-enough places to other renters, for uncertain marginal improvement.",
+						"kind": "implication"
 					}
 				],
 				"summary": "You're past the point where more searching is likely worth its cost — pick the best of what already clears the bar."
 			}
 		},
-		"promptTemplate": "You are helping someone apply a Stop Rule to a search-based decision. Given their question: \"{{question}}\", write narrative sections covering: what 'good enough' means for this decision, a concrete stopping condition, and the cost of continuing to search past that point. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What 'Good Enough' Means Here\", \"body\": \"...\"}, {\"heading\": \"The Stopping Condition\", \"body\": \"...\"}, {\"heading\": \"The Cost of Continuing Past That\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply a Stop Rule to a search-based decision. Given their question: \"{{question}}\", write narrative sections covering: what 'good enough' means for this decision, a concrete stopping condition, and the cost of continuing to search past that point. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What 'Good Enough' Means Here\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"The Stopping Condition\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"The Cost of Continuing Past That\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2098,7 +2240,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -2106,6 +2249,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -2177,7 +2329,7 @@
 				"summary": "The silence most likely reflects an internal blocker at the Evaluation stage — a direct check-in on obstacles is more useful than another feature pitch."
 			}
 		},
-		"promptTemplate": "You are helping someone understand another person's or customer's decision process using the Buyer's Decision Model. Given their question: \"{{question}}\", walk through the five stages (Problem Recognition, Information Search, Evaluation of Alternatives, Purchase Decision, Post-Purchase Behavior) as they likely apply to that other person. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Problem Recognition\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Information Search\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Evaluation of Alternatives\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Purchase Decision\", \"description\": \"...\"}, {\"order\": 5, \"title\": \"Post-Purchase Behavior\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone understand another person's or customer's decision process using the Buyer's Decision Model. Given their question: \"{{question}}\", walk through the five stages (Problem Recognition, Information Search, Evaluation of Alternatives, Purchase Decision, Post-Purchase Behavior) as they likely apply to that other person. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. This walk-through treats the five stages as one-way for a single purchase decision, so this example omits both. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Problem Recognition\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Information Search\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Evaluation of Alternatives\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Purchase Decision\", \"description\": \"...\"}, {\"order\": 5, \"title\": \"Post-Purchase Behavior\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2204,6 +2356,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -2252,13 +2417,15 @@
 						"name": "Flow",
 						"x": "high",
 						"y": "high",
-						"items": []
+						"items": [],
+						"guidance": "Sustain this pairing — it's the state to protect, not fix."
 					},
 					{
 						"name": "Anxiety",
 						"x": "low",
 						"y": "high",
-						"items": []
+						"items": [],
+						"guidance": "Challenge exceeds skill — build capability or scale back scope."
 					},
 					{
 						"name": "Boredom",
@@ -2266,19 +2433,21 @@
 						"y": "low",
 						"items": [
 							"Current role: skills have outgrown the challenge level"
-						]
+						],
+						"guidance": "Skill exceeds challenge — raise the difficulty or find a harder problem."
 					},
 					{
 						"name": "Apathy",
 						"x": "low",
 						"y": "low",
-						"items": []
+						"items": [],
+						"guidance": "Neither skill nor stakes are engaged — disengage fully or reset the goal."
 					}
 				],
 				"summary": "Skills have outgrown the role's current challenge — Boredom, not burnout. The fix is more challenge, not more rest."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Csikszentmihalyi's Flow Model to a question about their engagement in an activity or role. Given their question: \"{{question}}\", assess their skill level and the challenge level of the situation (each low or high), and place the situation in the corresponding quadrant, leaving the other three empty unless clearly relevant. Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Skill Level\", \"yAxisLabel\": \"Challenge Level\", \"quadrants\": [{\"name\": \"Flow\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Anxiety\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Boredom\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Apathy\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Csikszentmihalyi's Flow Model to a question about their engagement in an activity or role. Given their question: \"{{question}}\", assess their skill level and the challenge level of the situation (each low or high), and place the situation in the corresponding quadrant, leaving the other three empty unless clearly relevant. Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Flow: \"Sustain this pairing — it's the state to protect, not fix.\"; Anxiety: \"Challenge exceeds skill — build capability or scale back scope.\"; Boredom: \"Skill exceeds challenge — raise the difficulty or find a harder problem.\"; Apathy: \"Neither skill nor stakes are engaged — disengage fully or reset the goal.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Skill Level\", \"yAxisLabel\": \"Challenge Level\", \"quadrants\": [{\"name\": \"Flow\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Sustain this pairing — it's the state to protect, not fix.\"}, {\"name\": \"Anxiety\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Challenge exceeds skill — build capability or scale back scope.\"}, {\"name\": \"Boredom\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Skill exceeds challenge — raise the difficulty or find a harder problem.\"}, {\"name\": \"Apathy\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Neither skill nor stakes are engaged — disengage fully or reset the goal.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2330,6 +2499,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -2471,25 +2643,30 @@
 				"factors": [
 					{
 						"label": "Physical",
-						"score": 6
+						"score": 6,
+						"targetScore": 7
 					},
 					{
 						"label": "Emotional",
-						"score": 4
+						"score": 4,
+						"targetScore": 6
 					},
 					{
 						"label": "Mental",
-						"score": 7
+						"score": 7,
+						"targetScore": 8
 					},
 					{
 						"label": "Spiritual",
-						"score": 3
+						"score": 3,
+						"targetScore": 8
 					}
 				],
-				"summary": "Spiritual energy is the clear low point — the block may be about purpose and alignment, not time or focus."
+				"maxScore": 10,
+				"summary": "Spiritual energy is the clear low point, and it's furthest from where it needs to be — the block is likely about purpose and alignment, not time or focus."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Energy Model (Loehr & Schwartz) to a question. Given their question: \"{{question}}\", estimate their likely Physical, Emotional, Mental, and Spiritual energy levels (0-10 each) based on the situation described, and identify the lowest as the highest-leverage point to address. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Physical\", \"score\": 6}, {\"label\": \"Emotional\", \"score\": 4}, {\"label\": \"Mental\", \"score\": 7}, {\"label\": \"Spiritual\", \"score\": 3}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Energy Model (Loehr & Schwartz) to a question. Given their question: \"{{question}}\", estimate their likely Physical, Emotional, Mental, and Spiritual energy levels (0-10 each) based on the situation described, and for each also estimate a targetScore — the level that dimension would need to reach to be well-resourced for this decision. Identify the lowest score as the highest-leverage point to address. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Physical\", \"score\": 6, \"targetScore\": 7}, {\"label\": \"Emotional\", \"score\": 4, \"targetScore\": 6}, {\"label\": \"Mental\", \"score\": 7, \"targetScore\": 8}, {\"label\": \"Spiritual\", \"score\": 3, \"targetScore\": 8}], \"maxScore\": 10, \"summary\": \"...\"}",
 		"outputSchemaType": "radar",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2515,9 +2692,19 @@
 								"type": "number",
 								"minimum": 0,
 								"maximum": 10
+							},
+							"targetScore": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 10,
+								"description": "The energy level this dimension would need to reach to be well-resourced for this decision — omit if not estimable."
 							}
 						}
 					}
+				},
+				"maxScore": {
+					"type": "number",
+					"description": "Ceiling for score/targetScore on this scale; defaults to 10 if omitted."
 				},
 				"summary": {
 					"type": "string"
@@ -2563,7 +2750,8 @@
 						"name": "Authoritarian Left",
 						"x": "low",
 						"y": "high",
-						"items": []
+						"items": [],
+						"guidance": "Centralized economic control paired with strict social and state authority."
 					},
 					{
 						"name": "Authoritarian Right",
@@ -2571,25 +2759,28 @@
 						"y": "high",
 						"items": [
 							"Likely stakeholder position: favors strong top-down policy with market-friendly framing"
-						]
+						],
+						"guidance": "Free-market economics paired with strict social and state authority."
 					},
 					{
 						"name": "Libertarian Left",
 						"x": "low",
 						"y": "low",
-						"items": []
+						"items": [],
+						"guidance": "Collective or shared economics paired with personal and social freedom."
 					},
 					{
 						"name": "Libertarian Right",
 						"x": "high",
 						"y": "low",
-						"items": []
+						"items": [],
+						"guidance": "Free-market economics paired with personal and social freedom."
 					}
 				],
 				"summary": "Expect this stakeholder to favor a clear top-down mandate over an opt-in approach, even while preferring market-based framing."
 			}
 		},
-		"promptTemplate": "You are helping someone understand another person's or group's likely position using the Political Compass. Given their question: \"{{question}}\", estimate the relevant person's or group's position on the Economic axis (low=left, high=right) and Social axis (low=libertarian, high=authoritarian), and place them in the corresponding quadrant, leaving others empty unless relevant. Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Economic (Left-Right)\", \"yAxisLabel\": \"Social (Authoritarian-Libertarian)\", \"quadrants\": [{\"name\": \"Authoritarian Left\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Authoritarian Right\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Libertarian Left\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Libertarian Right\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone understand another person's or group's likely position using the Political Compass. Given their question: \"{{question}}\", estimate the relevant person's or group's position on the Economic axis (low=left, high=right) and Social axis (low=libertarian, high=authoritarian), and place them in the corresponding quadrant, leaving others empty unless relevant. Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Authoritarian Left: \"Centralized economic control paired with strict social and state authority.\"; Authoritarian Right: \"Free-market economics paired with strict social and state authority.\"; Libertarian Left: \"Collective or shared economics paired with personal and social freedom.\"; Libertarian Right: \"Free-market economics paired with personal and social freedom.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Economic (Left-Right)\", \"yAxisLabel\": \"Social (Authoritarian-Libertarian)\", \"quadrants\": [{\"name\": \"Authoritarian Left\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Centralized economic control paired with strict social and state authority.\"}, {\"name\": \"Authoritarian Right\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Free-market economics paired with strict social and state authority.\"}, {\"name\": \"Libertarian Left\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Collective or shared economics paired with personal and social freedom.\"}, {\"name\": \"Libertarian Right\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Free-market economics paired with personal and social freedom.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2641,6 +2832,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -2686,29 +2880,35 @@
 				"factors": [
 					{
 						"label": "Skill",
-						"score": 8
+						"score": 8,
+						"targetScore": 6
 					},
 					{
 						"label": "Motivation",
-						"score": 4
+						"score": 4,
+						"targetScore": 7
 					},
 					{
 						"label": "Environment",
-						"score": 6
+						"score": 6,
+						"targetScore": 6
 					},
 					{
 						"label": "Feedback",
-						"score": 3
+						"score": 3,
+						"targetScore": 7
 					},
 					{
 						"label": "Recovery",
-						"score": 5
+						"score": 5,
+						"targetScore": 6
 					}
 				],
-				"summary": "Skill isn't the issue — low motivation and almost no feedback on review quality are the real bottlenecks."
+				"maxScore": 10,
+				"summary": "Skill is well clear of what this needs — motivation and feedback are the two levers sitting furthest below where they'd need to be to stop the slippage."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Personal Performance Model to a question about their own performance. Given their question: \"{{question}}\", score the five factors — Skill, Motivation, Environment, Feedback, Recovery — each 0-10, reflecting how each one is currently affecting the situation. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Skill\", \"score\": 7}, {\"label\": \"Motivation\", \"score\": 5}, {\"label\": \"Environment\", \"score\": 6}, {\"label\": \"Feedback\", \"score\": 4}, {\"label\": \"Recovery\", \"score\": 5}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Personal Performance Model to a question about their own performance. Given their question: \"{{question}}\", score the five factors — Skill, Motivation, Environment, Feedback, Recovery — each 0-10, reflecting how each one is currently affecting the situation, and for each also give a targetScore — the score that factor would need to reach to stop being the bottleneck. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Skill\", \"score\": 7, \"targetScore\": 6}, {\"label\": \"Motivation\", \"score\": 5, \"targetScore\": 7}, {\"label\": \"Environment\", \"score\": 6, \"targetScore\": 6}, {\"label\": \"Feedback\", \"score\": 4, \"targetScore\": 7}, {\"label\": \"Recovery\", \"score\": 5, \"targetScore\": 6}], \"maxScore\": 10, \"summary\": \"...\"}",
 		"outputSchemaType": "radar",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2734,9 +2934,19 @@
 								"type": "number",
 								"minimum": 0,
 								"maximum": 10
+							},
+							"targetScore": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 10,
+								"description": "The score this factor would need to reach to stop being the bottleneck — omit if not estimable."
 							}
 						}
 					}
+				},
+				"maxScore": {
+					"type": "number",
+					"description": "Ceiling for score/targetScore on this scale; defaults to 10 if omitted."
 				},
 				"summary": {
 					"type": "string"
@@ -2794,13 +3004,14 @@
 					{
 						"order": 4,
 						"title": "Lesson",
-						"description": "Speed protected the deadline but not the goal — next time, protect one round of user testing even if it costs a few days."
+						"description": "Speed protected the deadline but not the goal — next time, protect one round of user testing even if it costs a few days.",
+						"loopsTo": 1
 					}
 				],
 				"summary": "The process optimized for the wrong constraint — hitting the date mattered less than validating the idea."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Making-of Model to reflect on a decision or piece of work. Given their question: \"{{question}}\", produce four steps in order: Intention (what they set out to do), Process (what actually happened), Outcome (the actual result), and Lesson (what this reveals for next time). Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Intention\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Process\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Outcome\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Lesson\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Making-of Model to reflect on a decision or piece of work. Given their question: \"{{question}}\", produce four steps in order: Intention (what they set out to do), Process (what actually happened), Outcome (the actual result), and Lesson (what this reveals for next time). Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. The lesson from this cycle feeds the next Intention, so mark the final step's \"loopsTo\": 1. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Intention\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Process\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Outcome\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Lesson\", \"description\": \"...\", \"loopsTo\": 1}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2827,6 +3038,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -2870,21 +3094,24 @@
 				"sections": [
 					{
 						"heading": "The Assumed Ceiling",
-						"body": "Believing confident public speaking is simply not something you're capable of."
+						"body": "Believing confident public speaking is simply not something you're capable of.",
+						"kind": "tension"
 					},
 					{
 						"heading": "Where It Actually Came From",
-						"body": "One bad presentation in school over a decade ago, generalized into a permanent trait."
+						"body": "One bad presentation in school over a decade ago, generalized into a permanent trait.",
+						"kind": "insight"
 					},
 					{
 						"heading": "What Resolving It Would Require",
-						"body": "Testing the belief with a low-stakes speaking opportunity before treating it as settled fact."
+						"body": "Testing the belief with a low-stakes speaking opportunity before treating it as settled fact.",
+						"kind": "implication"
 					}
 				],
 				"summary": "The ceiling looks assumed, not proven — worth testing before it rules out the role."
 			}
 		},
-		"promptTemplate": "You are helping someone examine a self-limiting belief using the Personal Potential Trap model. Given their question: \"{{question}}\", write narrative sections covering: the assumed ceiling or limit at play, where that belief actually seems to come from, and what genuinely resolving it (testing it or accepting it) would require. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Assumed Ceiling\", \"body\": \"...\"}, {\"heading\": \"Where It Actually Came From\", \"body\": \"...\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone examine a self-limiting belief using the Personal Potential Trap model. Given their question: \"{{question}}\", write narrative sections covering: the assumed ceiling or limit at play, where that belief actually seems to come from, and what genuinely resolving it (testing it or accepting it) would require. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Assumed Ceiling\", \"body\": \"...\", \"kind\": \"tension\"}, {\"heading\": \"Where It Actually Came From\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2899,7 +3126,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -2907,6 +3135,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -2950,21 +3187,24 @@
 				"sections": [
 					{
 						"heading": "The Deadlock",
-						"body": "Both jobs score well on different dimensions, and neither list has produced a clear winner after weeks of comparison."
+						"body": "Both jobs score well on different dimensions, and neither list has produced a clear winner after weeks of comparison.",
+						"kind": "tension"
 					},
 					{
 						"heading": "Are They Actually On a Par",
-						"body": "Yes — one wins on security, the other on meaning, and there's no common scale that makes one strictly better."
+						"body": "Yes — one wins on security, the other on meaning, and there's no common scale that makes one strictly better.",
+						"kind": "insight"
 					},
 					{
 						"heading": "Who You'd Become",
-						"body": "The stable job extends who you already are; the risky one commits you to becoming someone more entrepreneurial."
+						"body": "The stable job extends who you already are; the risky one commits you to becoming someone more entrepreneurial.",
+						"kind": "implication"
 					}
 				],
 				"summary": "No further analysis will break the tie — the real question is which version of yourself you want to commit to."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Ruth Chang's Hard Choice Model to a decision between options that may be genuinely 'on a par.' Given their question: \"{{question}}\", write narrative sections covering: the deadlock itself, whether the options are truly on a par rather than one being better, and what committing to each option would mean for who they become. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Deadlock\", \"body\": \"...\"}, {\"heading\": \"Are They Actually On a Par\", \"body\": \"...\"}, {\"heading\": \"Who You'd Become\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Ruth Chang's Hard Choice Model to a decision between options that may be genuinely 'on a par.' Given their question: \"{{question}}\", write narrative sections covering: the deadlock itself, whether the options are truly on a par rather than one being better, and what committing to each option would mean for who they become. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Deadlock\", \"body\": \"...\", \"kind\": \"tension\"}, {\"heading\": \"Are They Actually On a Par\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"Who You'd Become\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -2979,7 +3219,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -2987,6 +3228,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -3135,7 +3385,8 @@
 						"y": "low",
 						"items": [
 							"Choosing an internal task-tracking tool"
-						]
+						],
+						"guidance": "Just decide — cheap to undo, not worth deliberating."
 					},
 					{
 						"name": "Decide Fast, High Stakes",
@@ -3143,7 +3394,8 @@
 						"y": "high",
 						"items": [
 							"Running a 90-day trial with a potential co-founder before formalizing"
-						]
+						],
+						"guidance": "Move quickly, but build in a checkpoint since real stakes are riding on it."
 					},
 					{
 						"name": "Deliberate Carefully",
@@ -3151,7 +3403,8 @@
 						"y": "high",
 						"items": [
 							"Signing a multi-year office lease"
-						]
+						],
+						"guidance": "Slow down and get real input — hard or impossible to undo."
 					},
 					{
 						"name": "Low Priority",
@@ -3159,13 +3412,14 @@
 						"y": "low",
 						"items": [
 							"Picking the office coffee brand"
-						]
+						],
+						"guidance": "Don't spend cycles here — low stakes either way."
 					}
 				],
 				"summary": "The co-founder decision deserves real deliberation, but it can start as a reversible trial rather than an irreversible commitment."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Crossroads Model to a decision. Given their question: \"{{question}}\", identify the choices or options implied by it and classify each by reversibility (x: low or high) and impact (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Reversibility\", \"yAxisLabel\": \"Impact\", \"quadrants\": [{\"name\": \"Decide Fast, Low Risk\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Decide Fast, High Stakes\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Deliberate Carefully\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Low Priority\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Crossroads Model to a decision. Given their question: \"{{question}}\", identify the choices or options implied by it and classify each by reversibility (x: low or high) and impact (y: low or high). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Decide Fast, Low Risk: \"Just decide — cheap to undo, not worth deliberating.\"; Decide Fast, High Stakes: \"Move quickly, but build in a checkpoint since real stakes are riding on it.\"; Deliberate Carefully: \"Slow down and get real input — hard or impossible to undo.\"; Low Priority: \"Don't spend cycles here — low stakes either way.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Reversibility\", \"yAxisLabel\": \"Impact\", \"quadrants\": [{\"name\": \"Decide Fast, Low Risk\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Just decide — cheap to undo, not worth deliberating.\"}, {\"name\": \"Decide Fast, High Stakes\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Move quickly, but build in a checkpoint since real stakes are riding on it.\"}, {\"name\": \"Deliberate Carefully\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Slow down and get real input — hard or impossible to undo.\"}, {\"name\": \"Low Priority\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Don't spend cycles here — low stakes either way.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -3217,6 +3471,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -3267,7 +3524,8 @@
 						"y": "high",
 						"items": [
 							"Current market size and competitor pricing"
-						]
+						],
+						"guidance": "Confirmed — act on it directly."
 					},
 					{
 						"name": "Known Unknowns",
@@ -3275,7 +3533,8 @@
 						"y": "high",
 						"items": [
 							"Local regulatory approval timeline"
-						]
+						],
+						"guidance": "You know the question — go find the answer."
 					},
 					{
 						"name": "Unknown Knowns",
@@ -3283,7 +3542,8 @@
 						"y": "low",
 						"items": [
 							"The team's gut sense from a similar past expansion, never formally written down"
-						]
+						],
+						"guidance": "You already know this but haven't said it out loud — surface it deliberately."
 					},
 					{
 						"name": "Unknown Unknowns",
@@ -3291,13 +3551,14 @@
 						"y": "low",
 						"items": [
 							"Cultural factors in the new market no one on the team has surfaced yet"
-						]
+						],
+						"guidance": "Can't be researched away — build in slack and run a premortem instead."
 					}
 				],
 				"summary": "The biggest risk isn't the known unknowns you're already researching — it's the unknown unknowns nobody has named yet."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Rumsfeld Matrix to a decision. Given their question: \"{{question}}\", sort what's known and unknown about it into four quadrants: Known Knowns (known to you, knowable), Known Unknowns (not known to you, but knowable/being sought), Unknown Knowns (known to you but not consciously articulated), and Unknown Unknowns (not known, not yet even identified as a question). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to You\", \"yAxisLabel\": \"Knowable at All\", \"quadrants\": [{\"name\": \"Known Knowns\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Known Unknowns\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Unknown Knowns\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Unknown Unknowns\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Rumsfeld Matrix to a decision. Given their question: \"{{question}}\", sort what's known and unknown about it into four quadrants: Known Knowns (known to you, knowable), Known Unknowns (not known to you, but knowable/being sought), Unknown Knowns (known to you but not consciously articulated), and Unknown Unknowns (not known, not yet even identified as a question). Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Known Knowns: \"Confirmed — act on it directly.\"; Known Unknowns: \"You know the question — go find the answer.\"; Unknown Knowns: \"You already know this but haven't said it out loud — surface it deliberately.\"; Unknown Unknowns: \"Can't be researched away — build in slack and run a premortem instead.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to You\", \"yAxisLabel\": \"Knowable at All\", \"quadrants\": [{\"name\": \"Known Knowns\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Confirmed — act on it directly.\"}, {\"name\": \"Known Unknowns\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"You know the question — go find the answer.\"}, {\"name\": \"Unknown Knowns\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"You already know this but haven't said it out loud — surface it deliberately.\"}, {\"name\": \"Unknown Unknowns\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Can't be researched away — build in slack and run a premortem instead.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -3349,6 +3610,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -3394,28 +3658,32 @@
 					{
 						"order": 1,
 						"title": "Code Review",
-						"description": "Hole: reviewer was rushed and skimmed the diff instead of reading it closely."
+						"description": "Hole: reviewer was rushed and skimmed the diff instead of reading it closely.",
+						"kind": "gate"
 					},
 					{
 						"order": 2,
 						"title": "Automated Tests",
-						"description": "Hole: the specific edge case wasn't covered by any existing test."
+						"description": "Hole: the specific edge case wasn't covered by any existing test.",
+						"kind": "gate"
 					},
 					{
 						"order": 3,
 						"title": "Staging Environment",
-						"description": "Hole: staging uses synthetic data that never triggered the bug's real-world condition."
+						"description": "Hole: staging uses synthetic data that never triggered the bug's real-world condition.",
+						"kind": "gate"
 					},
 					{
 						"order": 4,
 						"title": "Production Monitoring",
-						"description": "Hole: the alert threshold was too high to catch the issue quickly."
+						"description": "Hole: the alert threshold was too high to catch the issue quickly.",
+						"kind": "gate"
 					}
 				],
 				"summary": "No single layer failed badly — four small holes happened to line up at once."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Swiss Cheese Model to understand a failure or risk. Given their question: \"{{question}}\", identify the layers of defense involved (in order) and, for each, name the specific 'hole' or weakness in that layer that could let the failure through. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"...\", \"description\": \"Hole: ...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Swiss Cheese Model to understand a failure or risk. Given their question: \"{{question}}\", identify the layers of defense involved (in order) and, for each, name the specific 'hole' or weakness in that layer that could let the failure through. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. Each layer is a checkpoint the failure passes through, not an action — mark every step \"kind\": \"gate\". Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"...\", \"description\": \"Hole: ...\", \"kind\": \"gate\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -3442,6 +3710,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -3689,21 +3970,24 @@
 				"sections": [
 					{
 						"heading": "Habitus",
-						"body": "Their prior industry rewarded direct, fast-moving communication; this team's culture reads that as abrasive."
+						"body": "Their prior industry rewarded direct, fast-moving communication; this team's culture reads that as abrasive.",
+						"kind": "situation"
 					},
 					{
 						"heading": "Capital",
-						"body": "They bring strong technical credibility but little of the specific social capital (who-to-ask, informal trust) this team runs on."
+						"body": "They bring strong technical credibility but little of the specific social capital (who-to-ask, informal trust) this team runs on.",
+						"kind": "insight"
 					},
 					{
 						"heading": "Field",
-						"body": "This team's field has unwritten rules around consensus-building that aren't written down anywhere, so the clash isn't really about competence."
+						"body": "This team's field has unwritten rules around consensus-building that aren't written down anywhere, so the clash isn't really about competence.",
+						"kind": "implication"
 					}
 				],
 				"summary": "The friction is a field mismatch, not a skill or attitude problem — name the unwritten rules explicitly instead of expecting osmosis."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Pierre Bourdieu's theory of social space (habitus, capital, field) to a question about understanding another person or group. Given their question: \"{{question}}\", write narrative sections examining habitus, capital, and field as they relate to the situation. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Habitus\", \"body\": \"...\"}, {\"heading\": \"Capital\", \"body\": \"...\"}, {\"heading\": \"Field\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Pierre Bourdieu's theory of social space (habitus, capital, field) to a question about understanding another person or group. Given their question: \"{{question}}\", write narrative sections examining habitus, capital, and field as they relate to the situation. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Habitus\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"Capital\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"Field\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -3718,7 +4002,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -3726,6 +4011,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -3776,7 +4070,8 @@
 					{
 						"order": 2,
 						"title": "Single-Loop Fix",
-						"description": "Set stricter deadlines and more frequent check-ins."
+						"description": "Set stricter deadlines and more frequent check-ins.",
+						"loopsTo": 1
 					},
 					{
 						"order": 3,
@@ -3786,13 +4081,14 @@
 					{
 						"order": 4,
 						"title": "Double-Loop Change",
-						"description": "Replace check-ins with an explicit, shared priority list revisited weekly — fixing the assumption, not just the symptom."
+						"description": "Replace check-ins with an explicit, shared priority list revisited weekly — fixing the assumption, not just the symptom.",
+						"loopsTo": 1
 					}
 				],
 				"summary": "Tighter deadlines will keep failing until the real gap — unclear priorities — is addressed directly."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Double Loop Learning (Argyris & Schön) to a recurring problem. Given their question: \"{{question}}\", walk from the immediate problem, through a single-loop fix, to the underlying assumption behind it, to a double-loop change that addresses that assumption. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"The Immediate Problem\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Single-Loop Fix\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Underlying Assumption\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Double-Loop Change\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Double Loop Learning (Argyris & Schön) to a recurring problem. Given their question: \"{{question}}\", walk from the immediate problem, through a single-loop fix, to the underlying assumption behind it, to a double-loop change that addresses that assumption. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. Mark the Single-Loop Fix step's \"loopsTo\": 1 (the short loop back to the problem) and the Double-Loop Change step's \"loopsTo\": 1 as well (the longer loop that goes through the assumption first). Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"The Immediate Problem\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Single-Loop Fix\", \"description\": \"...\", \"loopsTo\": 1}, {\"order\": 3, \"title\": \"Underlying Assumption\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Double-Loop Change\", \"description\": \"...\", \"loopsTo\": 1}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -3819,6 +4115,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -3878,13 +4187,14 @@
 					{
 						"order": 4,
 						"title": "Destiny",
-						"description": "Commit to reviewing the capacity-check every sprint for the next quarter."
+						"description": "Commit to reviewing the capacity-check every sprint for the next quarter.",
+						"loopsTo": 1
 					}
 				],
 				"summary": "Rebuilding from what the team proved it could do, not from what went wrong, gives the plan somewhere real to stand."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Appreciative Inquiry (Cooperrider & Srivastva's 4-D cycle) to a coaching or team-improvement question. Given their question: \"{{question}}\", walk through Discover, Dream, Design, and Destiny. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Discover\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Dream\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Design\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Destiny\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Appreciative Inquiry (Cooperrider & Srivastva's 4-D cycle) to a coaching or team-improvement question. Given their question: \"{{question}}\", walk through Discover, Dream, Design, and Destiny. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. Destiny renews back into Discover — mark the final step's \"loopsTo\": 1. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Discover\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Dream\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Design\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Destiny\", \"description\": \"...\", \"loopsTo\": 1}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -3911,6 +4221,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -4146,21 +4469,24 @@
 				"sections": [
 					{
 						"heading": "Expected Range",
-						"body": "Under normal conditions, the stock plan performs roughly in line with the market."
+						"body": "Under normal conditions, the stock plan performs roughly in line with the market.",
+						"kind": "situation"
 					},
 					{
 						"heading": "The Black Swan",
-						"body": "A rare company-specific failure could wipe out both your job and your savings at the same time."
+						"body": "A rare company-specific failure could wipe out both your job and your savings at the same time.",
+						"kind": "tension"
 					},
 					{
 						"heading": "Exposure and Fix",
-						"body": "The correlated risk — losing income and savings together — is the real danger, and it's cheap to fix by diversifying savings outside the employer."
+						"body": "The correlated risk — losing income and savings together — is the real danger, and it's cheap to fix by diversifying savings outside the employer.",
+						"kind": "implication"
 					}
 				],
 				"summary": "The risk isn't the stock's average performance, it's the rare scenario where job and savings fail together — diversify to remove that correlation."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Nassim Taleb's Black Swan thinking to a decision. Given their question: \"{{question}}\", identify the expected range of outcomes, the rare high-impact event sitting outside that range, and how exposed they currently are to it. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Expected Range\", \"body\": \"...\"}, {\"heading\": \"The Black Swan\", \"body\": \"...\"}, {\"heading\": \"Exposure and Fix\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Nassim Taleb's Black Swan thinking to a decision. Given their question: \"{{question}}\", identify the expected range of outcomes, the rare high-impact event sitting outside that range, and how exposed they currently are to it. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Expected Range\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"The Black Swan\", \"body\": \"...\", \"kind\": \"tension\"}, {\"heading\": \"Exposure and Fix\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4175,7 +4501,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -4183,6 +4510,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -4238,7 +4574,8 @@
 					{
 						"order": 3,
 						"title": "The Chasm",
-						"description": "Growth has stalled because the product still requires early-adopter patience the pragmatic majority won't give it."
+						"description": "Growth has stalled because the product still requires early-adopter patience the pragmatic majority won't give it.",
+						"kind": "gap"
 					},
 					{
 						"order": 4,
@@ -4249,7 +4586,7 @@
 				"summary": "The stall is the chasm, not a marketing problem — narrow the target and polish onboarding before pushing broader growth."
 			}
 		},
-		"promptTemplate": "You are helping someone apply Geoffrey Moore's Crossing the Chasm model to a question about growing adoption. Given their question: \"{{question}}\", walk through where they sit on the adoption curve, name the chasm they need to cross, and identify a beachhead segment to target. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Innovators\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Early Adopters\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"The Chasm\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Early Majority Beachhead\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply Geoffrey Moore's Crossing the Chasm model to a question about growing adoption. Given their question: \"{{question}}\", walk through where they sit on the adoption curve, name the chasm they need to cross, and identify a beachhead segment to target. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. Mark \"The Chasm\" step \"kind\": \"gap\" — it's a discontinuity in the adoption curve, not an ordinary next step. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Innovators\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Early Adopters\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"The Chasm\", \"description\": \"...\", \"kind\": \"gap\"}, {\"order\": 4, \"title\": \"Early Majority Beachhead\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4276,6 +4613,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -4320,21 +4670,24 @@
 				"sections": [
 					{
 						"heading": "Input",
-						"body": "Pitches that led to approval were all short, numbers-first, and sent before Friday."
+						"body": "Pitches that led to approval were all short, numbers-first, and sent before Friday.",
+						"kind": "situation"
 					},
 					{
 						"heading": "Process",
-						"body": "The internal reasoning behind their decisions is not visible or shared."
+						"body": "The internal reasoning behind their decisions is not visible or shared.",
+						"kind": "situation"
 					},
 					{
 						"heading": "Output",
-						"body": "Every pitch matching that pattern was approved; every longer, narrative-first pitch stalled."
+						"body": "Every pitch matching that pattern was approved; every longer, narrative-first pitch stalled.",
+						"kind": "implication"
 					}
 				],
 				"summary": "Without knowing why, matching the observed pattern — short, numbers-first, early in the week — is still a rational bet."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Black Box model to a question about a system they can observe but don't fully understand. Given their question: \"{{question}}\", identify the observable inputs, acknowledge the unknown internal process, and describe the observable outputs or pattern. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Input\", \"body\": \"...\"}, {\"heading\": \"Process\", \"body\": \"...\"}, {\"heading\": \"Output\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Black Box model to a question about a system they can observe but don't fully understand. Given their question: \"{{question}}\", identify the observable inputs, acknowledge the unknown internal process, and describe the observable outputs or pattern. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Input\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"Process\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"Output\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4349,7 +4702,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -4357,6 +4711,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -4511,7 +4874,7 @@
 				"summary": "The team is exiting Forming and entering Storming — naming ownership explicitly now will speed the move into Norming."
 			}
 		},
-		"promptTemplate": "You are helping someone understand a team's dynamics using Tuckman's stages of group development (Forming, Storming, Norming, Performing, Adjourning). Given their question: \"{{question}}\", identify which stages are relevant and describe what's happening at each, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Forming\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Storming\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Norming\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Performing\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone understand a team's dynamics using Tuckman's stages of group development (Forming, Storming, Norming, Performing, Adjourning). Given their question: \"{{question}}\", identify which stages are relevant and describe what's happening at each, in order. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. Tuckman's stages run one-way here, so this example omits both. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Forming\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Storming\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Norming\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Performing\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4538,6 +4901,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -4588,7 +4964,8 @@
 						"y": "low",
 						"items": [
 							"Not appropriate — they have real capability"
-						]
+						],
+						"guidance": "Tell them exactly what to do and check the work closely."
 					},
 					{
 						"name": "Coaching",
@@ -4596,7 +4973,8 @@
 						"y": "high",
 						"items": [
 							"Explain reasoning behind decisions, stay closely involved"
-						]
+						],
+						"guidance": "Explain your reasoning and stay closely involved while they build skill."
 					},
 					{
 						"name": "Supporting",
@@ -4604,7 +4982,8 @@
 						"y": "high",
 						"items": [
 							"Best fit as their confidence grows over the next few weeks"
-						]
+						],
+						"guidance": "Step back on the how, stay available for encouragement and to unblock."
 					},
 					{
 						"name": "Delegating",
@@ -4612,13 +4991,14 @@
 						"y": "low",
 						"items": [
 							"Target for once they've run one project end-to-end"
-						]
+						],
+						"guidance": "Hand over full ownership — checking in would undermine, not help."
 					}
 				],
 				"summary": "Start in Coaching mode now, and plan to shift to Supporting after their first project milestone."
 			}
 		},
-		"promptTemplate": "You are helping someone choose a leadership approach using the Hersey-Blanchard Situational Leadership model. Given their question: \"{{question}}\", classify the situation by directive behavior (x: low or high) and supportive behavior (y: low or high) needed, and populate the four styles. Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Directive Behavior\", \"yAxisLabel\": \"Supportive Behavior\", \"quadrants\": [{\"name\": \"Directing\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Coaching\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Supporting\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Delegating\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone choose a leadership approach using the Hersey-Blanchard Situational Leadership model. Given their question: \"{{question}}\", classify the situation by directive behavior (x: low or high) and supportive behavior (y: low or high) needed, and populate the four styles. Each quadrant also carries a fixed one-line \"guidance\" string describing what that quadrant means or implies — always use exactly this wording, regardless of the scenario: Directing: \"Tell them exactly what to do and check the work closely.\"; Coaching: \"Explain your reasoning and stay closely involved while they build skill.\"; Supporting: \"Step back on the how, stay available for encouragement and to unblock.\"; Delegating: \"Hand over full ownership — checking in would undermine, not help.\". Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Directive Behavior\", \"yAxisLabel\": \"Supportive Behavior\", \"quadrants\": [{\"name\": \"Directing\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Tell them exactly what to do and check the work closely.\"}, {\"name\": \"Coaching\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Explain your reasoning and stay closely involved while they build skill.\"}, {\"name\": \"Supporting\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"], \"guidance\": \"Step back on the how, stay available for encouragement and to unblock.\"}, {\"name\": \"Delegating\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"], \"guidance\": \"Hand over full ownership — checking in would undermine, not help.\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4670,6 +5050,9 @@
 								"items": {
 									"type": "string"
 								}
+							},
+							"guidance": {
+								"type": "string"
 							}
 						}
 					}
@@ -4714,21 +5097,24 @@
 				"sections": [
 					{
 						"heading": "Their Position",
-						"body": "They're likely anxious about further delay and may suspect this is you covering for slipped timelines."
+						"body": "They're likely anxious about further delay and may suspect this is you covering for slipped timelines.",
+						"kind": "situation"
 					},
 					{
 						"heading": "What They're Not Saying",
-						"body": "They may not want to look difficult to their own stakeholders by pushing back too hard."
+						"body": "They may not want to look difficult to their own stakeholders by pushing back too hard.",
+						"kind": "insight"
 					},
 					{
 						"heading": "Likely Reaction",
-						"body": "Cautious agreement if you lead with the timeline benefit, resistance if it sounds like you're asking for more without giving anything back."
+						"body": "Cautious agreement if you lead with the timeline benefit, resistance if it sounds like you're asking for more without giving anything back.",
+						"kind": "implication"
 					}
 				],
 				"summary": "Lead with what the scope change protects (the deadline), not what it costs them, and expect them to need to sell it internally too."
 			}
 		},
-		"promptTemplate": "You are helping someone prepare for an interaction by mentally role-playing the other party's perspective. Given their question: \"{{question}}\", write narrative sections covering: the other person's likely position and motivations, what they might not be saying openly, and their likely reaction to the user's intended approach. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Their Position\", \"body\": \"...\"}, {\"heading\": \"What They're Not Saying\", \"body\": \"...\"}, {\"heading\": \"Likely Reaction\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone prepare for an interaction by mentally role-playing the other party's perspective. Given their question: \"{{question}}\", write narrative sections covering: the other person's likely position and motivations, what they might not be saying openly, and their likely reaction to the user's intended approach. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Their Position\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"What They're Not Saying\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"Likely Reaction\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4743,7 +5129,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -4751,6 +5138,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}
@@ -4893,21 +5289,25 @@
 				"factors": [
 					{
 						"label": "Scope",
-						"score": 9
+						"score": 9,
+						"targetScore": 6
 					},
 					{
 						"label": "Time",
-						"score": 6
+						"score": 6,
+						"targetScore": 7
 					},
 					{
 						"label": "Cost",
-						"score": 4
+						"score": 4,
+						"targetScore": 7
 					}
 				],
-				"summary": "Scope has grown without releasing Time or Cost — something has to give, most realistically the deadline."
+				"maxScore": 10,
+				"summary": "Scope pressure is already past what's sustainable, while Time and Cost still have room — practically, that room has to come from the deadline."
 			}
 		},
-		"promptTemplate": "You are helping someone apply the Project Management Triangle (Scope, Time, Cost) to a squeezed project. Given their question: \"{{question}}\", score each of the three constraints (0-10) by how much pressure it's under right now. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Scope\", \"score\": 7}, {\"label\": \"Time\", \"score\": 5}, {\"label\": \"Cost\", \"score\": 4}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone apply the Project Management Triangle (Scope, Time, Cost) to a squeezed project. Given their question: \"{{question}}\", score each of the three constraints (0-10) by how much pressure it's under right now, and for each also give a targetScore — the pressure level that constraint can sustain before something breaks. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Scope\", \"score\": 7, \"targetScore\": 6}, {\"label\": \"Time\", \"score\": 5, \"targetScore\": 7}, {\"label\": \"Cost\", \"score\": 4, \"targetScore\": 7}], \"maxScore\": 10, \"summary\": \"...\"}",
 		"outputSchemaType": "radar",
 		"outputJsonSchema": {
 			"type": "object",
@@ -4933,9 +5333,19 @@
 								"type": "number",
 								"minimum": 0,
 								"maximum": 10
+							},
+							"targetScore": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 10,
+								"description": "The pressure level this constraint can sustain before something breaks — omit if not estimable."
 							}
 						}
 					}
+				},
+				"maxScore": {
+					"type": "number",
+					"description": "Ceiling for score/targetScore on this scale; defaults to 10 if omitted."
 				},
 				"summary": {
 					"type": "string"
@@ -5002,7 +5412,7 @@
 				"summary": "The team likely skipped real Commitment on the way to Implementation — worth revisiting explicitly."
 			}
 		},
-		"promptTemplate": "You are helping someone diagnose a team's stage using the Drexler-Sibbet Team Performance Model (Orientation, Trust Building, Goal Clarification, Commitment, Implementation, High Performance, Renewal). Given their question: \"{{question}}\", identify the relevant stages and describe the team's status at each, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"...\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone diagnose a team's stage using the Drexler-Sibbet Team Performance Model (Orientation, Trust Building, Goal Clarification, Commitment, Implementation, High Performance, Renewal). Given their question: \"{{question}}\", identify the relevant stages and describe the team's status at each, in order. Each step may optionally include \"kind\" (\"gate\" for a checkpoint the flow passes through rather than an action, \"gap\" for a step separated from the previous one by a real discontinuity) and \"loopsTo\" (the order of an earlier step this step's flow loops back to) — include either only when it is genuinely true of that step, omit otherwise. These stages run one-way toward High Performance here, so this example omits both. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"...\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
@@ -5029,6 +5439,19 @@
 							},
 							"description": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"stage",
+									"gate",
+									"gap"
+								],
+								"description": "Omit for a normal sequential step. 'gate' = a checkpoint the flow passes through rather than an action taken (e.g. a layer of defense). 'gap' = this step is separated from the previous one by a real discontinuity, not an ordinary next step."
+							},
+							"loopsTo": {
+								"type": "number",
+								"description": "The order of an earlier step this step's flow loops back to. Omit unless the model is genuinely cyclical."
 							}
 						}
 					}
@@ -5073,21 +5496,24 @@
 				"sections": [
 					{
 						"heading": "Expectancy",
-						"body": "They likely still believe effort translates to good work — their skill hasn't wavered."
+						"body": "They likely still believe effort translates to good work — their skill hasn't wavered.",
+						"kind": "situation"
 					},
 					{
 						"heading": "Instrumentality",
-						"body": "The real gap: recent decisions on this project were made without their input, so performance may not feel connected to influence over the outcome."
+						"body": "The real gap: recent decisions on this project were made without their input, so performance may not feel connected to influence over the outcome.",
+						"kind": "insight"
 					},
 					{
 						"heading": "Valence",
-						"body": "The reward on offer (recognition) may no longer feel worth the effort if their input isn't valued regardless."
+						"body": "The reward on offer (recognition) may no longer feel worth the effort if their input isn't valued regardless.",
+						"kind": "implication"
 					}
 				],
 				"summary": "This reads as an Instrumentality problem, not a skill or reward problem — restoring their influence over decisions is likely to matter more than praise."
 			}
 		},
-		"promptTemplate": "You are helping someone diagnose a motivation problem using Vroom's Expectancy Theory (Expectancy, Instrumentality, Valence). Given their question: \"{{question}}\", write narrative sections assessing each of the three factors and which one is weakest. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Expectancy\", \"body\": \"...\"}, {\"heading\": \"Instrumentality\", \"body\": \"...\"}, {\"heading\": \"Valence\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"promptTemplate": "You are helping someone diagnose a motivation problem using Vroom's Expectancy Theory (Expectancy, Instrumentality, Valence). Given their question: \"{{question}}\", write narrative sections assessing each of the three factors and which one is weakest. For each section, also set \"kind\" to whichever fits best: \"situation\" (the baseline or observed facts), \"tension\" (a named conflict, risk, or gap), \"insight\" (the underlying mechanism or realization), or \"implication\" (what it means or requires going forward). Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Expectancy\", \"body\": \"...\", \"kind\": \"situation\"}, {\"heading\": \"Instrumentality\", \"body\": \"...\", \"kind\": \"insight\"}, {\"heading\": \"Valence\", \"body\": \"...\", \"kind\": \"implication\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
@@ -5102,7 +5528,8 @@
 						"type": "object",
 						"required": [
 							"heading",
-							"body"
+							"body",
+							"kind"
 						],
 						"properties": {
 							"heading": {
@@ -5110,6 +5537,15 @@
 							},
 							"body": {
 								"type": "string"
+							},
+							"kind": {
+								"type": "string",
+								"enum": [
+									"situation",
+									"tension",
+									"insight",
+									"implication"
+								]
 							}
 						}
 					}

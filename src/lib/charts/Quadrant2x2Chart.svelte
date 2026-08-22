@@ -50,6 +50,9 @@
 						<h3 class="quadrant-name">{quadrant.name}</h3>
 						<span class="quadrant-count">{itemCountLabel(quadrant.items.length)}</span>
 					</div>
+					{#if quadrant.guidance}
+						<p class="quadrant-guidance">{quadrant.guidance}</p>
+					{/if}
 					{#if quadrant.items.length > 0}
 						<ul class="quadrant-items">
 							{#each quadrant.items as item (item)}
@@ -169,23 +172,30 @@
 
 	/* Position-based accent color, keyed only off the tl/tr/bl/br grid cell.
 	   This is a stable categorical identity (so the app always tints "top-right"
-	   the same way), not a claim that top-right is universally "good" or "urgent"
-	   — several models here (Rumsfeld Matrix, Political Compass) have no such
-	   valence at all, so the palette stays muted rather than alarm-coded. */
+	   the same way), not a claim that top-right is universally "good" or "urgent".
+	   Deliberately NOT red/amber: across the 10 models this chart serves, the
+	   top-right and bottom-right cells are just as often the *best* outcome
+	   (BCG's Star, Johari's Arena, Hersey-Blanchard's Coaching/Delegating,
+	   Project Portfolio's Do Now/Quick Wins) as a bad one — alarm-toned red or
+	   warning-toned amber on a "Star" cell reads as a status color misapplied to
+	   a series that carries no status at all. Every quadrant is already fully
+	   identified by its fixed position and its name, so these hues are a
+	   decorative, redundant second channel, never the only way to tell cells
+	   apart. */
 	.quadrant.pos-tr {
-		--quad-accent: #dc2626;
-		--quad-tint: #fef2f2;
+		--quad-accent: #7c3aed;
+		--quad-tint: #f5f3ff;
 	}
 	.quadrant.pos-tl {
 		--quad-accent: #2563eb;
 		--quad-tint: #eff6ff;
 	}
 	.quadrant.pos-br {
-		--quad-accent: #d97706;
-		--quad-tint: #fffbeb;
+		--quad-accent: #0f766e;
+		--quad-tint: #f0fdfa;
 	}
 	.quadrant.pos-bl {
-		--quad-accent: #64748b;
+		--quad-accent: #475569;
 		--quad-tint: #f8fafc;
 	}
 	.pos-tl {
@@ -229,6 +239,18 @@
 		background: var(--quad-tint);
 		border-radius: 999px;
 		padding: 0.125rem 0.5rem;
+	}
+	/* A short, stable playbook line for the quadrant itself (e.g. BCG's "Milk
+	   for cash, fund it minimally"), independent of whatever items happen to be
+	   sorted into it this time. Optional — a quadrant with no `guidance` just
+	   skips the line, so older/partial data still renders fine. Doubles as
+	   context for an otherwise-bare empty quadrant: even with zero items, the
+	   reader still learns what landing here would mean. */
+	.quadrant-guidance {
+		margin: 0.375rem 0 0;
+		font-size: 0.75rem;
+		line-height: 1.35;
+		color: var(--chart-text-muted, #64748b);
 	}
 	.quadrant-items {
 		margin: 0.5rem 0 0;

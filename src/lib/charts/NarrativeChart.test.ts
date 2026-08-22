@@ -5,9 +5,21 @@ import type { FreeformNarrativeData } from '$lib/types';
 
 const data: FreeformNarrativeData = {
 	sections: [
-		{ heading: 'The Conflicting Beliefs', body: 'You value stability but crave the new job.' },
-		{ heading: 'The Rationalization at Work', body: 'Telling yourself the timing is wrong.' },
-		{ heading: 'What Resolving It Would Require', body: 'Naming the actual fear directly.' }
+		{
+			heading: 'The Conflicting Beliefs',
+			body: 'You value stability but crave the new job.',
+			kind: 'tension'
+		},
+		{
+			heading: 'The Rationalization at Work',
+			body: 'Telling yourself the timing is wrong.',
+			kind: 'insight'
+		},
+		{
+			heading: 'What Resolving It Would Require',
+			body: 'Naming the actual fear directly.',
+			kind: 'implication'
+		}
 	],
 	summary: 'The discomfort is doing useful work here.'
 };
@@ -25,43 +37,65 @@ describe('NarrativeChart', () => {
 		expect(screen.getByText('You value stability but crave the new job.')).toBeTruthy();
 	});
 
-	it('renders one node per section along the throughline', () => {
-		const { container } = render(NarrativeChart, { data });
-		const nodes = container.querySelectorAll('svg circle.narrative-node');
-		expect(nodes.length).toBe(3);
+	it('renders the takeaway summary', () => {
+		render(NarrativeChart, { data });
+		expect(screen.getByText('Takeaway')).toBeTruthy();
+		expect(screen.getByText('The discomfort is doing useful work here.')).toBeTruthy();
 	});
 
-	it('connects consecutive sections with arcs', () => {
+	it('labels each section with its kind', () => {
 		const { container } = render(NarrativeChart, { data });
-		const arcs = container.querySelectorAll('svg path.narrative-arc');
-		expect(arcs.length).toBe(2); // n-1 connections for n sections
+		const badges = Array.from(container.querySelectorAll('.kind-badge')).map((el) =>
+			el.textContent?.trim()
+		);
+		expect(badges).toEqual(['Tension', 'Insight', 'Implication']);
 	});
 
-	it('labels each node with its section number', () => {
+	it('renders one kind-coded rail chip per section, in order', () => {
 		const { container } = render(NarrativeChart, { data });
-		const numbers = Array.from(container.querySelectorAll('svg text.node-number')).map(
+		const chips = Array.from(container.querySelectorAll('.kind-chip')).map(
+			(el) => el.getAttribute('data-kind')
+		);
+		expect(chips).toEqual(['tension', 'insight', 'implication']);
+	});
+
+	it('connects rail chips with a connector between consecutive sections', () => {
+		const { container } = render(NarrativeChart, { data });
+		const connectors = container.querySelectorAll('.kind-rail .connector');
+		expect(connectors.length).toBe(2); // n-1 connections for n sections
+	});
+
+	it('colors each section by its kind via a data-kind attribute', () => {
+		const { container } = render(NarrativeChart, { data });
+		const sectionEls = container.querySelectorAll('.sections > section');
+		const kinds = Array.from(sectionEls).map((el) => el.getAttribute('data-kind'));
+		expect(kinds).toEqual(['tension', 'insight', 'implication']);
+	});
+
+	it('falls back to a plain numbered list when sections have no kind', () => {
+		const unkinded: FreeformNarrativeData = {
+			sections: data.sections.map(({ heading, body }) => ({ heading, body })),
+			summary: data.summary
+		};
+		const { container } = render(NarrativeChart, { data: unkinded });
+		expect(container.querySelector('.kind-rail')).toBeNull();
+		expect(container.querySelectorAll('.kind-badge').length).toBe(0);
+		const numbers = Array.from(container.querySelectorAll('.heading-number')).map(
 			(el) => el.textContent
 		);
 		expect(numbers).toEqual(['1', '2', '3']);
 	});
 
-	it('keeps arcs fully inside the viewBox even with only 2 widely-spaced sections', () => {
-		// Regression test: arc height used to scale with the distance between
-		// nodes (height = spacing * 0.5). With only 2 sections the nodes sit
-		// maximally far apart, which used to push the arc's peak far above the
-		// fixed-height viewBox — clipping almost the entire arc to invisible.
-		const { container } = render(NarrativeChart, {
-			data: { ...data, sections: data.sections.slice(0, 2) }
-		});
-		const svg = container.querySelector('svg');
-		const viewBoxHeight = Number(svg?.getAttribute('viewBox')?.split(' ')[3]);
-		const arc = container.querySelector('path.narrative-arc');
-		const d = arc?.getAttribute('d') ?? '';
-		// path format: "M x1 y1 A rx ry 0 0 1 x2 y2" — ry is the arc's peak height above baseline
-		const ry = Number(d.split(' ')[5]);
-		const baselineY = Number(d.split(' ')[2]);
-		expect(ry).toBeGreaterThan(0);
-		expect(baselineY - ry).toBeGreaterThanOrEqual(0); // peak must not go above the viewBox top
-		expect(baselineY - ry).toBeLessThan(viewBoxHeight);
+	it('falls back to the plain numbered list when only some sections have a kind', () => {
+		const partiallyKinded: FreeformNarrativeData = {
+			sections: [
+				data.sections[0],
+				{ heading: data.sections[1].heading, body: data.sections[1].body }
+			],
+			summary: data.summary
+		};
+		const { container } = render(NarrativeChart, { data: partiallyKinded });
+		expect(container.querySelector('.kind-rail')).toBeNull();
+		expect(container.querySelectorAll('.kind-badge').length).toBe(0);
 	});
 });

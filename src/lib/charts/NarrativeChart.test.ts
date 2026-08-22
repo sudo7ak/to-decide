@@ -44,4 +44,24 @@ describe('NarrativeChart', () => {
 		);
 		expect(numbers).toEqual(['1', '2', '3']);
 	});
+
+	it('keeps arcs fully inside the viewBox even with only 2 widely-spaced sections', () => {
+		// Regression test: arc height used to scale with the distance between
+		// nodes (height = spacing * 0.5). With only 2 sections the nodes sit
+		// maximally far apart, which used to push the arc's peak far above the
+		// fixed-height viewBox — clipping almost the entire arc to invisible.
+		const { container } = render(NarrativeChart, {
+			data: { ...data, sections: data.sections.slice(0, 2) }
+		});
+		const svg = container.querySelector('svg');
+		const viewBoxHeight = Number(svg?.getAttribute('viewBox')?.split(' ')[3]);
+		const arc = container.querySelector('path.narrative-arc');
+		const d = arc?.getAttribute('d') ?? '';
+		// path format: "M x1 y1 A rx ry 0 0 1 x2 y2" — ry is the arc's peak height above baseline
+		const ry = Number(d.split(' ')[5]);
+		const baselineY = Number(d.split(' ')[2]);
+		expect(ry).toBeGreaterThan(0);
+		expect(baselineY - ry).toBeGreaterThanOrEqual(0); // peak must not go above the viewBox top
+		expect(baselineY - ry).toBeLessThan(viewBoxHeight);
+	});
 });

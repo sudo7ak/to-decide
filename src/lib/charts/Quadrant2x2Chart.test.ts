@@ -39,4 +39,31 @@ describe('Quadrant2x2Chart', () => {
 		const { container } = render(Quadrant2x2Chart, { data });
 		expect(container.querySelector('svg')).toBeTruthy();
 	});
+
+	it('sizes boxes to their content instead of a fixed oversized square', () => {
+		const sparse = render(Quadrant2x2Chart, { data });
+		const sparseViewBox = sparse.container
+			.querySelector('svg')
+			?.getAttribute('viewBox')
+			?.split(' ')
+			.map(Number);
+
+		const denseData: Quadrant2x2Data = {
+			...data,
+			quadrants: data.quadrants.map((q, i) =>
+				i === 0 ? { ...q, items: ['One', 'Two', 'Three', 'Four', 'Five', 'Six'] } : q
+			)
+		};
+		const dense = render(Quadrant2x2Chart, { data: denseData });
+		const denseViewBox = dense.container
+			.querySelector('svg')
+			?.getAttribute('viewBox')
+			?.split(' ')
+			.map(Number);
+
+		expect(sparseViewBox?.[3]).toBeDefined();
+		expect(denseViewBox?.[3]).toBeDefined();
+		// height (index 3) should grow with content, not stay fixed regardless of item count
+		expect(denseViewBox![3]).toBeGreaterThan(sparseViewBox![3]);
+	});
 });

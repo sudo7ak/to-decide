@@ -14,12 +14,12 @@ const data: MatrixTableData = {
 };
 
 describe('MatrixTableChart', () => {
-	it('renders all row labels', () => {
+	it('renders each row label exactly once (no duplicate heading)', () => {
 		render(MatrixTableChart, { data });
-		expect(screen.getAllByText('Strengths').length).toBeGreaterThan(0);
-		expect(screen.getAllByText('Weaknesses').length).toBeGreaterThan(0);
-		expect(screen.getAllByText('Opportunities').length).toBeGreaterThan(0);
-		expect(screen.getAllByText('Threats').length).toBeGreaterThan(0);
+		expect(screen.getAllByText('Strengths').length).toBe(1);
+		expect(screen.getAllByText('Weaknesses').length).toBe(1);
+		expect(screen.getAllByText('Opportunities').length).toBe(1);
+		expect(screen.getAllByText('Threats').length).toBe(1);
 	});
 
 	it('renders items within their row', () => {
@@ -45,15 +45,8 @@ describe('MatrixTableChart', () => {
 	});
 
 	it('renders a count label per row', () => {
-		const { container } = render(MatrixTableChart, { data });
-		const labels = Array.from(container.querySelectorAll('svg text.row-count')).map(
-			(el) => el.textContent
-		);
-		expect(labels).toEqual(['2', '1', '1', '1']);
-	});
-
-	it('renders x-axis gridlines shared across all bars', () => {
-		const { container } = render(MatrixTableChart, { data });
-		expect(container.querySelectorAll('svg line.grid-line').length).toBeGreaterThan(0);
+		render(MatrixTableChart, { data });
+		expect(screen.getByText('2 items')).toBeTruthy();
+		expect(screen.getAllByText('1 item').length).toBe(3);
 	});
 });

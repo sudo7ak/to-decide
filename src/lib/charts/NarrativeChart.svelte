@@ -5,8 +5,10 @@
 	let { data }: { data: FreeformNarrativeData } = $props();
 
 	const chartWidth = 480;
-	const baselineY = 56;
-	const nodeRadius = 9;
+	const arcHeight = 24;
+	const baselineY = 40;
+	const nodeRadius = 8;
+	const viewBoxHeight = baselineY + nodeRadius + 8;
 
 	const xScale = $derived(
 		scalePoint()
@@ -15,13 +17,16 @@
 	);
 
 	function arcPath(x1: number, x2: number) {
-		const height = (x2 - x1) * 0.5;
-		return `M ${x1} ${baselineY} A ${(x2 - x1) / 2} ${height} 0 0 1 ${x2} ${baselineY}`;
+		return `M ${x1} ${baselineY} A ${(x2 - x1) / 2} ${arcHeight} 0 0 1 ${x2} ${baselineY}`;
 	}
 </script>
 
 <figure>
-	<svg viewBox="0 0 {chartWidth} 80" role="img" aria-label="Throughline of {data.sections.length} sections">
+	<svg
+		viewBox="0 0 {chartWidth} {viewBoxHeight}"
+		role="img"
+		aria-label="Throughline of {data.sections.length} sections"
+	>
 		{#each data.sections as section, i (section.heading)}
 			{#if i > 0}
 				{@const x1 = xScale(String(i - 1)) ?? 0}

@@ -8,13 +8,15 @@
 	import RankedListChart from '$lib/charts/RankedListChart.svelte';
 	import FlowDiagramChart from '$lib/charts/FlowDiagramChart.svelte';
 	import NarrativeChart from '$lib/charts/NarrativeChart.svelte';
+	import RadarChart from '$lib/charts/RadarChart.svelte';
 
 	const chartComponents = {
 		Quadrant2x2Chart,
 		MatrixTableChart,
 		RankedListChart,
 		FlowDiagramChart,
-		NarrativeChart
+		NarrativeChart,
+		RadarChart
 	};
 
 	let model = $state<ModelDef | undefined>(undefined);

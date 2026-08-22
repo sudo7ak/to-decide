@@ -12,12 +12,24 @@ describe('models store', () => {
 
 	it('lists all models', async () => {
 		const models = await listModels();
-		expect(models).toHaveLength(8);
+		expect(models).toHaveLength(52);
 	});
 
 	it('filters models by category', async () => {
 		const models = await listModelsByCategory('know-self');
-		expect(models.map((m) => m.slug).sort()).toEqual(['cognitive-dissonance', 'johari-window']);
+		expect(models.map((m) => m.slug).sort()).toEqual([
+			'cognitive-bias-checklist',
+			'cognitive-dissonance',
+			'energy-model',
+			'feedback-analysis',
+			'flow-model',
+			'johari-window',
+			'making-of-model',
+			'maslow-pyramid',
+			'personal-performance-model',
+			'personal-potential-trap',
+			'rubber-band-model'
+		]);
 	});
 
 	it('gets a single model by slug', async () => {

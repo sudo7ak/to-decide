@@ -8,17 +8,17 @@ describe('syncSeedModels', () => {
 		await db.models.clear();
 	});
 
-	it('inserts all 8 seed models when the table is empty', async () => {
+	it('inserts all 52 seed models when the table is empty', async () => {
 		await syncSeedModels();
 		const count = await db.models.count();
-		expect(count).toBe(8);
+		expect(count).toBe(52);
 	});
 
 	it('does not duplicate models when called twice', async () => {
 		await syncSeedModels();
 		await syncSeedModels();
 		const count = await db.models.count();
-		expect(count).toBe(8);
+		expect(count).toBe(52);
 	});
 
 	it('seeds a model with the expected shape', async () => {
@@ -56,6 +56,6 @@ describe('syncSeedModels', () => {
 		expect(model?.example).toBeDefined();
 		expect(model?.origin).toBeDefined();
 		const count = await db.models.count();
-		expect(count).toBe(8);
+		expect(count).toBe(52);
 	});
 });

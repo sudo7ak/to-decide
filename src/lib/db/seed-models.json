@@ -30,10 +30,38 @@
 				"xAxisLabel": "Urgency",
 				"yAxisLabel": "Importance",
 				"quadrants": [
-					{ "name": "Do First", "x": "high", "y": "high", "items": ["Resolve the client emergency"] },
-					{ "name": "Schedule", "x": "low", "y": "high", "items": ["Draft the Friday strategy doc"] },
-					{ "name": "Delegate", "x": "high", "y": "low", "items": ["Reply to routine status emails"] },
-					{ "name": "Eliminate", "x": "low", "y": "low", "items": ["Browse the industry newsletter"] }
+					{
+						"name": "Do First",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Resolve the client emergency"
+						]
+					},
+					{
+						"name": "Schedule",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Draft the Friday strategy doc"
+						]
+					},
+					{
+						"name": "Delegate",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Reply to routine status emails"
+						]
+					},
+					{
+						"name": "Eliminate",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Browse the industry newsletter"
+						]
+					}
 				],
 				"summary": "Handle the client emergency now, block time this week for the strategy doc, hand off the emails, skip the newsletter."
 			}
@@ -42,26 +70,61 @@
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["xAxisLabel", "yAxisLabel", "quadrants", "summary"],
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
 			"properties": {
-				"xAxisLabel": { "type": "string" },
-				"yAxisLabel": { "type": "string" },
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
 				"quadrants": {
 					"type": "array",
 					"minItems": 4,
 					"maxItems": 4,
 					"items": {
 						"type": "object",
-						"required": ["name", "x", "y", "items"],
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
 						"properties": {
-							"name": { "type": "string" },
-							"x": { "type": "string", "enum": ["low", "high"] },
-							"y": { "type": "string", "enum": ["low", "high"] },
-							"items": { "type": "array", "items": { "type": "string" } }
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "Quadrant2x2Chart",
@@ -98,10 +161,32 @@
 			"scenario": "Deciding whether to leave a stable corporate job to freelance full-time.",
 			"result": {
 				"rows": [
-					{ "label": "Strengths", "items": ["Deep client network from 8 years in the industry", "Savings covering 6 months of expenses"] },
-					{ "label": "Weaknesses", "items": ["No experience running a business", "Untested tolerance for inconsistent income"] },
-					{ "label": "Opportunities", "items": ["Rising demand for freelance specialists in this niche"] },
-					{ "label": "Threats", "items": ["An economic downturn could shrink client budgets first"] }
+					{
+						"label": "Strengths",
+						"items": [
+							"Deep client network from 8 years in the industry",
+							"Savings covering 6 months of expenses"
+						]
+					},
+					{
+						"label": "Weaknesses",
+						"items": [
+							"No experience running a business",
+							"Untested tolerance for inconsistent income"
+						]
+					},
+					{
+						"label": "Opportunities",
+						"items": [
+							"Rising demand for freelance specialists in this niche"
+						]
+					},
+					{
+						"label": "Threats",
+						"items": [
+							"An economic downturn could shrink client budgets first"
+						]
+					}
 				],
 				"summary": "Savings and network make this a viable bet, but build a business-basics plan before the safety net matters."
 			}
@@ -110,20 +195,35 @@
 		"outputSchemaType": "matrix_table",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["rows", "summary"],
+			"required": [
+				"rows",
+				"summary"
+			],
 			"properties": {
 				"rows": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["label", "items"],
+						"required": [
+							"label",
+							"items"
+						],
 						"properties": {
-							"label": { "type": "string" },
-							"items": { "type": "array", "items": { "type": "string" } }
+							"label": {
+								"type": "string"
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "MatrixTableChart",
@@ -161,10 +261,38 @@
 				"xAxisLabel": "Relative Market Share",
 				"yAxisLabel": "Market Growth",
 				"quadrants": [
-					{ "name": "Star", "x": "high", "y": "high", "items": ["Brand strategy consulting"] },
-					{ "name": "Cash Cow", "x": "high", "y": "low", "items": ["Logo and identity design"] },
-					{ "name": "Question Mark", "x": "low", "y": "high", "items": ["AI content tooling"] },
-					{ "name": "Dog", "x": "low", "y": "low", "items": ["Print collateral design"] }
+					{
+						"name": "Star",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Brand strategy consulting"
+						]
+					},
+					{
+						"name": "Cash Cow",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Logo and identity design"
+						]
+					},
+					{
+						"name": "Question Mark",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"AI content tooling"
+						]
+					},
+					{
+						"name": "Dog",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Print collateral design"
+						]
+					}
 				],
 				"summary": "Double down on brand strategy, keep identity design funding the business, place a small bet on AI tooling, and wind down print work."
 			}
@@ -173,26 +301,61 @@
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["xAxisLabel", "yAxisLabel", "quadrants", "summary"],
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
 			"properties": {
-				"xAxisLabel": { "type": "string" },
-				"yAxisLabel": { "type": "string" },
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
 				"quadrants": {
 					"type": "array",
 					"minItems": 4,
 					"maxItems": 4,
 					"items": {
 						"type": "object",
-						"required": ["name", "x", "y", "items"],
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
 						"properties": {
-							"name": { "type": "string" },
-							"x": { "type": "string", "enum": ["low", "high"] },
-							"y": { "type": "string", "enum": ["low", "high"] },
-							"items": { "type": "array", "items": { "type": "string" } }
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "Quadrant2x2Chart",
@@ -231,10 +394,38 @@
 				"xAxisLabel": "Known to Self",
 				"yAxisLabel": "Known to Others",
 				"quadrants": [
-					{ "name": "Arena", "x": "high", "y": "high", "items": ["You know you interrupt when excited about an idea"] },
-					{ "name": "Blind Spot", "x": "low", "y": "high", "items": ["Your tone reads as final even when you're open to debate"] },
-					{ "name": "Facade", "x": "high", "y": "low", "items": ["You're privately unsure about this direction too"] },
-					{ "name": "Unknown", "x": "low", "y": "low", "items": ["How your reaction to past pushback shaped the team's caution"] }
+					{
+						"name": "Arena",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"You know you interrupt when excited about an idea"
+						]
+					},
+					{
+						"name": "Blind Spot",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Your tone reads as final even when you're open to debate"
+						]
+					},
+					{
+						"name": "Facade",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"You're privately unsure about this direction too"
+						]
+					},
+					{
+						"name": "Unknown",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"How your reaction to past pushback shaped the team's caution"
+						]
+					}
 				],
 				"summary": "The Blind Spot is likely doing the most damage — ask a trusted colleague directly how your tone lands."
 			}
@@ -243,26 +434,61 @@
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["xAxisLabel", "yAxisLabel", "quadrants", "summary"],
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
 			"properties": {
-				"xAxisLabel": { "type": "string" },
-				"yAxisLabel": { "type": "string" },
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
 				"quadrants": {
 					"type": "array",
 					"minItems": 4,
 					"maxItems": 4,
 					"items": {
 						"type": "object",
-						"required": ["name", "x", "y", "items"],
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
 						"properties": {
-							"name": { "type": "string" },
-							"x": { "type": "string", "enum": ["low", "high"] },
-							"y": { "type": "string", "enum": ["low", "high"] },
-							"items": { "type": "array", "items": { "type": "string" } }
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "Quadrant2x2Chart",
@@ -297,10 +523,26 @@
 			"scenario": "A manager coaching a report who wants to move into a team-lead role but keeps getting passed over.",
 			"result": {
 				"steps": [
-					{ "order": 1, "title": "Goal", "description": "Become team lead within the next two review cycles." },
-					{ "order": 2, "title": "Reality", "description": "Strong technically, but has never run a project end-to-end or given peer feedback." },
-					{ "order": 3, "title": "Options", "description": "Volunteer to lead the next small project; ask for stretch feedback duties; find a mentor already in the role." },
-					{ "order": 4, "title": "Will", "description": "Ask to lead the upcoming migration project starting next sprint." }
+					{
+						"order": 1,
+						"title": "Goal",
+						"description": "Become team lead within the next two review cycles."
+					},
+					{
+						"order": 2,
+						"title": "Reality",
+						"description": "Strong technically, but has never run a project end-to-end or given peer feedback."
+					},
+					{
+						"order": 3,
+						"title": "Options",
+						"description": "Volunteer to lead the next small project; ask for stretch feedback duties; find a mentor already in the role."
+					},
+					{
+						"order": 4,
+						"title": "Will",
+						"description": "Ask to lead the upcoming migration project starting next sprint."
+					}
 				],
 				"summary": "Owning a visible project is the fastest path from 'strong technically' to 'ready to lead'."
 			}
@@ -309,21 +551,36 @@
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["steps", "summary"],
+			"required": [
+				"steps",
+				"summary"
+			],
 			"properties": {
 				"steps": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["order", "title", "description"],
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
 						"properties": {
-							"order": { "type": "number" },
-							"title": { "type": "string" },
-							"description": { "type": "string" }
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "FlowDiagramChart",
@@ -359,9 +616,24 @@
 			"scenario": "A support team trying to reduce the volume of incoming tickets.",
 			"result": {
 				"items": [
-					{ "rank": 1, "label": "Confusing password reset flow", "weight": 45, "rationale": "Single largest ticket category by volume" },
-					{ "rank": 2, "label": "Unclear billing cycle dates", "weight": 20, "rationale": "Recurring monthly spike in tickets" },
-					{ "rank": 3, "label": "Missing empty-state guidance in app", "weight": 10, "rationale": "Occasional but easy fix" }
+					{
+						"rank": 1,
+						"label": "Confusing password reset flow",
+						"weight": 45,
+						"rationale": "Single largest ticket category by volume"
+					},
+					{
+						"rank": 2,
+						"label": "Unclear billing cycle dates",
+						"weight": 20,
+						"rationale": "Recurring monthly spike in tickets"
+					},
+					{
+						"rank": 3,
+						"label": "Missing empty-state guidance in app",
+						"weight": 10,
+						"rationale": "Occasional but easy fix"
+					}
 				],
 				"summary": "Fixing the password reset flow alone would likely cut ticket volume nearly in half."
 			}
@@ -370,22 +642,42 @@
 		"outputSchemaType": "ranked_list",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["items", "summary"],
+			"required": [
+				"items",
+				"summary"
+			],
 			"properties": {
 				"items": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["rank", "label", "weight", "rationale"],
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
 						"properties": {
-							"rank": { "type": "number" },
-							"label": { "type": "string" },
-							"weight": { "type": "number", "minimum": 0, "maximum": 100 },
-							"rationale": { "type": "string" }
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "RankedListChart",
@@ -421,9 +713,18 @@
 			"scenario": "Feeling oddly defensive about an expensive purchase that isn't getting much use.",
 			"result": {
 				"sections": [
-					{ "heading": "The Conflicting Beliefs", "body": "You believe you're a careful spender, but you spent significantly on something now sitting unused." },
-					{ "heading": "The Rationalization at Work", "body": "Telling yourself 'I'll use it more once things calm down' rather than questioning the purchase." },
-					{ "heading": "What Resolving It Would Require", "body": "Either genuinely committing to use it, or admitting the purchase missed and adjusting future spending habits." }
+					{
+						"heading": "The Conflicting Beliefs",
+						"body": "You believe you're a careful spender, but you spent significantly on something now sitting unused."
+					},
+					{
+						"heading": "The Rationalization at Work",
+						"body": "Telling yourself 'I'll use it more once things calm down' rather than questioning the purchase."
+					},
+					{
+						"heading": "What Resolving It Would Require",
+						"body": "Either genuinely committing to use it, or admitting the purchase missed and adjusting future spending habits."
+					}
 				],
 				"summary": "The defensiveness is a signal, not noise — it's pointing at a purchase decision worth reassessing honestly."
 			}
@@ -432,20 +733,32 @@
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["sections", "summary"],
+			"required": [
+				"sections",
+				"summary"
+			],
 			"properties": {
 				"sections": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["heading", "body"],
+						"required": [
+							"heading",
+							"body"
+						],
 						"properties": {
-							"heading": { "type": "string" },
-							"body": { "type": "string" }
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "NarrativeChart",
@@ -484,13 +797,48 @@
 			"scenario": "Rethinking a weekly team status meeting that's become a dreaded time-sink.",
 			"result": {
 				"items": [
-					{ "rank": 1, "label": "Substitute", "weight": 70, "rationale": "Replace the live meeting with an async written update" },
-					{ "rank": 2, "label": "Combine", "weight": 40, "rationale": "Merge with the planning meeting to cut total time" },
-					{ "rank": 3, "label": "Adapt", "weight": 35, "rationale": "Borrow the standup format from engineering teams" },
-					{ "rank": 4, "label": "Modify", "weight": 30, "rationale": "Shrink from 60 to 15 minutes" },
-					{ "rank": 5, "label": "Put to another use", "weight": 20, "rationale": "Repurpose the slot for skill-sharing instead" },
-					{ "rank": 6, "label": "Eliminate", "weight": 55, "rationale": "Cancel it entirely, rely on the written update" },
-					{ "rank": 7, "label": "Reverse", "weight": 25, "rationale": "Have the team ask questions of the manager instead" }
+					{
+						"rank": 1,
+						"label": "Substitute",
+						"weight": 70,
+						"rationale": "Replace the live meeting with an async written update"
+					},
+					{
+						"rank": 2,
+						"label": "Combine",
+						"weight": 40,
+						"rationale": "Merge with the planning meeting to cut total time"
+					},
+					{
+						"rank": 3,
+						"label": "Adapt",
+						"weight": 35,
+						"rationale": "Borrow the standup format from engineering teams"
+					},
+					{
+						"rank": 4,
+						"label": "Modify",
+						"weight": 30,
+						"rationale": "Shrink from 60 to 15 minutes"
+					},
+					{
+						"rank": 5,
+						"label": "Put to another use",
+						"weight": 20,
+						"rationale": "Repurpose the slot for skill-sharing instead"
+					},
+					{
+						"rank": 6,
+						"label": "Eliminate",
+						"weight": 55,
+						"rationale": "Cancel it entirely, rely on the written update"
+					},
+					{
+						"rank": 7,
+						"label": "Reverse",
+						"weight": 25,
+						"rationale": "Have the team ask questions of the manager instead"
+					}
 				],
 				"summary": "Substitute and Eliminate score highest — the meeting itself may be the problem, not its format."
 			}
@@ -499,25 +847,4275 @@
 		"outputSchemaType": "ranked_list",
 		"outputJsonSchema": {
 			"type": "object",
-			"required": ["items", "summary"],
+			"required": [
+				"items",
+				"summary"
+			],
 			"properties": {
 				"items": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"required": ["rank", "label", "weight", "rationale"],
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
 						"properties": {
-							"rank": { "type": "number" },
-							"label": { "type": "string" },
-							"weight": { "type": "number", "minimum": 0, "maximum": 100 },
-							"rationale": { "type": "string" }
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
 						}
 					}
 				},
-				"summary": { "type": "string" }
+				"summary": {
+					"type": "string"
+				}
 			}
 		},
 		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "project-portfolio-matrix",
+		"slug": "project-portfolio-matrix",
+		"name": "Project Portfolio Matrix",
+		"category": "decision-making",
+		"description": "Plots the initiatives or options in your question by expected value against feasibility, so you can see which to pursue now, which need more groundwork, and which to drop.",
+		"whenToUse": "Use when you're weighing several possible initiatives, projects, or investments and need to prioritize which to fund first.",
+		"origin": "A staple of portfolio and project management practice since the 1980s-90s, drawing on the same value-versus-effort logic used in R&D and product roadmapping; no single credited originator, but closely related to project selection matrices taught in general strategy and PMI literature.",
+		"howToApply": [
+			"List every initiative or option competing for time, budget, or attention.",
+			"Estimate each one's expected value or benefit if it succeeds — low or high.",
+			"Estimate each one's feasibility — how easy or hard it would be to pursue — low or high.",
+			"Plot each initiative into one of the four quadrants.",
+			"Fund high-value, high-feasibility initiatives first; investigate high-value, low-feasibility ones further; deprioritize the rest."
+		],
+		"pros": [
+			"Forces an explicit value-vs-effort tradeoff instead of funding by loudest voice or gut feel.",
+			"Works for portfolios of any size — a handful of projects or dozens.",
+			"Easy to redraw as priorities or feasibility estimates change."
+		],
+		"cons": [
+			"Two dimensions can't capture interdependencies between initiatives.",
+			"'Value' and 'feasibility' estimates are often rough guesses dressed up as data.",
+			"Says nothing about sequencing — several 'high/high' items can still compete for the same limited resources."
+		],
+		"example": {
+			"scenario": "A product team deciding which three feature requests to build next quarter.",
+			"result": {
+				"xAxisLabel": "Feasibility",
+				"yAxisLabel": "Expected Value",
+				"quadrants": [
+					{
+						"name": "Do Now",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Add CSV export, most requested and already scoped"
+						]
+					},
+					{
+						"name": "Investigate",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Real-time collaboration, high value but needs a new sync architecture"
+						]
+					},
+					{
+						"name": "Quick Wins",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Rename a confusing settings label"
+						]
+					},
+					{
+						"name": "Drop",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Custom theming engine nobody asked for"
+						]
+					}
+				],
+				"summary": "CSV export is the clear priority; real-time collaboration deserves a feasibility spike before committing."
+			}
+		},
+		"promptTemplate": "You are helping someone apply a Project Portfolio Matrix to a decision. Given their question: \"{{question}}\", identify the initiatives or options implied by it and classify each by feasibility (x: low or high) and expected value (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Feasibility\", \"yAxisLabel\": \"Expected Value\", \"quadrants\": [{\"name\": \"Do Now\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Investigate\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Quick Wins\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Drop\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "feedback-analysis",
+		"slug": "feedback-analysis",
+		"name": "Feedback Analysis",
+		"category": "know-self",
+		"description": "Compares what you expected to happen when you made a decision against what actually happened, to sharpen your self-knowledge over time.",
+		"whenToUse": "Use after a decision has played out and you want to learn from the gap between your prediction and the outcome, or before a similar decision to write your prediction down first.",
+		"origin": "Popularized by management thinker Peter Drucker, who recommended writing down expected outcomes whenever making a key decision, then comparing results nine or twelve months later.",
+		"howToApply": [
+			"Name the decision or action you took (or are about to take).",
+			"Write down specifically what you expected to happen, before or without looking at the outcome.",
+			"Record what actually happened.",
+			"Compare the two — where were you right, where were you wrong, and why.",
+			"Note what this reveals about your own judgment, blind spots, or strengths."
+		],
+		"pros": [
+			"Builds real self-knowledge from evidence, not vague self-impression.",
+			"Simple to start — just requires writing predictions down before results are known.",
+			"Compounds over time as a personal track record accumulates."
+		],
+		"cons": [
+			"Only useful in hindsight or with the discipline to write predictions down in advance.",
+			"Memory of 'what I expected' is unreliable unless actually recorded beforehand.",
+			"Doesn't tell you what to change, only that a gap exists."
+		],
+		"example": {
+			"scenario": "Reflecting on a decision to switch the team to a new project management tool three months ago.",
+			"result": {
+				"sections": [
+					{
+						"heading": "What You Expected",
+						"body": "You expected the switch to save the team a few hours a week within the first month, with minor pushback."
+					},
+					{
+						"heading": "What Actually Happened",
+						"body": "Adoption took two months, but once it stuck, reported time savings were higher than predicted."
+					},
+					{
+						"heading": "The Gap and What It Teaches You",
+						"body": "You tend to underestimate rollout friction but overestimate resistance — a pattern worth remembering before the next tool change."
+					}
+				],
+				"summary": "You consistently underestimate how long change takes to stick, even when the change itself turns out to be worth it."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Peter Drucker's Feedback Analysis to a question about their own decision. Given their question: \"{{question}}\", write narrative sections covering what they likely expected going in, what actually happened (or is likely to happen, if this is forward-looking), and what the gap between the two reveals about their judgment. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What You Expected\", \"body\": \"...\"}, {\"heading\": \"What Actually Happened\", \"body\": \"...\"}, {\"heading\": \"The Gap and What It Teaches You\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "rubber-band-model",
+		"slug": "rubber-band-model",
+		"name": "Rubber Band Model",
+		"category": "know-self",
+		"description": "Looks at the stretch between where you are now and the vision or goal you're holding, and how that tension is likely to resolve.",
+		"whenToUse": "Use when you feel a persistent pull toward a goal but haven't acted on it, or want to understand why motivation for a goal rises and falls.",
+		"origin": "No single credited originator; the analogy of a stretched rubber band creating 'structural tension' between current reality and a held vision is common in goal-setting and creativity coaching literature, echoing ideas popularized by writers such as Robert Fritz.",
+		"howToApply": [
+			"Name the vision or goal you're holding — where you want to be.",
+			"Describe current reality honestly — where you actually are right now.",
+			"Notice the tension this creates — restlessness, motivation, or avoidance.",
+			"Ask which way the tension is likely to resolve: will you move reality toward the vision, or quietly lower the vision toward reality?",
+			"Identify the smallest real action that moves reality, not the vision."
+		],
+		"pros": [
+			"Reframes uncomfortable tension as useful signal rather than something to escape.",
+			"Distinguishes real progress (moving reality) from quietly giving up (lowering the vision).",
+			"Works for almost any goal, personal or professional."
+		],
+		"cons": [
+			"Purely diagnostic — doesn't supply the action plan itself.",
+			"Can be uncomfortable to sit with tension rather than resolve it immediately.",
+			"Vague vision statements make the tension hard to feel or act on."
+		],
+		"example": {
+			"scenario": "Feeling persistently unsettled about a stalled goal to write a book, without making progress.",
+			"result": {
+				"sections": [
+					{
+						"heading": "The Vision",
+						"body": "Finishing a first draft of the book within the year."
+					},
+					{
+						"heading": "Current Reality",
+						"body": "No consistent writing habit, a handful of scattered notes, over a year since starting."
+					},
+					{
+						"heading": "The Tension",
+						"body": "The gap shows up as guilt and avoidance rather than motivation — a sign the vision may be getting quietly lowered instead of reality being moved."
+					}
+				],
+				"summary": "The tension is real, but right now it's resolving by shrinking the vision rather than growing the habit — a small, scheduled writing block would test which way it actually wants to go."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Rubber Band Model (structural tension between current reality and a held vision) to a question. Given their question: \"{{question}}\", write narrative sections covering the vision they're holding, their current reality, and the tension between the two — including which direction that tension seems to be resolving. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Vision\", \"body\": \"...\"}, {\"heading\": \"Current Reality\", \"body\": \"...\"}, {\"heading\": \"The Tension\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "feedback-box",
+		"slug": "feedback-box",
+		"name": "The Feedback Box",
+		"category": "improve-others",
+		"description": "Structures difficult feedback into a clear sequence — situation, behavior, impact, and what you're asking for next — so it lands as useful rather than as an attack.",
+		"whenToUse": "Use when preparing to give someone feedback on a specific behavior and want it to be concrete and actionable rather than vague or personal.",
+		"origin": "A structured feedback approach closely related to the SBI (Situation-Behavior-Impact) model developed by the Center for Creative Leadership; no single individual is credited as the sole originator.",
+		"howToApply": [
+			"Situation — name the specific time and place the behavior happened, not a generalization.",
+			"Behavior — describe exactly what the person did or said, observably, without interpretation.",
+			"Impact — explain the effect it had, on you, the team, or the outcome.",
+			"Ask — state clearly what you'd like to see instead, or ask an open question about their perspective."
+		],
+		"pros": [
+			"Keeps feedback concrete and specific instead of vague ('you're always...').",
+			"Separates observable behavior from interpretation, reducing defensiveness.",
+			"Ends with a clear ask instead of leaving the other person unsure what to do."
+		],
+		"cons": [
+			"Requires a specific, recent example on hand — vague discomfort doesn't fit the format.",
+			"Can feel scripted or clinical if delivered too rigidly.",
+			"Doesn't address patterns across many small incidents as easily as one clear moment."
+		],
+		"example": {
+			"scenario": "Preparing to give a direct report feedback about interrupting colleagues in meetings.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Situation",
+						"description": "In yesterday's planning meeting, when the designer was presenting mockups."
+					},
+					{
+						"order": 2,
+						"title": "Behavior",
+						"description": "You cut in twice before they finished their sentence."
+					},
+					{
+						"order": 3,
+						"title": "Impact",
+						"description": "They seemed to disengage for the rest of the meeting and didn't share the rest of their idea."
+					},
+					{
+						"order": 4,
+						"title": "Ask",
+						"description": "Could you try waiting for a pause before jumping in next time?"
+					}
+				],
+				"summary": "Naming the specific meeting and moment makes this land as fixable feedback, not a character judgment."
+			}
+		},
+		"promptTemplate": "You are helping someone prepare structured feedback using the Feedback Box model (Situation, Behavior, Impact, Ask). Given their question: \"{{question}}\", produce one step for each of the four stages, in order, grounded in a specific plausible instance. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Situation\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Behavior\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Impact\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Ask\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "yes-no-rule",
+		"slug": "yes-no-rule",
+		"name": "Yes/No Rule",
+		"category": "decision-making",
+		"description": "Tests your question against a simple rule — if it's not a clear 'hell yes,' it's a no — to cut through wishy-washy maybes.",
+		"whenToUse": "Use when you're on the fence about a commitment and suspect you're talking yourself into something you're not genuinely excited about.",
+		"origin": "Popularized by entrepreneur Derek Sivers as 'Hell Yeah or No' — if your reaction to an opportunity isn't an enthusiastic yes, treat it as a no.",
+		"howToApply": [
+			"State the opportunity or commitment plainly.",
+			"List the reasons it could be a genuine 'Hell Yes.'",
+			"List the reasons it's actually a 'No' — including lukewarm or obligation-based reasons.",
+			"Notice which list is longer or more emotionally honest.",
+			"If it's not a clear Hell Yes, default to No."
+		],
+		"pros": [
+			"Cuts through decision fatigue by removing the 'maybe' option entirely.",
+			"Protects time and energy from being spread across half-hearted commitments.",
+			"Fast to apply — doesn't require elaborate analysis."
+		],
+		"cons": [
+			"Too blunt for decisions that are genuinely obligatory regardless of enthusiasm (taxes, caretaking).",
+			"Enthusiasm can be a poor predictor of long-term value for some choices.",
+			"Risk of using it to avoid anything that requires short-term discomfort for long-term gain."
+		],
+		"example": {
+			"scenario": "Deciding whether to accept an invitation to co-found a side project with an old colleague.",
+			"result": {
+				"rows": [
+					{
+						"label": "Hell Yes",
+						"items": [
+							"Genuinely excited about the problem",
+							"Trust and enjoy working with this person"
+						]
+					},
+					{
+						"label": "No",
+						"items": [
+							"Already stretched thin on time",
+							"Saying yes mainly out of guilt about staying in touch"
+						]
+					}
+				],
+				"summary": "The No list is more emotionally honest — this reads as an obligation dressed up as an opportunity."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Yes/No Rule ('Hell Yeah or No') to a decision. Given their question: \"{{question}}\", list the genuine 'Hell Yes' reasons and the 'No' reasons (including lukewarm or obligation-based ones) it implies. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"Hell Yes\", \"items\": [\"...\"]}, {\"label\": \"No\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "matrix_table",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"rows",
+				"summary"
+			],
+			"properties": {
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"items"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "MatrixTableChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "choice-overload",
+		"slug": "choice-overload",
+		"name": "Choice Overload",
+		"category": "decision-making",
+		"description": "Narrows an overwhelming set of options in your question down to the few genuinely worth comparing, ranked by how well they fit what actually matters to you.",
+		"whenToUse": "Use when you're stuck comparing too many similar options and decision fatigue is preventing you from choosing at all.",
+		"origin": "Rooted in psychologist Barry Schwartz's research on 'the paradox of choice' — that too many options can reduce satisfaction and increase decision paralysis rather than improve outcomes.",
+		"howToApply": [
+			"List all the options currently on the table, even ones you suspect are weak.",
+			"Define the one or two criteria that actually matter most for this decision.",
+			"Score or rank each option against those criteria only, ignoring minor differences.",
+			"Cut anything that isn't meaningfully different from a stronger option.",
+			"Commit to choosing from the short remaining list, not reopening the full set."
+		],
+		"pros": [
+			"Directly counters the paralysis that comes from too many similar options.",
+			"Forces clarity on what actually matters, rather than comparing everything on everything.",
+			"Produces a short, decidable list instead of an open-ended one."
+		],
+		"cons": [
+			"Risk of cutting a genuinely good option too early if criteria are chosen poorly.",
+			"Doesn't help if the real problem is the criteria themselves being unclear.",
+			"Some decisions genuinely benefit from broad exploration before narrowing."
+		],
+		"example": {
+			"scenario": "Choosing among twelve similar apartment listings after weeks of searching.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "2BR near the office with a short commute",
+						"weight": 80,
+						"rationale": "Commute was the stated top priority and this is the shortest by far"
+					},
+					{
+						"rank": 2,
+						"label": "Slightly cheaper unit two neighborhoods over",
+						"weight": 45,
+						"rationale": "Meets budget but adds 20 minutes each way"
+					},
+					{
+						"rank": 3,
+						"label": "Larger unit with a longer lease commitment",
+						"weight": 20,
+						"rationale": "Nice space but locks in a decision that isn't urgent yet"
+					}
+				],
+				"summary": "Once commute is treated as the deciding factor, nine of the twelve listings drop out immediately."
+			}
+		},
+		"promptTemplate": "You are helping someone cut through choice overload on a decision. Given their question: \"{{question}}\", identify the options implied by it, rank them by how well they fit the one or two criteria that matter most, and give each a weight (0-100) reflecting how strong a contender it is. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 40, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "gap-in-the-market",
+		"slug": "gap-in-the-market",
+		"name": "The Gap in the Market Model",
+		"category": "decision-making",
+		"description": "Plots the ideas or niches in your question by how much demand exists versus how well current options already serve it, to spot genuinely underserved opportunity.",
+		"whenToUse": "Use when evaluating a business idea, product, or niche and want to check whether there's real unmet demand rather than a saturated space.",
+		"origin": "No single credited originator; a standard framing in business strategy and entrepreneurship practice for spotting where customer need outpaces existing supply.",
+		"howToApply": [
+			"List the ideas, niches, or offerings you're evaluating.",
+			"Estimate demand or need for each — low or high.",
+			"Estimate how well current options already serve that demand — low or high supply.",
+			"Plot each into one of the four quadrants.",
+			"Focus on high-demand, low-supply combinations as the real opportunity gaps."
+		],
+		"pros": [
+			"Directly targets the question that matters most for a new venture: is anyone underserved here?",
+			"Simple enough to sanity-check an idea quickly before deeper research.",
+			"Exposes crowded spaces before you invest further in them."
+		],
+		"cons": [
+			"Demand and supply estimates are often guesses without real market research.",
+			"Doesn't account for how hard the gap would be to actually capture.",
+			"A real gap can still be too small to be commercially worthwhile."
+		],
+		"example": {
+			"scenario": "Evaluating three possible niches for a new subscription meal-kit business.",
+			"result": {
+				"xAxisLabel": "Current Supply",
+				"yAxisLabel": "Demand",
+				"quadrants": [
+					{
+						"name": "Real Opportunity",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Diabetic-friendly meal kits — high demand, few dedicated options"
+						]
+					},
+					{
+						"name": "Crowded",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"General healthy meal kits — high demand, saturated market"
+						]
+					},
+					{
+						"name": "Niche Risk",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Ultra-exotic cuisine kits — few competitors, but unclear demand"
+						]
+					},
+					{
+						"name": "Avoid",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Generic snack boxes — low demand, already oversupplied"
+						]
+					}
+				],
+				"summary": "Diabetic-friendly kits look like the real opportunity — real demand with few dedicated competitors."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Gap in the Market Model to a decision. Given their question: \"{{question}}\", identify the ideas, niches, or offerings implied by it and classify each by current supply (x: low or high) and demand (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Current Supply\", \"yAxisLabel\": \"Demand\", \"quadrants\": [{\"name\": \"Real Opportunity\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Crowded\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Niche Risk\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Avoid\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "gift-model",
+		"slug": "gift-model",
+		"name": "The Gift Model",
+		"category": "improve-others",
+		"description": "Reframes a difficult situation, setback, or person in your question as containing a hidden 'gift' or lesson worth naming, to help shift a stuck or resentful perspective.",
+		"whenToUse": "Use when coaching yourself or someone else through a frustrating situation and a straightforward analysis isn't unlocking a way forward.",
+		"origin": "No single credited originator; a common reframing technique in coaching practice, related to appreciative and strengths-based approaches to difficult experiences.",
+		"howToApply": [
+			"Name the difficult situation, person, or setback plainly, without minimizing it.",
+			"Resist the urge to immediately fix or dismiss it.",
+			"Ask what this situation is teaching, revealing, or making possible that wouldn't exist otherwise.",
+			"Name the 'gift' specifically — not as forced positivity, but as a genuine, specific insight or opportunity.",
+			"Ask what changes if you treat this as a gift rather than only a problem."
+		],
+		"pros": [
+			"Unlocks forward motion when purely analytical approaches leave someone stuck or resentful.",
+			"Encourages genuinely specific insight rather than vague silver-lining thinking.",
+			"Useful both for coaching others and for self-reflection."
+		],
+		"cons": [
+			"Can feel dismissive or forced if used too early, before the difficulty has been acknowledged.",
+			"Risk of toxic positivity if the 'gift' framing is applied superficially.",
+			"Not a substitute for practical problem-solving when one is actually needed."
+		],
+		"example": {
+			"scenario": "Coaching someone frustrated after being passed over for a promotion they expected.",
+			"result": {
+				"sections": [
+					{
+						"heading": "The Difficulty",
+						"body": "Being passed over felt like a clear signal that years of hard work weren't recognized."
+					},
+					{
+						"heading": "What It's Revealing",
+						"body": "It's surfacing that visibility and self-advocacy, not just output, matter more here than previously assumed."
+					},
+					{
+						"heading": "The Gift",
+						"body": "A concrete, specific gap to close — vocalizing accomplishments — that was invisible before this setback made it obvious."
+					}
+				],
+				"summary": "The setback is real, but it's surfaced a specific, fixable gap rather than just a verdict on their worth."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Gift Model — reframing a difficult situation as containing a hidden lesson or opportunity. Given their question: \"{{question}}\", write narrative sections naming the difficulty honestly, what it's revealing, and the specific 'gift' or lesson within it. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Difficulty\", \"body\": \"...\"}, {\"heading\": \"What It's Revealing\", \"body\": \"...\"}, {\"heading\": \"The Gift\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "morphological-box",
+		"slug": "morphological-box",
+		"name": "Morphological Box",
+		"category": "decision-making",
+		"description": "Breaks your question into its core independent parameters and lists options for each, so you can combine them into solutions you wouldn't have thought of directly.",
+		"whenToUse": "Use when you want to systematically generate new combinations of ideas rather than relying on a single flash of inspiration.",
+		"origin": "Developed by astrophysicist Fritz Zwicky in the 1940s-60s as a method for exploring all possible combinations of a problem's parameters, originally used in aerospace engineering.",
+		"howToApply": [
+			"State the problem or thing you're designing.",
+			"Identify the independent parameters or dimensions that make it up.",
+			"For each parameter, list several distinct possible options.",
+			"Scan across parameters for unusual but viable combinations.",
+			"Select one or more combinations worth developing further."
+		],
+		"pros": [
+			"Systematically surfaces combinations you wouldn't generate by free-associating alone.",
+			"Makes the full solution space visible at a glance.",
+			"Works for physical products, services, or process design alike."
+		],
+		"cons": [
+			"Can produce a large number of combinations, many impractical, requiring real filtering afterward.",
+			"Choosing the right parameters is itself a hard, consequential step the method doesn't solve for you.",
+			"Can feel mechanical compared to more intuitive brainstorming."
+		],
+		"example": {
+			"scenario": "Designing a new format for a weekly team newsletter.",
+			"result": {
+				"rows": [
+					{
+						"label": "Format",
+						"items": [
+							"Written digest",
+							"Short video",
+							"Live 10-minute call"
+						]
+					},
+					{
+						"label": "Frequency",
+						"items": [
+							"Weekly",
+							"Biweekly",
+							"Monthly with a mid-week nudge"
+						]
+					},
+					{
+						"label": "Content Focus",
+						"items": [
+							"Wins and shoutouts",
+							"Blockers and asks",
+							"Mixed"
+						]
+					}
+				],
+				"summary": "A short biweekly video mixing wins and blockers is a combination worth prototyping — untried but plausible."
+			}
+		},
+		"promptTemplate": "You are helping someone apply a Morphological Box to a decision. Given their question: \"{{question}}\", identify the independent parameters that make up the problem and list distinct options for each parameter as rows. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"Parameter name\", \"items\": [\"option 1\", \"option 2\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "matrix_table",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"rows",
+				"summary"
+			],
+			"properties": {
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"items"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "MatrixTableChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "thinking-outside-the-box",
+		"slug": "thinking-outside-the-box",
+		"name": "Thinking Outside the Box",
+		"category": "decision-making",
+		"description": "Forces you to generate options for your question that break an assumption you didn't realize you were holding, then ranks them by how genuinely unconventional and viable each one is.",
+		"whenToUse": "Use when every option on the table feels like a variation of the same idea and you want fundamentally different alternatives.",
+		"origin": "No single credited originator; the phrase became common shorthand in mid-20th-century creativity and management literature for deliberately violating an assumed constraint of a problem.",
+		"howToApply": [
+			"State the problem as you currently understand it.",
+			"List the assumptions you're taking for granted about it.",
+			"Pick one assumption and deliberately break it.",
+			"Generate an option that only makes sense once that assumption is gone.",
+			"Repeat for at least two more assumptions.",
+			"Rank the resulting options by how genuinely different and how viable each one is."
+		],
+		"pros": [
+			"Directly targets hidden assumptions instead of just brainstorming harder.",
+			"Produces options that are qualitatively different, not just more of the same.",
+			"Cheap to run solo in a few minutes."
+		],
+		"cons": [
+			"Some 'outside the box' ideas are outside the box because they don't actually work.",
+			"Requires first noticing your assumptions, which is its own skill.",
+			"Can produce novelty for its own sake rather than genuine progress."
+		],
+		"example": {
+			"scenario": "Trying to grow attendance at a monthly community meetup that's plateaued.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "Kill the 'monthly' assumption — run it quarterly but make it bigger",
+						"weight": 60,
+						"rationale": "Removing the scarcity assumption reveals a higher-effort, higher-payoff format"
+					},
+					{
+						"rank": 2,
+						"label": "Kill the 'in-person' assumption — hybrid stream to a wider audience",
+						"weight": 45,
+						"rationale": "Breaks the location constraint that's capping the local pool"
+					},
+					{
+						"rank": 3,
+						"label": "Kill the 'we organize it' assumption — hand it to attendees to co-host",
+						"weight": 30,
+						"rationale": "Breaks the single-organizer bottleneck"
+					}
+				],
+				"summary": "The 'monthly cadence' assumption is worth challenging first — it may be capping growth more than the format itself."
+			}
+		},
+		"promptTemplate": "You are helping someone think outside the box about a decision. Given their question: \"{{question}}\", identify assumptions implicit in how they've framed it, then generate options that only make sense once each assumption is broken. Rank the resulting options by how genuinely unconventional and viable each is, with a weight (0-100). Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 60, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "consequence-model",
+		"slug": "consequence-model",
+		"name": "The Consequence Model",
+		"category": "decision-making",
+		"description": "Traces a choice forward through its immediate, short-term, and long-term consequences, so you're not only weighing what happens right away.",
+		"whenToUse": "Use when a decision has an obvious immediate effect but you suspect the real cost or benefit shows up later.",
+		"origin": "No single credited originator; a standard move across decision theory and risk-analysis practice — mapping outcomes across time horizons rather than a single point in time.",
+		"howToApply": [
+			"State the decision you're weighing.",
+			"Describe what happens immediately if you go this way.",
+			"Describe what's likely to follow in the following weeks or months.",
+			"Describe the plausible long-term consequence, months or years out.",
+			"Check whether the immediate and long-term consequences actually point the same direction."
+		],
+		"pros": [
+			"Surfaces short-term decisions with long-term costs you'd otherwise miss.",
+			"Simple three-step structure, easy to talk through out loud.",
+			"Works for both personal and professional decisions."
+		],
+		"cons": [
+			"Long-term predictions are inherently speculative.",
+			"Doesn't assign probabilities, so a scary long-term consequence can dominate an unlikely one.",
+			"Says nothing about how to weigh immediate versus long-term against each other."
+		],
+		"example": {
+			"scenario": "Deciding whether to take a shortcut on testing to hit a release deadline this week.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Immediate",
+						"description": "Ship on time, deadline pressure relieved this week."
+					},
+					{
+						"order": 2,
+						"title": "Short-term",
+						"description": "Elevated bug reports and support load over the next month."
+					},
+					{
+						"order": 3,
+						"title": "Long-term",
+						"description": "Erodes trust in release quality, slowing future launches with added caution and process."
+					}
+				],
+				"summary": "The immediate relief is real, but the long-term trust cost likely outweighs it — worth negotiating a short extension instead."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Consequence Model to a decision. Given their question: \"{{question}}\", trace the choice forward through three time horizons: immediate, short-term, and long-term consequences. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Immediate\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Short-term\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Long-term\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "unconscious-thinking",
+		"slug": "unconscious-thinking",
+		"name": "Theory of Unconscious Thinking",
+		"category": "decision-making",
+		"description": "Applies Unconscious Thought Theory to your question — deliberately stepping away from conscious deliberation so your non-conscious mind can process a complex decision with many variables.",
+		"whenToUse": "Use for complex decisions with many competing factors, where you've already gathered the relevant information but conscious deliberation feels like it's going in circles.",
+		"origin": "Developed by psychologist Ap Dijksterhuis in the early-to-mid 2000s as Unconscious Thought Theory, based on research suggesting non-conscious processing can outperform conscious deliberation for decisions with many attributes.",
+		"howToApply": [
+			"Make sure you've actually gathered the relevant information first — this isn't a substitute for research.",
+			"Consciously review the key factors once, then deliberately stop thinking about the decision.",
+			"Do something else that occupies conscious attention (a walk, sleep, an unrelated task).",
+			"Return to the decision later and notice your gut pull before re-engaging analytically.",
+			"Use that instinct as one input, not the final word — sanity-check it against your original factors."
+		],
+		"pros": [
+			"Well-suited to genuinely complex, many-variable decisions where conscious analysis hits diminishing returns.",
+			"Matches common experience of decisions 'becoming clear' after a break.",
+			"Costs nothing but time."
+		],
+		"cons": [
+			"The underlying research has had mixed replication results.",
+			"Easy to use as an excuse to avoid a decision rather than genuinely process it.",
+			"Doesn't work for simple decisions with few variables — conscious deliberation is usually better there."
+		],
+		"example": {
+			"scenario": "Choosing between two job offers with many differing factors: pay, team, commute, growth potential, and stability.",
+			"result": {
+				"sections": [
+					{
+						"heading": "What You've Already Gathered",
+						"body": "You have clear data on pay, commute, and stability for both offers, but a fuzzier read on team fit and growth potential."
+					},
+					{
+						"heading": "Stepping Away",
+						"body": "With the facts in hand, further conscious list-making is producing diminishing new insight — a genuine candidate for stepping back."
+					},
+					{
+						"heading": "What to Notice After the Break",
+						"body": "Pay attention to which offer you find yourself thinking about unprompted, and which one produces relief versus unease when you imagine declining it."
+					}
+				],
+				"summary": "You have enough information — the next useful step is stepping away, not gathering more data."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Unconscious Thought Theory to a complex decision. Given their question: \"{{question}}\", write narrative sections covering: what information they've likely already gathered, why conscious deliberation may be hitting diminishing returns, and what to notice in their gut reaction after deliberately stepping away. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What You've Already Gathered\", \"body\": \"...\"}, {\"heading\": \"Stepping Away\", \"body\": \"...\"}, {\"heading\": \"What to Notice After the Break\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "stop-rule",
+		"slug": "stop-rule",
+		"name": "The Stop Rule",
+		"category": "decision-making",
+		"description": "Helps you set, in advance, the specific point at which you'll stop deliberating or searching and commit — so the search itself doesn't become the risk.",
+		"whenToUse": "Use when you're searching among many similar options (apartments, candidates, offers) and realize the search itself is costing you more than a slightly-worse choice would.",
+		"origin": "Draws on optimal stopping theory in decision theory, and on Herbert Simon's related concept of 'satisficing' (1956) — settling for a good-enough option rather than an exhaustively optimal one.",
+		"howToApply": [
+			"Define what 'good enough' looks like for this decision before you start searching.",
+			"Set a concrete stopping condition: a number of options reviewed, a deadline, or a specific threshold met.",
+			"Search until you hit that condition.",
+			"When you hit it, commit — resist the urge to 'just check one more'.",
+			"If nothing has met the good-enough bar, that's information too: reconsider the bar itself, don't just keep searching indefinitely."
+		],
+		"pros": [
+			"Directly counters the trap of endless searching for a marginally better option.",
+			"Makes the cost of continued searching explicit instead of invisible.",
+			"Reduces decision fatigue by pre-committing the stopping point."
+		],
+		"cons": [
+			"Setting the threshold itself requires judgment that can be wrong.",
+			"Can lead to settling prematurely if the bar is set too low.",
+			"Less useful for one-shot decisions with no ongoing search process."
+		],
+		"example": {
+			"scenario": "Apartment hunting in a competitive market after viewing 15 places with no end in sight.",
+			"result": {
+				"sections": [
+					{
+						"heading": "What 'Good Enough' Means Here",
+						"body": "Within budget, under 30 minutes from work, and no major deferred maintenance — three non-negotiables, everything else is a bonus."
+					},
+					{
+						"heading": "The Stopping Condition",
+						"body": "Stop searching once three good-enough options exist, or after 20 total viewings, whichever comes first."
+					},
+					{
+						"heading": "The Cost of Continuing Past That",
+						"body": "Each extra week of searching risks losing already-good-enough places to other renters, for uncertain marginal improvement."
+					}
+				],
+				"summary": "You're past the point where more searching is likely worth its cost — pick the best of what already clears the bar."
+			}
+		},
+		"promptTemplate": "You are helping someone apply a Stop Rule to a search-based decision. Given their question: \"{{question}}\", write narrative sections covering: what 'good enough' means for this decision, a concrete stopping condition, and the cost of continuing to search past that point. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"What 'Good Enough' Means Here\", \"body\": \"...\"}, {\"heading\": \"The Stopping Condition\", \"body\": \"...\"}, {\"heading\": \"The Cost of Continuing Past That\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "buyers-decision-model",
+		"slug": "buyers-decision-model",
+		"name": "The Buyer's Decision Model",
+		"category": "know-others",
+		"description": "Walks through the classic five-stage consumer decision journey to understand how someone else is likely moving toward (or away from) a purchase or commitment.",
+		"whenToUse": "Use when trying to understand or influence how another person is deciding whether to buy, adopt, or commit to something.",
+		"origin": "A standard framework in marketing and consumer-behavior literature, formalized across mid-to-late-20th-century marketing textbooks (e.g. Engel-Kollat-Blackwell, and Kotler's marketing management texts) into five stages: Problem Recognition, Information Search, Evaluation of Alternatives, Purchase Decision, Post-Purchase Behavior.",
+		"howToApply": [
+			"Identify what triggered Problem Recognition — what need or gap did the buyer notice?",
+			"Map their Information Search — where are they looking, and what are they comparing against?",
+			"Map their Evaluation of Alternatives — what criteria matter most to them?",
+			"Identify what's likely to trigger or block the Purchase Decision itself.",
+			"Consider Post-Purchase Behavior — will they be satisfied, and will that shape future decisions?"
+		],
+		"pros": [
+			"Widely used and well-validated across decades of marketing practice.",
+			"Breaks a single 'will they buy' question into distinct, actionable stages.",
+			"Applies beyond literal purchases — job offers, partnerships, adoptions of an idea."
+		],
+		"cons": [
+			"Assumes a fairly linear, rational process that real decisions often don't follow.",
+			"Was built around consumer purchases, so some stages translate awkwardly to other contexts.",
+			"Requires real insight into the other person's process, not just guesswork."
+		],
+		"example": {
+			"scenario": "Trying to understand why a promising sales prospect has gone quiet after an initial demo.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Problem Recognition",
+						"description": "They recognized a real gap in their current workflow during the demo — a genuine trigger, not a manufactured one."
+					},
+					{
+						"order": 2,
+						"title": "Information Search",
+						"description": "Likely now comparing your product against at least one competitor and an internal 'do nothing' option."
+					},
+					{
+						"order": 3,
+						"title": "Evaluation of Alternatives",
+						"description": "Price and integration effort are probably weighing heavier than the feature list at this stage."
+					},
+					{
+						"order": 4,
+						"title": "Purchase Decision",
+						"description": "Silence usually means an internal blocker (budget approval, a skeptical stakeholder) more than lost interest."
+					},
+					{
+						"order": 5,
+						"title": "Post-Purchase Behavior",
+						"description": "If closed, onboarding experience will determine whether they become a reference or churn early."
+					}
+				],
+				"summary": "The silence most likely reflects an internal blocker at the Evaluation stage — a direct check-in on obstacles is more useful than another feature pitch."
+			}
+		},
+		"promptTemplate": "You are helping someone understand another person's or customer's decision process using the Buyer's Decision Model. Given their question: \"{{question}}\", walk through the five stages (Problem Recognition, Information Search, Evaluation of Alternatives, Purchase Decision, Post-Purchase Behavior) as they likely apply to that other person. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Problem Recognition\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Information Search\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Evaluation of Alternatives\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Purchase Decision\", \"description\": \"...\"}, {\"order\": 5, \"title\": \"Post-Purchase Behavior\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "flow-model",
+		"slug": "flow-model",
+		"name": "The Flow Model",
+		"category": "know-self",
+		"description": "Plots the activity or situation in your question on skill level versus challenge level to see whether you're positioned for flow, anxiety, boredom, or apathy.",
+		"whenToUse": "Use when you feel chronically bored, anxious, or checked out in a role or activity and want to understand why.",
+		"origin": "Developed by psychologist Mihaly Csikszentmihalyi, introduced in his 1990 book 'Flow: The Psychology of Optimal Experience', based on decades of research into optimal engagement states.",
+		"howToApply": [
+			"Name the specific activity or situation you're evaluating.",
+			"Rate your current skill level for it as low or high.",
+			"Rate the challenge level it currently presents as low or high.",
+			"Locate yourself in the resulting quadrant: Flow, Anxiety, Boredom, or Apathy.",
+			"If not in Flow, identify whether you need to raise the challenge or build the skill to get there."
+		],
+		"pros": [
+			"Gives a precise diagnosis for a vague feeling of 'this isn't working for me'.",
+			"Points directly at the fix: raise challenge or build skill.",
+			"Backed by decades of research on peak engagement states."
+		],
+		"cons": [
+			"Self-rated skill and challenge are subjective and can be miscalibrated.",
+			"A single snapshot misses that flow is dynamic and shifts over a task.",
+			"Doesn't account for external factors (fatigue, environment) that also affect engagement."
+		],
+		"example": {
+			"scenario": "Feeling disengaged in a role that used to be exciting.",
+			"result": {
+				"xAxisLabel": "Skill Level",
+				"yAxisLabel": "Challenge Level",
+				"quadrants": [
+					{
+						"name": "Flow",
+						"x": "high",
+						"y": "high",
+						"items": []
+					},
+					{
+						"name": "Anxiety",
+						"x": "low",
+						"y": "high",
+						"items": []
+					},
+					{
+						"name": "Boredom",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Current role: skills have outgrown the challenge level"
+						]
+					},
+					{
+						"name": "Apathy",
+						"x": "low",
+						"y": "low",
+						"items": []
+					}
+				],
+				"summary": "Skills have outgrown the role's current challenge — Boredom, not burnout. The fix is more challenge, not more rest."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Csikszentmihalyi's Flow Model to a question about their engagement in an activity or role. Given their question: \"{{question}}\", assess their skill level and the challenge level of the situation (each low or high), and place the situation in the corresponding quadrant, leaving the other three empty unless clearly relevant. Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Skill Level\", \"yAxisLabel\": \"Challenge Level\", \"quadrants\": [{\"name\": \"Flow\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Anxiety\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Boredom\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Apathy\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "unimaginable-model",
+		"slug": "unimaginable-model",
+		"name": "The Unimaginable Model",
+		"category": "decision-making",
+		"description": "Deliberately surfaces the scenarios and outcomes related to your question that you haven't considered — the possibilities sitting outside your default frame — and ranks them by how overlooked and how consequential each one is.",
+		"whenToUse": "Use before committing to a plan built on an assumption you haven't stress-tested, especially for decisions with real downside risk.",
+		"origin": "No single credited originator; related to futures-studies and scenario-planning practices used to deliberately expand the range of considered outcomes beyond the default forecast.",
+		"howToApply": [
+			"State your current plan or expectation as if it's a forecast.",
+			"Ask what would have to be true for that forecast to be badly wrong.",
+			"List scenarios you haven't been actively planning for, even unlikely ones.",
+			"Rank them by how overlooked they've been and how consequential they'd be if they happened.",
+			"For the highest-ranked ones, decide whether they change your plan or just deserve a contingency."
+		],
+		"pros": [
+			"Directly counters the tendency to only plan around the expected outcome.",
+			"Cheap insurance against being blindsided by something you could have named in advance.",
+			"Works well as a pre-mortem-style group exercise too."
+		],
+		"cons": [
+			"Can spiral into low-value anxiety if not bounded by 'consequential' as a filter.",
+			"Imagination has limits — the truly unimaginable stays unimaginable by definition.",
+			"Doesn't assign real probabilities, just relative attention."
+		],
+		"example": {
+			"scenario": "Planning a product launch built on the assumption that a key API partner stays stable.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "The API partner changes pricing or terms right after launch",
+						"weight": 55,
+						"rationale": "Plausible, high-impact, and currently has zero contingency plan"
+					},
+					{
+						"rank": 2,
+						"label": "Launch coincides with a competitor's surprise announcement",
+						"weight": 30,
+						"rationale": "Timing risk that's easy to overlook while heads-down building"
+					},
+					{
+						"rank": 3,
+						"label": "Initial demand wildly exceeds infrastructure capacity",
+						"weight": 15,
+						"rationale": "Lower probability but worth a basic scaling checklist"
+					}
+				],
+				"summary": "The API dependency risk is the most overlooked and most consequential — worth a concrete fallback before launch, not just after."
+			}
+		},
+		"promptTemplate": "You are helping someone surface the possibilities they haven't considered about a decision. Given their question: \"{{question}}\", identify scenarios or outcomes outside their likely default expectation, and rank them by how overlooked and how consequential each would be, with a weight (0-100) for the relative attention it deserves. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 55, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "energy-model",
+		"slug": "energy-model",
+		"name": "The Energy Model",
+		"category": "know-self",
+		"description": "Scores your current situation across four energy dimensions — Physical, Emotional, Mental, Spiritual — to see which is most depleted and shaping how you're approaching your question.",
+		"whenToUse": "Use when you're struggling with motivation, focus, or resilience and want to know which kind of energy is actually running low, not just 'energy' in general.",
+		"origin": "Developed by Jim Loehr and Tony Schwartz, introduced in their 2003 book 'The Power of Full Engagement', framing performance as a function of managing four distinct types of energy rather than time alone.",
+		"howToApply": [
+			"Score your Physical energy 0-10 — sleep, exercise, nutrition, physical stamina.",
+			"Score your Emotional energy 0-10 — how connected, positive, or resilient you currently feel.",
+			"Score your Mental energy 0-10 — focus, clarity, ability to concentrate.",
+			"Score your Spiritual energy 0-10 — sense of purpose and alignment with what matters to you.",
+			"Identify the lowest score — that's likely the highest-leverage place to intervene before tackling the decision itself."
+		],
+		"pros": [
+			"Separates 'I'm tired' into four distinct, actionable dimensions.",
+			"Points directly at where to intervene rather than a vague call to 'rest more'.",
+			"Reframes performance as energy management, which is often more actionable than time management."
+		],
+		"cons": [
+			"Self-rated scores are subjective and can shift day to day.",
+			"Four dimensions can feel arbitrary or overlapping in practice.",
+			"Doesn't address structural causes (workload, environment) driving the depletion."
+		],
+		"example": {
+			"scenario": "Struggling to make progress on a big decision despite having blocked out time for it.",
+			"result": {
+				"factors": [
+					{
+						"label": "Physical",
+						"score": 6
+					},
+					{
+						"label": "Emotional",
+						"score": 4
+					},
+					{
+						"label": "Mental",
+						"score": 7
+					},
+					{
+						"label": "Spiritual",
+						"score": 3
+					}
+				],
+				"summary": "Spiritual energy is the clear low point — the block may be about purpose and alignment, not time or focus."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Energy Model (Loehr & Schwartz) to a question. Given their question: \"{{question}}\", estimate their likely Physical, Emotional, Mental, and Spiritual energy levels (0-10 each) based on the situation described, and identify the lowest as the highest-leverage point to address. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Physical\", \"score\": 6}, {\"label\": \"Emotional\", \"score\": 4}, {\"label\": \"Mental\", \"score\": 7}, {\"label\": \"Spiritual\", \"score\": 3}], \"summary\": \"...\"}",
+		"outputSchemaType": "radar",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"factors",
+				"summary"
+			],
+			"properties": {
+				"factors": {
+					"type": "array",
+					"minItems": 3,
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"score"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"score": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 10
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RadarChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "political-compass",
+		"slug": "political-compass",
+		"name": "The Political Compass",
+		"category": "know-others",
+		"description": "Plots a person's or group's position in your question on two axes — Economic (Left/Right) and Social (Authoritarian/Libertarian) — for a more precise read than a single left-right label.",
+		"whenToUse": "Use when trying to understand someone else's stance or predict their reaction on a values-charged question, and a simple left-right label feels too crude.",
+		"origin": "Popularized by the website politicalcompass.org in the early 2000s, building on the earlier two-axis Nolan Chart (David Nolan, 1969), which first argued that political views need two dimensions, not one.",
+		"howToApply": [
+			"Identify the person or group whose position you're trying to understand.",
+			"Estimate their Economic axis position — more state control (left) or more free market (right).",
+			"Estimate their Social axis position — more authority/tradition (authoritarian) or more personal freedom (libertarian).",
+			"Place them in the resulting quadrant.",
+			"Use that placement to anticipate what arguments will and won't land with them."
+		],
+		"pros": [
+			"Two axes capture real distinctions a single left-right scale collapses.",
+			"Useful shorthand for anticipating someone's likely reaction to a proposal.",
+			"Widely recognized format, easy to communicate."
+		],
+		"cons": [
+			"Still a drastic simplification of any real person's actual views.",
+			"Estimating someone else's position is often just a guess dressed up as analysis.",
+			"Can reduce people to a label rather than understanding their actual reasoning."
+		],
+		"example": {
+			"scenario": "Anticipating how a new stakeholder will react to a proposed workplace policy change.",
+			"result": {
+				"xAxisLabel": "Economic (Left-Right)",
+				"yAxisLabel": "Social (Authoritarian-Libertarian)",
+				"quadrants": [
+					{
+						"name": "Authoritarian Left",
+						"x": "low",
+						"y": "high",
+						"items": []
+					},
+					{
+						"name": "Authoritarian Right",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Likely stakeholder position: favors strong top-down policy with market-friendly framing"
+						]
+					},
+					{
+						"name": "Libertarian Left",
+						"x": "low",
+						"y": "low",
+						"items": []
+					},
+					{
+						"name": "Libertarian Right",
+						"x": "high",
+						"y": "low",
+						"items": []
+					}
+				],
+				"summary": "Expect this stakeholder to favor a clear top-down mandate over an opt-in approach, even while preferring market-based framing."
+			}
+		},
+		"promptTemplate": "You are helping someone understand another person's or group's likely position using the Political Compass. Given their question: \"{{question}}\", estimate the relevant person's or group's position on the Economic axis (low=left, high=right) and Social axis (low=libertarian, high=authoritarian), and place them in the corresponding quadrant, leaving others empty unless relevant. Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Economic (Left-Right)\", \"yAxisLabel\": \"Social (Authoritarian-Libertarian)\", \"quadrants\": [{\"name\": \"Authoritarian Left\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Authoritarian Right\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Libertarian Left\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Libertarian Right\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "personal-performance-model",
+		"slug": "personal-performance-model",
+		"name": "Personal Performance Model",
+		"category": "know-self",
+		"description": "Scores the factors actually driving your performance on the thing your question is about — skill, motivation, environment, feedback, and recovery — so you can see which lever is weakest.",
+		"whenToUse": "Use when you're underperforming somewhere and want to find which underlying factor is actually the bottleneck rather than guessing.",
+		"origin": "No single credited originator; a common framing in performance-coaching and sports-psychology practice, which typically breaks performance into a handful of interacting factors rather than treating it as one undifferentiated trait.",
+		"howToApply": [
+			"Name the specific performance you're evaluating.",
+			"Score your current skill level for it, 0-10.",
+			"Score your motivation to do it well, 0-10.",
+			"Score how supportive your environment/conditions are, 0-10.",
+			"Score how much real feedback you're getting on it, 0-10.",
+			"Score how well you're recovering/resting around it, 0-10, then look at the lowest score."
+		],
+		"pros": [
+			"Breaks a vague 'I'm not performing well' into specific, actionable levers.",
+			"Cheap to redo periodically to track whether an intervention actually helped.",
+			"Prevents over-focusing on skill when the real gap is motivation or recovery."
+		],
+		"cons": [
+			"Self-rated scores are subjective and can drift with mood.",
+			"Five factors is a simplification — real performance bottlenecks can be more tangled.",
+			"Doesn't tell you how to fix the weak factor, only which one to target."
+		],
+		"example": {
+			"scenario": "A software engineer whose code review turnaround has been slipping for a month.",
+			"result": {
+				"factors": [
+					{
+						"label": "Skill",
+						"score": 8
+					},
+					{
+						"label": "Motivation",
+						"score": 4
+					},
+					{
+						"label": "Environment",
+						"score": 6
+					},
+					{
+						"label": "Feedback",
+						"score": 3
+					},
+					{
+						"label": "Recovery",
+						"score": 5
+					}
+				],
+				"summary": "Skill isn't the issue — low motivation and almost no feedback on review quality are the real bottlenecks."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Personal Performance Model to a question about their own performance. Given their question: \"{{question}}\", score the five factors — Skill, Motivation, Environment, Feedback, Recovery — each 0-10, reflecting how each one is currently affecting the situation. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Skill\", \"score\": 7}, {\"label\": \"Motivation\", \"score\": 5}, {\"label\": \"Environment\", \"score\": 6}, {\"label\": \"Feedback\", \"score\": 4}, {\"label\": \"Recovery\", \"score\": 5}], \"summary\": \"...\"}",
+		"outputSchemaType": "radar",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"factors",
+				"summary"
+			],
+			"properties": {
+				"factors": {
+					"type": "array",
+					"minItems": 3,
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"score"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"score": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 10
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RadarChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "making-of-model",
+		"slug": "making-of-model",
+		"name": "The Making-of Model",
+		"category": "know-self",
+		"description": "Walks back through how a decision or piece of work actually got made — the intention behind it, the process you followed, the outcome, and the lesson — so you can learn from your own process, not just the result.",
+		"whenToUse": "Use after a decision or project wraps up and you want to genuinely learn from how it went, not just whether it succeeded.",
+		"origin": "No single credited originator; a common structure in reflective-practice and after-action-review traditions, adapted here into four stages.",
+		"howToApply": [
+			"Name the decision or piece of work you're reflecting on.",
+			"State your original Intention — what you set out to do and why.",
+			"Describe the Process — what you actually did, including any deviations from plan.",
+			"State the Outcome — what actually happened, separate from how you feel about it.",
+			"Name the Lesson — what this reveals about how you decide or work, that you'd apply next time."
+		],
+		"pros": [
+			"Separates intention from outcome, which surfaces process problems success can hide.",
+			"Works even when the outcome was good — most reflection models only trigger after failure.",
+			"Produces a specific, reusable lesson instead of a vague 'that went fine/badly.'"
+		],
+		"cons": [
+			"Requires honest memory of your original intention, which can be rewritten in hindsight.",
+			"Easy to state a lesson too generic to actually change future behavior.",
+			"Best done soon after the fact — value fades if you wait too long to reflect."
+		],
+		"example": {
+			"scenario": "Reflecting on a product launch that hit its deadline but landed with weak user adoption.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Intention",
+						"description": "Ship a focused MVP fast and validate demand before over-building."
+					},
+					{
+						"order": 2,
+						"title": "Process",
+						"description": "Cut scope aggressively under deadline pressure, skipped user testing to hit the date."
+					},
+					{
+						"order": 3,
+						"title": "Outcome",
+						"description": "Shipped on time, but adoption has been flat for three weeks."
+					},
+					{
+						"order": 4,
+						"title": "Lesson",
+						"description": "Speed protected the deadline but not the goal — next time, protect one round of user testing even if it costs a few days."
+					}
+				],
+				"summary": "The process optimized for the wrong constraint — hitting the date mattered less than validating the idea."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Making-of Model to reflect on a decision or piece of work. Given their question: \"{{question}}\", produce four steps in order: Intention (what they set out to do), Process (what actually happened), Outcome (the actual result), and Lesson (what this reveals for next time). Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Intention\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Process\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Outcome\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Lesson\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "personal-potential-trap",
+		"slug": "personal-potential-trap",
+		"name": "Personal Potential Trap",
+		"category": "know-self",
+		"description": "Examines whether you're treating your current self-image or past performance as a fixed ceiling, when it might just be where you happen to be standing right now.",
+		"whenToUse": "Use when you're about to rule something out with 'that's just not who I am' or 'I've never been good at that.'",
+		"origin": "No single credited originator; a recurring theme in growth-mindset and coaching literature (echoing, without being identical to, Carol Dweck's fixed vs. growth mindset research) about mistaking current state for permanent capacity.",
+		"howToApply": [
+			"Name the belief about your own limit that's shaping this decision.",
+			"Ask where that belief actually came from — a real pattern, or one data point generalized too far.",
+			"Notice the discomfort of considering you might be wrong about your own ceiling.",
+			"Identify what resolving it would require — is it a real limit worth respecting, or an assumption worth testing."
+		],
+		"pros": [
+			"Directly challenges a specific, common form of self-limiting reasoning.",
+			"Distinguishes between a real constraint and an assumed one — doesn't demand blind optimism.",
+			"Short enough to run as a quick check before ruling an option out."
+		],
+		"cons": [
+			"Can tip into denial of genuine limits if applied uncritically.",
+			"Requires real self-honesty, similar to cognitive dissonance work.",
+			"Doesn't replace actually testing the belief with real evidence."
+		],
+		"example": {
+			"scenario": "Hesitating to apply for a public-speaking-heavy role because 'I've never been a confident speaker.'",
+			"result": {
+				"sections": [
+					{
+						"heading": "The Assumed Ceiling",
+						"body": "Believing confident public speaking is simply not something you're capable of."
+					},
+					{
+						"heading": "Where It Actually Came From",
+						"body": "One bad presentation in school over a decade ago, generalized into a permanent trait."
+					},
+					{
+						"heading": "What Resolving It Would Require",
+						"body": "Testing the belief with a low-stakes speaking opportunity before treating it as settled fact."
+					}
+				],
+				"summary": "The ceiling looks assumed, not proven — worth testing before it rules out the role."
+			}
+		},
+		"promptTemplate": "You are helping someone examine a self-limiting belief using the Personal Potential Trap model. Given their question: \"{{question}}\", write narrative sections covering: the assumed ceiling or limit at play, where that belief actually seems to come from, and what genuinely resolving it (testing it or accepting it) would require. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Assumed Ceiling\", \"body\": \"...\"}, {\"heading\": \"Where It Actually Came From\", \"body\": \"...\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "hard-choice-model",
+		"slug": "hard-choice-model",
+		"name": "The Hard Choice Model",
+		"category": "decision-making",
+		"description": "Named after philosopher Ruth Chang's work on choices where the options are 'on a par' — not equal, not one clearly better, just genuinely incomparable — and what that means for how you should decide.",
+		"whenToUse": "Use when you keep listing pros and cons but no option comes out clearly ahead, and the deadlock itself feels like the real problem.",
+		"origin": "Based on philosopher Ruth Chang's work on hard choices and her widely-viewed TED talk 'How to Make Hard Choices,' which argues some choices are hard not because we lack information but because the options are on a par.",
+		"howToApply": [
+			"Name the options that feel genuinely deadlocked.",
+			"Check whether one option is actually better, worse, or truly on a par with the other — not just hard to compare.",
+			"If they're on a par, recognize that no further analysis will produce a 'correct' answer.",
+			"Ask which choice lets you become the person you have reason to want to be, and commit on that basis instead of waiting for the choice to resolve itself."
+		],
+		"pros": [
+			"Explains why more pro/con analysis sometimes makes a hard choice feel harder, not easier.",
+			"Reframes hard choices as an opportunity to define your values, not just a math problem to solve.",
+			"Gives permission to commit without needing 'proof' the choice was objectively correct."
+		],
+		"cons": [
+			"Deliberately doesn't tell you which option to pick — it's a reframe, not a decision procedure.",
+			"Can be misused to justify not doing real analysis on choices that do have a genuinely better option.",
+			"Requires a level of self-reflection ('who do I want to be') that's harder than comparing features."
+		],
+		"example": {
+			"scenario": "Choosing between two strong job offers — one stable and well-paid, one risky but personally meaningful — after weeks of pro/con lists that go nowhere.",
+			"result": {
+				"sections": [
+					{
+						"heading": "The Deadlock",
+						"body": "Both jobs score well on different dimensions, and neither list has produced a clear winner after weeks of comparison."
+					},
+					{
+						"heading": "Are They Actually On a Par",
+						"body": "Yes — one wins on security, the other on meaning, and there's no common scale that makes one strictly better."
+					},
+					{
+						"heading": "Who You'd Become",
+						"body": "The stable job extends who you already are; the risky one commits you to becoming someone more entrepreneurial."
+					}
+				],
+				"summary": "No further analysis will break the tie — the real question is which version of yourself you want to commit to."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Ruth Chang's Hard Choice Model to a decision between options that may be genuinely 'on a par.' Given their question: \"{{question}}\", write narrative sections covering: the deadlock itself, whether the options are truly on a par rather than one being better, and what committing to each option would mean for who they become. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Deadlock\", \"body\": \"...\"}, {\"heading\": \"Are They Actually On a Par\", \"body\": \"...\"}, {\"heading\": \"Who You'd Become\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "cognitive-bias-checklist",
+		"slug": "cognitive-bias-checklist",
+		"name": "Cognitive Bias Checklist",
+		"category": "know-self",
+		"description": "Scans your decision against well-documented cognitive biases from behavioral psychology and ranks which ones are most likely distorting your view of it right now.",
+		"whenToUse": "Use when a decision feels obvious to you but you want a check on whether that certainty is earned or just a bias talking.",
+		"origin": "Draws on the heuristics-and-biases research program led by Daniel Kahneman and Amos Tversky, popularized in Kahneman's 'Thinking, Fast and Slow.'",
+		"howToApply": [
+			"State the decision and which option you currently favor.",
+			"Check for confirmation bias — are you only noticing evidence that supports your favored option?",
+			"Check for anchoring — is an early number or impression pulling your judgment toward it?",
+			"Check for sunk cost fallacy — is past investment making you reluctant to change course?",
+			"Check for availability heuristic — are recent or vivid examples outweighing base rates?",
+			"Rank which biases are most likely active here and adjust your confidence accordingly."
+		],
+		"pros": [
+			"Grounded in decades of replicated behavioral-economics research, not folk psychology.",
+			"Turns a vague 'am I being biased?' into specific, checkable questions.",
+			"Cheap to run as a final gut-check before committing to a high-stakes decision."
+		],
+		"cons": [
+			"Knowing about a bias doesn't reliably prevent it — awareness alone has limited debiasing power.",
+			"Can be used selectively to attack a conclusion you already dislike, itself a bias.",
+			"Only covers a handful of the dozens of documented biases — not exhaustive."
+		],
+		"example": {
+			"scenario": "Feeling very confident about promoting a candidate largely because their resume 'jumped out' at first read.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "Anchoring",
+						"weight": 50,
+						"rationale": "First impression from the resume is likely anchoring the whole evaluation"
+					},
+					{
+						"rank": 2,
+						"label": "Availability heuristic",
+						"weight": 30,
+						"rationale": "A recent standout success from this candidate is more vivid than quieter steady performers"
+					},
+					{
+						"rank": 3,
+						"label": "Confirmation bias",
+						"weight": 20,
+						"rationale": "Later evidence may be getting read through an already-formed favorable lens"
+					}
+				],
+				"summary": "Anchoring on the first impression is likely doing the most distortion here — worth re-reviewing the other candidates cold."
+			}
+		},
+		"promptTemplate": "You are helping someone check a decision against common cognitive biases. Given their question: \"{{question}}\", identify which biases (e.g. confirmation bias, anchoring, sunk cost fallacy, availability heuristic) are most likely distorting the decision, rank them by how much influence each likely has, and give each a weight (0-100). Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 40, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "crossroads-model",
+		"slug": "crossroads-model",
+		"name": "The Crossroads Model",
+		"category": "decision-making",
+		"description": "Plots the choices in your question by reversibility and impact, so you know how much deliberation each one actually deserves.",
+		"whenToUse": "Use when you're spending the same amount of deliberation on every decision regardless of how much it actually matters or how easy it is to undo.",
+		"origin": "No single credited originator; a generic decision-theory framing related in spirit to (but not identical with) the popular 'one-way door vs. two-way door' distinction used in some decision-making circles.",
+		"howToApply": [
+			"List the decisions or options competing for your deliberation time.",
+			"Rate each by reversibility — low (hard/costly to undo) or high (easy to undo).",
+			"Rate each by impact — low (doesn't matter much) or high (matters a lot).",
+			"Sort into the four quadrants.",
+			"Spend real deliberation on low-reversibility/high-impact items, and decide the rest fast."
+		],
+		"pros": [
+			"Directly targets over-deliberating on low-stakes, reversible choices.",
+			"Simple two-axis structure, fast to apply to a whole list of decisions at once.",
+			"Encourages fast action on the majority of decisions, which usually are reversible."
+		],
+		"cons": [
+			"Reversibility and impact are still judgment calls, not objective measurements.",
+			"Some decisions are hard to classify cleanly — partially reversible, moderately impactful.",
+			"Doesn't help with the actual content of the hard, irreversible decisions, only how much time to give them."
+		],
+		"example": {
+			"scenario": "A founder juggling which vendor to use for internal tools versus whether to bring on a co-founder.",
+			"result": {
+				"xAxisLabel": "Reversibility",
+				"yAxisLabel": "Impact",
+				"quadrants": [
+					{
+						"name": "Decide Fast, Low Risk",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Choosing an internal task-tracking tool"
+						]
+					},
+					{
+						"name": "Decide Fast, High Stakes",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Running a 90-day trial with a potential co-founder before formalizing"
+						]
+					},
+					{
+						"name": "Deliberate Carefully",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Signing a multi-year office lease"
+						]
+					},
+					{
+						"name": "Low Priority",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Picking the office coffee brand"
+						]
+					}
+				],
+				"summary": "The co-founder decision deserves real deliberation, but it can start as a reversible trial rather than an irreversible commitment."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Crossroads Model to a decision. Given their question: \"{{question}}\", identify the choices or options implied by it and classify each by reversibility (x: low or high) and impact (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Reversibility\", \"yAxisLabel\": \"Impact\", \"quadrants\": [{\"name\": \"Decide Fast, Low Risk\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Decide Fast, High Stakes\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Deliberate Carefully\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Low Priority\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "rumsfeld-matrix",
+		"slug": "rumsfeld-matrix",
+		"name": "The Rumsfeld Matrix",
+		"category": "decision-making",
+		"description": "Sorts what you know and don't know about your question into Known Knowns, Known Unknowns, Unknown Knowns, and Unknown Unknowns, to surface where your real uncertainty lies.",
+		"whenToUse": "Use when a decision feels uncertain and you want to distinguish what you genuinely don't know from what you know but haven't articulated, or haven't even thought to ask.",
+		"origin": "Popularized by U.S. Secretary of Defense Donald Rumsfeld in a February 2002 press briefing, where he described 'known knowns,' 'known unknowns,' and 'unknown unknowns'; the fourth 'unknown knowns' quadrant was added later by commentators including philosopher Slavoj Žižek.",
+		"howToApply": [
+			"State the decision and what's driving the uncertainty around it.",
+			"List Known Knowns — facts you have and know you have.",
+			"List Known Unknowns — questions you know you need answered but don't have answers to yet.",
+			"List Unknown Knowns — things you actually know (from experience or intuition) but haven't consciously articulated or trusted.",
+			"List Unknown Unknowns as best you can — flag areas where you suspect there are questions you haven't thought to ask."
+		],
+		"pros": [
+			"Separates 'needs more research' (known unknowns) from 'needs more self-trust' (unknown knowns) — most models miss this second category.",
+			"Explicitly makes room for unknown unknowns instead of pretending analysis is ever complete.",
+			"Memorable phrasing makes it easy to reuse in conversation with others."
+		],
+		"cons": [
+			"Unknown unknowns are by definition hard to list — the quadrant can end up thin or generic.",
+			"Can feel like a rhetorical trick rather than an analytical tool if applied superficially.",
+			"Doesn't rank the items, so it clarifies uncertainty without prioritizing what to resolve first."
+		],
+		"example": {
+			"scenario": "Deciding whether to enter a new international market the team has never operated in before.",
+			"result": {
+				"xAxisLabel": "Known to You",
+				"yAxisLabel": "Knowable at All",
+				"quadrants": [
+					{
+						"name": "Known Knowns",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Current market size and competitor pricing"
+						]
+					},
+					{
+						"name": "Known Unknowns",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Local regulatory approval timeline"
+						]
+					},
+					{
+						"name": "Unknown Knowns",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"The team's gut sense from a similar past expansion, never formally written down"
+						]
+					},
+					{
+						"name": "Unknown Unknowns",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Cultural factors in the new market no one on the team has surfaced yet"
+						]
+					}
+				],
+				"summary": "The biggest risk isn't the known unknowns you're already researching — it's the unknown unknowns nobody has named yet."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Rumsfeld Matrix to a decision. Given their question: \"{{question}}\", sort what's known and unknown about it into four quadrants: Known Knowns (known to you, knowable), Known Unknowns (not known to you, but knowable/being sought), Unknown Knowns (known to you but not consciously articulated), and Unknown Unknowns (not known, not yet even identified as a question). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to You\", \"yAxisLabel\": \"Knowable at All\", \"quadrants\": [{\"name\": \"Known Knowns\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Known Unknowns\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Unknown Knowns\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Unknown Unknowns\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "swiss-cheese-model",
+		"slug": "swiss-cheese-model",
+		"name": "The Swiss Cheese Model",
+		"category": "decision-making",
+		"description": "Looks at the layers of defense protecting you against a specific failure, and where the holes in each layer might be lining up to let that failure through.",
+		"whenToUse": "Use when trying to understand how something went wrong (or could go wrong) despite multiple safeguards supposedly being in place.",
+		"origin": "Developed by psychologist James Reason in 1990 as a model of accident causation in complex systems, using the image of slices of Swiss cheese stacked together — each slice a layer of defense, each hole a weakness.",
+		"howToApply": [
+			"Name the failure or risk you're examining.",
+			"List each layer of defense meant to prevent it, in order.",
+			"For each layer, name its 'hole' — the specific weakness that could let the failure through.",
+			"Check whether the holes in different layers could plausibly line up at the same time.",
+			"Strengthen the layer with the largest or most-aligned hole first."
+		],
+		"pros": [
+			"Explains why failures happen despite multiple safeguards — it's rarely one cause, it's alignment of gaps.",
+			"Directs attention to systemic weaknesses rather than blaming a single person or event.",
+			"Widely used and understood in safety-critical fields, so it's easy to communicate to others."
+		],
+		"cons": [
+			"Can be used to over-systematize what was actually a simple, single-cause failure.",
+			"Requires genuinely knowing your defense layers — hard to apply to novel or unfamiliar systems.",
+			"Doesn't tell you how many layers is 'enough,' only that more independent layers help."
+		],
+		"example": {
+			"scenario": "A team investigating how a bug shipped to production despite code review, tests, and a staging environment.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Code Review",
+						"description": "Hole: reviewer was rushed and skimmed the diff instead of reading it closely."
+					},
+					{
+						"order": 2,
+						"title": "Automated Tests",
+						"description": "Hole: the specific edge case wasn't covered by any existing test."
+					},
+					{
+						"order": 3,
+						"title": "Staging Environment",
+						"description": "Hole: staging uses synthetic data that never triggered the bug's real-world condition."
+					},
+					{
+						"order": 4,
+						"title": "Production Monitoring",
+						"description": "Hole: the alert threshold was too high to catch the issue quickly."
+					}
+				],
+				"summary": "No single layer failed badly — four small holes happened to line up at once."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Swiss Cheese Model to understand a failure or risk. Given their question: \"{{question}}\", identify the layers of defense involved (in order) and, for each, name the specific 'hole' or weakness in that layer that could let the failure through. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"...\", \"description\": \"Hole: ...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "maslow-pyramid",
+		"slug": "maslow-pyramid",
+		"name": "Maslow's Pyramid",
+		"category": "know-self",
+		"description": "Places your question against Maslow's hierarchy of needs to see which level — physiological, safety, belonging, esteem, or self-actualization — actually needs attention right now.",
+		"whenToUse": "Use when you're chasing a higher-level goal (like purpose or growth) while a more basic need is quietly unmet and undermining everything above it.",
+		"origin": "Developed by psychologist Abraham Maslow in his 1943 paper 'A Theory of Human Motivation,' proposing that human needs are organized in a hierarchy from basic physiological needs up to self-actualization.",
+		"howToApply": [
+			"State the goal or question you're evaluating.",
+			"Check Physiological needs — sleep, food, health — are these genuinely met?",
+			"Check Safety needs — financial security, stability — are these solid?",
+			"Check Belonging needs — relationships, community — are these in place?",
+			"Check Esteem needs — respect, achievement, recognition — are these being met?",
+			"Check Self-Actualization — growth, purpose — and be honest about whether it's premature to focus here."
+		],
+		"pros": [
+			"Prevents chasing a high-level goal while a foundational need is silently sabotaging it.",
+			"Simple, well-known structure that's easy to walk through quickly.",
+			"Applies to almost any personal question, not just career or work."
+		],
+		"cons": [
+			"The strict hierarchy (must satisfy lower levels before higher ones matter) is not well-supported by later research — needs often operate in parallel.",
+			"Levels can be hard to cleanly separate in practice.",
+			"Doesn't tell you how to address a deficient level, only that it needs attention."
+		],
+		"example": {
+			"scenario": "Feeling stuck and unmotivated at work despite genuinely wanting to grow into a bigger role, while quietly worried about job security amid layoffs.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "Physiological",
+						"weight": 10,
+						"rationale": "Sleep and health seem stable, low priority right now"
+					},
+					{
+						"rank": 2,
+						"label": "Safety",
+						"weight": 50,
+						"rationale": "Layoff anxiety is undermining focus on everything above it"
+					},
+					{
+						"rank": 3,
+						"label": "Belonging",
+						"weight": 15,
+						"rationale": "Team relationships are solid"
+					},
+					{
+						"rank": 4,
+						"label": "Esteem",
+						"weight": 15,
+						"rationale": "Some desire for more recognition, secondary right now"
+					},
+					{
+						"rank": 5,
+						"label": "Self-Actualization",
+						"weight": 10,
+						"rationale": "Growth goals are real but premature while safety is shaky"
+					}
+				],
+				"summary": "The safety layer is the actual bottleneck — growth ambitions will stay stuck until job security concerns are addressed."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Maslow's Hierarchy of Needs to a question about themselves. Given their question: \"{{question}}\", assess how well each of the five levels — Physiological, Safety, Belonging, Esteem, Self-Actualization — is currently being met, and weight each (0-100) by how much attention it needs right now. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"Physiological\", \"weight\": 10, \"rationale\": \"...\"}, {\"rank\": 2, \"label\": \"Safety\", \"weight\": 50, \"rationale\": \"...\"}, {\"rank\": 3, \"label\": \"Belonging\", \"weight\": 15, \"rationale\": \"...\"}, {\"rank\": 4, \"label\": \"Esteem\", \"weight\": 15, \"rationale\": \"...\"}, {\"rank\": 5, \"label\": \"Self-Actualization\", \"weight\": 10, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "sinus-milieu",
+		"slug": "sinus-milieu",
+		"name": "Sinus-Milieu Model",
+		"category": "know-others",
+		"description": "Groups the people relevant to your question into value-and-lifestyle-based social milieus, rather than simple demographics, so you can see who you're actually dealing with.",
+		"whenToUse": "Use when you need to understand a group of people — customers, colleagues, a community — beyond age/income labels.",
+		"origin": "Developed by the German Sinus Institut starting in the early 1980s, building on Pierre Bourdieu's social-space theory to segment populations by shared values and way of life rather than demographics alone.",
+		"howToApply": [
+			"Name the group of people relevant to your question.",
+			"Identify 3-5 distinct value/lifestyle segments (milieus) within that group.",
+			"Describe each milieu's defining values, attitudes, and everyday habits.",
+			"Note which milieu(s) are most relevant to the decision at hand.",
+			"Tailor your approach to the specific milieu rather than the group as a whole."
+		],
+		"pros": [
+			"Captures real differences in values and lifestyle that pure demographics miss.",
+			"Prevents treating a diverse group as one homogeneous audience.",
+			"Widely used in market research, so segment descriptions are often well-documented for consumer contexts."
+		],
+		"cons": [
+			"Requires real data or careful judgment to assign people to milieus accurately.",
+			"Off-the-shelf milieu definitions are Europe-centric and don't always transfer cleanly elsewhere.",
+			"Can flatten individuals into a stereotype if applied too rigidly."
+		],
+		"example": {
+			"scenario": "A community org deciding how to word an invitation to a neighborhood planning meeting so more residents actually show up.",
+			"result": {
+				"rows": [
+					{
+						"label": "Established Traditionalists",
+						"items": [
+							"Value stability and formal process",
+							"Respond well to printed flyers and clear agendas"
+						]
+					},
+					{
+						"label": "Young Strivers",
+						"items": [
+							"Time-poor, mobile-first",
+							"Respond to short, benefit-led messages via text or social"
+						]
+					},
+					{
+						"label": "Community Idealists",
+						"items": [
+							"Motivated by collective impact",
+							"Respond to invitations framed around shared values"
+						]
+					}
+				],
+				"summary": "Send three tailored invitations, not one generic flyer — each milieu responds to a different framing."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Sinus-Milieu model to a question involving a group of people. Given their question: \"{{question}}\", identify 3-5 relevant value-and-lifestyle segments (milieus) within that group and describe each one's defining traits relevant to the question. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"...\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "matrix_table",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"rows",
+				"summary"
+			],
+			"properties": {
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"items"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "MatrixTableChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "bourdieu-model",
+		"slug": "bourdieu-model",
+		"name": "Bourdieu Model",
+		"category": "know-others",
+		"description": "Looks at why people occupy the social positions and make the choices they do, through habitus, capital, and field — Pierre Bourdieu's theory of social space.",
+		"whenToUse": "Use when trying to understand why someone (or a group) thinks or acts differently than you'd expect, given their background.",
+		"origin": "Developed by French sociologist Pierre Bourdieu, most fully in his 1979 book 'Distinction: A Social Critique of the Judgement of Taste'.",
+		"howToApply": [
+			"Name the person or group whose behavior you're trying to understand.",
+			"Consider their habitus — the dispositions and tastes shaped by their upbringing and social position.",
+			"Consider their capital — economic (money), cultural (education, taste), and social (networks) resources available to them.",
+			"Consider the field — the specific social arena (workplace, industry, community) they're operating in and its particular rules.",
+			"Ask how habitus, capital, and field together explain their choices, not just their stated reasons."
+		],
+		"pros": [
+			"Explains behavior that looks irrational until you see the social structure behind it.",
+			"Distinguishes between different kinds of advantage (money vs education vs connections), which single-axis models miss.",
+			"Useful for understanding group dynamics, not just individual psychology."
+		],
+		"cons": [
+			"Abstract and academic — takes effort to translate into a concrete read on a specific situation.",
+			"Risk of using it to explain away disagreement rather than genuinely engage with someone's reasoning.",
+			"Requires real knowledge of someone's background, which you may not fully have."
+		],
+		"example": {
+			"scenario": "Trying to understand why a new hire from a very different professional background keeps clashing with the team's unwritten norms.",
+			"result": {
+				"sections": [
+					{
+						"heading": "Habitus",
+						"body": "Their prior industry rewarded direct, fast-moving communication; this team's culture reads that as abrasive."
+					},
+					{
+						"heading": "Capital",
+						"body": "They bring strong technical credibility but little of the specific social capital (who-to-ask, informal trust) this team runs on."
+					},
+					{
+						"heading": "Field",
+						"body": "This team's field has unwritten rules around consensus-building that aren't written down anywhere, so the clash isn't really about competence."
+					}
+				],
+				"summary": "The friction is a field mismatch, not a skill or attitude problem — name the unwritten rules explicitly instead of expecting osmosis."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Pierre Bourdieu's theory of social space (habitus, capital, field) to a question about understanding another person or group. Given their question: \"{{question}}\", write narrative sections examining habitus, capital, and field as they relate to the situation. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Habitus\", \"body\": \"...\"}, {\"heading\": \"Capital\", \"body\": \"...\"}, {\"heading\": \"Field\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "double-loop-learning",
+		"slug": "double-loop-learning",
+		"name": "Double Loop Learning",
+		"category": "improve-others",
+		"description": "Distinguishes between fixing the immediate action and questioning the underlying assumption behind it, so feedback leads to real change, not just a tweak.",
+		"whenToUse": "Use when the same kind of problem keeps recurring despite repeated fixes, or when coaching someone stuck making the same mistake in new forms.",
+		"origin": "Developed by Chris Argyris and Donald Schön, most notably in their 1978 book 'Organizational Learning'.",
+		"howToApply": [
+			"Name the specific action or outcome that isn't working.",
+			"Single loop: identify what small adjustment to the action would fix this instance.",
+			"Ask what assumption, belief, or governing variable led to that action in the first place.",
+			"Double loop: question whether that underlying assumption itself needs to change.",
+			"Decide whether you're treating a symptom (single loop) or the actual cause (double loop)."
+		],
+		"pros": [
+			"Explains why some fixes keep needing to be repeated — they never touched the real cause.",
+			"Pushes past surface-level coaching into genuinely changing how someone (or you) thinks.",
+			"Applicable to both individual habits and organizational patterns."
+		],
+		"cons": [
+			"Harder and slower than single-loop fixes — not always warranted for low-stakes issues.",
+			"Requires real willingness to question one's own assumptions, which people resist.",
+			"Can be used to over-intellectualize a problem that just needed a simple fix."
+		],
+		"example": {
+			"scenario": "A manager whose reports keep missing deadlines despite repeated reminders and tighter deadlines.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "The Immediate Problem",
+						"description": "Reports are missing deadlines again this sprint."
+					},
+					{
+						"order": 2,
+						"title": "Single-Loop Fix",
+						"description": "Set stricter deadlines and more frequent check-ins."
+					},
+					{
+						"order": 3,
+						"title": "Underlying Assumption",
+						"description": "The manager assumes reports understand the priority order, but priorities are never actually communicated explicitly."
+					},
+					{
+						"order": 4,
+						"title": "Double-Loop Change",
+						"description": "Replace check-ins with an explicit, shared priority list revisited weekly — fixing the assumption, not just the symptom."
+					}
+				],
+				"summary": "Tighter deadlines will keep failing until the real gap — unclear priorities — is addressed directly."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Double Loop Learning (Argyris & Schön) to a recurring problem. Given their question: \"{{question}}\", walk from the immediate problem, through a single-loop fix, to the underlying assumption behind it, to a double-loop change that addresses that assumption. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"The Immediate Problem\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Single-Loop Fix\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Underlying Assumption\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Double-Loop Change\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "appreciative-inquiry",
+		"slug": "appreciative-inquiry",
+		"name": "Appreciative Inquiry",
+		"category": "improve-others",
+		"description": "Builds change on what's already working well, moving through Discover, Dream, Design, and Destiny, instead of starting from what's broken.",
+		"whenToUse": "Use when coaching a person or team that's demoralized by a deficit-focused approach, or you want change to build on real strengths.",
+		"origin": "Developed by David Cooperrider and Suresh Srivastva at Case Western Reserve University, first published in 1987.",
+		"howToApply": [
+			"Discover — identify what's already working well and why.",
+			"Dream — envision what the best possible future looks like, building on those strengths.",
+			"Design — work out the concrete structures and practices that would make that future real.",
+			"Destiny — commit to specific next steps that sustain the change."
+		],
+		"pros": [
+			"Builds motivation and buy-in by starting from strength rather than deficit.",
+			"Good fit for team or culture work where morale is already fragile.",
+			"The 4-D structure is easy to run as a facilitated session."
+		],
+		"cons": [
+			"Can avoid necessary hard truths if used to dodge real problems.",
+			"Requires genuine strengths to build from — weak fit when the situation is genuinely broken.",
+			"The upbeat framing can feel forced if introduced without buy-in."
+		],
+		"example": {
+			"scenario": "A team lead trying to rebuild morale after a rough quarter, without just papering over what went wrong.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Discover",
+						"description": "The team shipped a hard release on time despite short staffing — surface what made that possible."
+					},
+					{
+						"order": 2,
+						"title": "Dream",
+						"description": "Imagine a quarter where that same resourcefulness isn't needed because workload is sustainable."
+					},
+					{
+						"order": 3,
+						"title": "Design",
+						"description": "Build a lightweight capacity-check into sprint planning based on what worked during the crunch."
+					},
+					{
+						"order": 4,
+						"title": "Destiny",
+						"description": "Commit to reviewing the capacity-check every sprint for the next quarter."
+					}
+				],
+				"summary": "Rebuilding from what the team proved it could do, not from what went wrong, gives the plan somewhere real to stand."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Appreciative Inquiry (Cooperrider & Srivastva's 4-D cycle) to a coaching or team-improvement question. Given their question: \"{{question}}\", walk through Discover, Dream, Design, and Destiny. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Discover\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Dream\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Design\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Destiny\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "long-tail-model",
+		"slug": "long-tail-model",
+		"name": "The Long Tail Model",
+		"category": "decision-making",
+		"description": "Weighs a small number of big, obvious options against a long tail of niche ones that might collectively matter more than any single big option.",
+		"whenToUse": "Use when you're tempted to chase the one obvious big option and want to check whether a portfolio of smaller bets serves you better.",
+		"origin": "Coined by Chris Anderson in a 2004 Wired article, later expanded into his 2006 book 'The Long Tail'.",
+		"howToApply": [
+			"List the big, obvious options (the head) relevant to your question.",
+			"List the smaller, niche options (the tail) that are individually minor but numerous.",
+			"Estimate the realistic payoff of each, weighing likelihood alongside size.",
+			"Rank all options together, not head vs tail separately.",
+			"Decide whether concentrating on the head or spreading across the tail actually serves your goal."
+		],
+		"pros": [
+			"Prevents overlooking niche options that collectively add up to more than the obvious big one.",
+			"Useful corrective when 'go big or go home' thinking is the default.",
+			"Forces an honest side-by-side ranking instead of assuming big automatically means best."
+		],
+		"cons": [
+			"Chasing too many small bets can spread effort too thin to execute any of them well.",
+			"Requires real estimation of the tail's collective payoff, which is often uncertain.",
+			"Not every decision has a meaningful tail — can be forced onto situations that don't fit."
+		],
+		"example": {
+			"scenario": "A solo creator deciding whether to chase one big sponsorship deal or build several smaller income streams.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "Several smaller recurring sponsors",
+						"weight": 55,
+						"rationale": "More resilient, less dependent on any single relationship"
+					},
+					{
+						"rank": 2,
+						"label": "One big sponsorship deal",
+						"weight": 30,
+						"rationale": "Highest single payoff but concentrated risk"
+					},
+					{
+						"rank": 3,
+						"label": "Niche paid community",
+						"weight": 15,
+						"rationale": "Small now but compounds over time"
+					}
+				],
+				"summary": "The combined tail options edge out the single big deal on both payoff and resilience."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Long Tail model to a decision. Given their question: \"{{question}}\", identify both the big/obvious options and the smaller/niche options, then rank all of them together by realistic payoff with a weight (0-100). Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 50, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "conflict-resolution-model",
+		"slug": "conflict-resolution-model",
+		"name": "Conflict Resolution Model",
+		"category": "improve-others",
+		"description": "Maps a conflict onto the five Thomas-Kilmann styles so you can choose a resolution approach deliberately instead of defaulting to habit.",
+		"whenToUse": "Use when navigating a disagreement and unsure whether to push, yield, or find middle ground.",
+		"origin": "Based on the Thomas-Kilmann Conflict Mode Instrument, developed by Kenneth Thomas and Ralph Kilmann in the 1970s.",
+		"howToApply": [
+			"Name the conflict and what's at stake for each side.",
+			"Consider Competing — pursuing your own concerns at the other's expense.",
+			"Consider Collaborating — working together to fully satisfy both sides.",
+			"Consider Compromising — each side gives up something for a middle ground.",
+			"Consider Avoiding and Accommodating as the remaining two styles.",
+			"Choose the style that fits how much you care about the relationship versus the outcome here."
+		],
+		"pros": [
+			"Names five distinct approaches instead of defaulting to whichever one is habitual.",
+			"Makes explicit the trade-off between relationship and outcome that's often left implicit.",
+			"Widely taught, so it's easy to discuss with the other party using shared language."
+		],
+		"cons": [
+			"Doesn't tell you which style is right for a given conflict — that judgment call remains yours.",
+			"People often default to one style regardless of situation, and naming it doesn't automatically change that.",
+			"Oversimplifies conflicts that don't cleanly map to a single style."
+		],
+		"example": {
+			"scenario": "Deciding how to handle a disagreement with a co-founder over the company's spending pace.",
+			"result": {
+				"rows": [
+					{
+						"label": "Competing",
+						"items": [
+							"Push hard for your budget position",
+							"Risks damaging the co-founder relationship"
+						]
+					},
+					{
+						"label": "Collaborating",
+						"items": [
+							"Dig into both sets of concerns together",
+							"Slower but likely to produce a better shared plan"
+						]
+					},
+					{
+						"label": "Compromising",
+						"items": [
+							"Split the difference on spend",
+							"Fast but may satisfy neither position fully"
+						]
+					}
+				],
+				"summary": "Given the long-term partnership at stake, Collaborating is worth the extra time here."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Thomas-Kilmann Conflict Resolution styles to a disagreement. Given their question: \"{{question}}\", describe how at least three of the five styles (Competing, Collaborating, Compromising, Avoiding, Accommodating) would play out in this specific conflict. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"...\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "matrix_table",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"rows",
+				"summary"
+			],
+			"properties": {
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"items"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "MatrixTableChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "black-swan-model",
+		"slug": "black-swan-model",
+		"name": "The Black Swan Model",
+		"category": "decision-making",
+		"description": "Looks at your question through the lens of rare, high-impact, hard-to-predict events, and how exposed you are to one.",
+		"whenToUse": "Use when a decision has a small chance of an extreme outcome that ordinary planning tends to ignore.",
+		"origin": "Developed by Nassim Nicholas Taleb, most fully in his 2007 book 'The Black Swan: The Impact of the Highly Improbable'.",
+		"howToApply": [
+			"Name the decision and its normal, expected range of outcomes.",
+			"Ask what rare, extreme event — positive or negative — sits outside that expected range.",
+			"Assess how exposed you currently are if that rare event happened.",
+			"Ask whether you can cheaply reduce your downside exposure or increase your upside exposure to that event.",
+			"Favor decisions with limited downside and open-ended upside over the reverse."
+		],
+		"pros": [
+			"Corrects for the common mistake of planning only around the expected or average case.",
+			"Reframes risk in terms of exposure and fragility, not just probability.",
+			"Encourages asymmetric bets — limited downside, open upside — which compound well over time."
+		],
+		"cons": [
+			"Can tip into excessive worry about unlikely events that never materialize.",
+			"Hard to act on precisely, since black swans are by definition hard to predict.",
+			"Risk of using it to justify inaction rather than genuine risk management."
+		],
+		"example": {
+			"scenario": "Deciding whether to keep all savings in a single employer's stock plan.",
+			"result": {
+				"sections": [
+					{
+						"heading": "Expected Range",
+						"body": "Under normal conditions, the stock plan performs roughly in line with the market."
+					},
+					{
+						"heading": "The Black Swan",
+						"body": "A rare company-specific failure could wipe out both your job and your savings at the same time."
+					},
+					{
+						"heading": "Exposure and Fix",
+						"body": "The correlated risk — losing income and savings together — is the real danger, and it's cheap to fix by diversifying savings outside the employer."
+					}
+				],
+				"summary": "The risk isn't the stock's average performance, it's the rare scenario where job and savings fail together — diversify to remove that correlation."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Nassim Taleb's Black Swan thinking to a decision. Given their question: \"{{question}}\", identify the expected range of outcomes, the rare high-impact event sitting outside that range, and how exposed they currently are to it. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Expected Range\", \"body\": \"...\"}, {\"heading\": \"The Black Swan\", \"body\": \"...\"}, {\"heading\": \"Exposure and Fix\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "crossing-the-chasm",
+		"slug": "crossing-the-chasm",
+		"name": "Crossing the Chasm",
+		"category": "decision-making",
+		"description": "Places your question on the technology or idea adoption curve, from early enthusiasts to the mainstream, to spot where the hard part actually is.",
+		"whenToUse": "Use when trying to grow adoption of a new product, idea, or practice beyond its earliest supporters.",
+		"origin": "Developed by Geoffrey Moore in his 1991 book 'Crossing the Chasm', building on Everett Rogers' 1962 Diffusion of Innovation theory.",
+		"howToApply": [
+			"Identify where your current adopters sit on the curve: Innovators, Early Adopters, Early Majority, Late Majority, or Laggards.",
+			"Name the chasm — the gap between visionary early adopters and the pragmatic early majority.",
+			"Assess what's needed to appeal to the more risk-averse early majority, not just more of what worked with early adopters.",
+			"Identify a narrow beachhead segment within the early majority to target first.",
+			"Plan the specific move that gets you across the chasm rather than just growing within the early-adopter segment."
+		],
+		"pros": [
+			"Explains why growth often stalls even when early enthusiasm was strong.",
+			"Forces a distinct strategy for crossing to the mainstream, rather than just more marketing.",
+			"Widely used framework, easy to communicate to stakeholders."
+		],
+		"cons": [
+			"Originally built for tech products — translates less cleanly to non-product ideas or personal decisions.",
+			"Assumes a fairly linear adoption curve, which doesn't fit every situation.",
+			"Identifying your specific beachhead segment is hard and easy to get wrong."
+		],
+		"example": {
+			"scenario": "A startup with an enthusiastic niche user base trying to figure out why broader growth has stalled.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Innovators",
+						"description": "A handful of technical users adopted early purely for the novelty."
+					},
+					{
+						"order": 2,
+						"title": "Early Adopters",
+						"description": "A visionary segment adopted for the strategic advantage, tolerating rough edges."
+					},
+					{
+						"order": 3,
+						"title": "The Chasm",
+						"description": "Growth has stalled because the product still requires early-adopter patience the pragmatic majority won't give it."
+					},
+					{
+						"order": 4,
+						"title": "Early Majority Beachhead",
+						"description": "Target one narrow, pragmatic use case with a polished, low-effort onboarding to cross the gap."
+					}
+				],
+				"summary": "The stall is the chasm, not a marketing problem — narrow the target and polish onboarding before pushing broader growth."
+			}
+		},
+		"promptTemplate": "You are helping someone apply Geoffrey Moore's Crossing the Chasm model to a question about growing adoption. Given their question: \"{{question}}\", walk through where they sit on the adoption curve, name the chasm they need to cross, and identify a beachhead segment to target. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Innovators\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Early Adopters\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"The Chasm\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Early Majority Beachhead\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "black-box-model",
+		"slug": "black-box-model",
+		"name": "The Black Box Model",
+		"category": "decision-making",
+		"description": "Treats a system as Input, an unexamined internal Process, and Output — useful when you can observe results but not the mechanism producing them.",
+		"whenToUse": "Use when you need to make a decision about a system you can observe but don't fully understand the internals of.",
+		"origin": "A general systems-thinking concept with no single credited inventor; the black-box framing traces to control theory and cybernetics work in the mid-20th century, notably associated with Norbert Wiener's cybernetics.",
+		"howToApply": [
+			"Name the system and what you can actually observe going in (inputs) and coming out (outputs).",
+			"Acknowledge what you genuinely don't know about the internal process.",
+			"Look for patterns between specific inputs and specific outputs across multiple observations.",
+			"Use those input-output patterns to make decisions without needing to fully understand the mechanism.",
+			"Note where the black-box approach breaks down and real understanding of the internals would actually help."
+		],
+		"pros": [
+			"Lets you act on a system pragmatically without needing full understanding first.",
+			"Focuses attention on what's actually observable rather than speculative internals.",
+			"Useful for complex systems (organizations, markets, other people) where full transparency isn't realistic."
+		],
+		"cons": [
+			"Can mask genuine understanding you actually need for a high-stakes decision.",
+			"Pattern-matching on inputs and outputs alone can mislead if the underlying process isn't stable.",
+			"Not a substitute for investigating the internals when that's actually feasible and worthwhile."
+		],
+		"example": {
+			"scenario": "Trying to decide how to pitch a stakeholder whose decision-making process is opaque, based only on past outcomes.",
+			"result": {
+				"sections": [
+					{
+						"heading": "Input",
+						"body": "Pitches that led to approval were all short, numbers-first, and sent before Friday."
+					},
+					{
+						"heading": "Process",
+						"body": "The internal reasoning behind their decisions is not visible or shared."
+					},
+					{
+						"heading": "Output",
+						"body": "Every pitch matching that pattern was approved; every longer, narrative-first pitch stalled."
+					}
+				],
+				"summary": "Without knowing why, matching the observed pattern — short, numbers-first, early in the week — is still a rational bet."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Black Box model to a question about a system they can observe but don't fully understand. Given their question: \"{{question}}\", identify the observable inputs, acknowledge the unknown internal process, and describe the observable outputs or pattern. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Input\", \"body\": \"...\"}, {\"heading\": \"Process\", \"body\": \"...\"}, {\"heading\": \"Output\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "prisoners-dilemma",
+		"slug": "prisoners-dilemma",
+		"name": "The Prisoner's Dilemma",
+		"category": "know-others",
+		"description": "Frames a decision involving another person or party as a game-theory standoff, showing how mutual cooperation and mutual self-interest can produce very different outcomes for both sides.",
+		"whenToUse": "Use when your outcome depends on how another party responds, and you're tempted to act purely in your own short-term interest.",
+		"origin": "Formalized by Merrill Flood and Melvin Dresher at RAND Corporation in 1950, with the 'prisoner' framing and its name added shortly after by Albert Tucker.",
+		"howToApply": [
+			"Name the other party and the decision you both face.",
+			"Describe what happens if you both cooperate.",
+			"Describe what happens if you both defect (act purely in self-interest).",
+			"Describe what happens if one cooperates and the other defects.",
+			"Notice whether short-term self-interest is quietly steering you toward a worse outcome for both of you.",
+			"Decide whether signaling cooperation first could shift the dynamic."
+		],
+		"pros": [
+			"Makes an invisible dynamic explicit — you see the payoff structure, not just your own instinct.",
+			"Explains why rational self-interest can produce a worse outcome for everyone, including you.",
+			"Useful shorthand for negotiations, partnerships, and repeated relationships."
+		],
+		"cons": [
+			"Real situations rarely have cleanly defined, symmetric payoffs like the textbook version.",
+			"Assumes both parties are acting rationally on the same information, which is often false.",
+			"Can overintellectualize what's really a trust or communication problem."
+		],
+		"example": {
+			"scenario": "Deciding whether to share your roadmap openly with a close competitor who's proposed an informal information-sharing arrangement.",
+			"result": {
+				"rows": [
+					{
+						"label": "If they cooperate",
+						"items": [
+							"You both share roadmaps and each avoid duplicated bets",
+							"Best combined outcome, but only works if trust holds"
+						]
+					},
+					{
+						"label": "If they defect",
+						"items": [
+							"They gain a copy of your roadmap while giving you nothing back",
+							"Worst outcome for you if you cooperated and they didn't"
+						]
+					}
+				],
+				"summary": "The single-shot temptation to defect is real, but this is a repeated relationship — signal cooperation cautiously and watch how they respond before sharing anything sensitive."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Prisoner's Dilemma to a decision involving another party. Given their question: \"{{question}}\", frame it as a two-row payoff comparison. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"If they cooperate\", \"items\": [\"...\"]}, {\"label\": \"If they defect\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "matrix_table",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"rows",
+				"summary"
+			],
+			"properties": {
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"items"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "MatrixTableChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "team-model",
+		"slug": "team-model",
+		"name": "The Team Model",
+		"category": "improve-others",
+		"description": "Walks a group through Bruce Tuckman's five stages of team development, so you can name which stage your team is actually in and what that implies.",
+		"whenToUse": "Use when a team feels stuck, is newly formed, or is going through a rough patch, and you want to understand the dynamic instead of just reacting to it.",
+		"origin": "Developed by psychologist Bruce Tuckman in 1965 ('Forming, Storming, Norming, Performing'); the fifth stage, Adjourning, was added in 1977 with Mary Ann Jensen.",
+		"howToApply": [
+			"Describe the team and the situation you're trying to understand.",
+			"Forming — are people still polite, cautious, and unclear on roles?",
+			"Storming — is there visible friction, competing ideas, or pushback on direction?",
+			"Norming — are norms and roles starting to settle, with more trust?",
+			"Performing — is the team working effectively with minimal friction?",
+			"Adjourning — is the team winding down or dispersing, and does that need acknowledging?"
+		],
+		"pros": [
+			"Normalizes conflict as a stage, not a sign of failure — Storming is expected, not fatal.",
+			"Gives a shared vocabulary for a team to name what's happening to it.",
+			"Simple enough to revisit quickly whenever team dynamics shift."
+		],
+		"cons": [
+			"Real teams don't move through the stages in a clean line — they loop back, especially after a membership change.",
+			"Doesn't say how to move a team from one stage to the next, just what stage it's in.",
+			"Can be used to dismiss real problems as 'just Storming' when something more serious is wrong."
+		],
+		"example": {
+			"scenario": "A newly merged team from two departments still deferring to each other too politely three weeks in, with unclear ownership starting to cause friction.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Forming",
+						"description": "Everyone is polite and roles are still unclear — this describes where the team likely started."
+					},
+					{
+						"order": 2,
+						"title": "Storming",
+						"description": "Ownership friction is starting to surface as people push back on unclear responsibilities."
+					},
+					{
+						"order": 3,
+						"title": "Norming",
+						"description": "Needs explicit role clarification to move past the friction into agreed norms."
+					},
+					{
+						"order": 4,
+						"title": "Performing",
+						"description": "Only reachable once roles and trust are settled — not yet."
+					}
+				],
+				"summary": "The team is exiting Forming and entering Storming — naming ownership explicitly now will speed the move into Norming."
+			}
+		},
+		"promptTemplate": "You are helping someone understand a team's dynamics using Tuckman's stages of group development (Forming, Storming, Norming, Performing, Adjourning). Given their question: \"{{question}}\", identify which stages are relevant and describe what's happening at each, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Forming\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Storming\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Norming\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Performing\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "hersey-blanchard",
+		"slug": "hersey-blanchard",
+		"name": "The Hersey-Blanchard Model",
+		"category": "improve-others",
+		"description": "Matches a leadership style to how much direction and support a specific person needs on a specific task, rather than applying one leadership style to everyone.",
+		"whenToUse": "Use when deciding how hands-on or hands-off to be with someone you're managing or mentoring on a particular task.",
+		"origin": "Developed by Paul Hersey and Ken Blanchard in the late 1960s as Situational Leadership Theory.",
+		"howToApply": [
+			"Name the person and the specific task or responsibility in question.",
+			"Assess their competence on this task — low or high.",
+			"Assess their commitment or confidence on this task — low or high.",
+			"Match to a style: Directing, Coaching, Supporting, or Delegating.",
+			"Adjust your behavior deliberately rather than defaulting to your usual style."
+		],
+		"pros": [
+			"Explicitly ties leadership style to the person and task, not a fixed personal philosophy.",
+			"Gives permission to be more hands-on with someone without it meaning you don't trust them generally.",
+			"Simple enough to reassess quickly as someone grows into a role."
+		],
+		"cons": [
+			"Assessing someone's true competence and commitment is subjective and easy to get wrong.",
+			"Can be used to justify micromanaging under the label of 'Directing'.",
+			"Says nothing about how to actually build the skill or confidence you're waiting for."
+		],
+		"example": {
+			"scenario": "Deciding how closely to manage a capable but newly-promoted team lead running their first project.",
+			"result": {
+				"xAxisLabel": "Directive Behavior",
+				"yAxisLabel": "Supportive Behavior",
+				"quadrants": [
+					{
+						"name": "Directing",
+						"x": "high",
+						"y": "low",
+						"items": [
+							"Not appropriate — they have real capability"
+						]
+					},
+					{
+						"name": "Coaching",
+						"x": "high",
+						"y": "high",
+						"items": [
+							"Explain reasoning behind decisions, stay closely involved"
+						]
+					},
+					{
+						"name": "Supporting",
+						"x": "low",
+						"y": "high",
+						"items": [
+							"Best fit as their confidence grows over the next few weeks"
+						]
+					},
+					{
+						"name": "Delegating",
+						"x": "low",
+						"y": "low",
+						"items": [
+							"Target for once they've run one project end-to-end"
+						]
+					}
+				],
+				"summary": "Start in Coaching mode now, and plan to shift to Supporting after their first project milestone."
+			}
+		},
+		"promptTemplate": "You are helping someone choose a leadership approach using the Hersey-Blanchard Situational Leadership model. Given their question: \"{{question}}\", classify the situation by directive behavior (x: low or high) and supportive behavior (y: low or high) needed, and populate the four styles. Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Directive Behavior\", \"yAxisLabel\": \"Supportive Behavior\", \"quadrants\": [{\"name\": \"Directing\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Coaching\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Supporting\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Delegating\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"xAxisLabel",
+				"yAxisLabel",
+				"quadrants",
+				"summary"
+			],
+			"properties": {
+				"xAxisLabel": {
+					"type": "string"
+				},
+				"yAxisLabel": {
+					"type": "string"
+				},
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": [
+							"name",
+							"x",
+							"y",
+							"items"
+						],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"x": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"y": {
+								"type": "string",
+								"enum": [
+									"low",
+									"high"
+								]
+							},
+							"items": {
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "role-playing-model",
+		"slug": "role-playing-model",
+		"name": "The Role-Playing Model",
+		"category": "improve-others",
+		"description": "Has you mentally step into another person's position to work out how they're likely thinking, before you decide how to approach them.",
+		"whenToUse": "Use before a difficult conversation, negotiation, or decision that heavily involves predicting someone else's reaction.",
+		"origin": "No single credited originator — a general perspective-taking technique drawn from psychology, negotiation training, and role-play practice used broadly across coaching and mediation.",
+		"howToApply": [
+			"Name the other person and the situation.",
+			"Step into their position — what do they want, and what are they afraid of here?",
+			"Consider what information or pressure they have that you don't.",
+			"Predict how they'd likely react to your intended approach.",
+			"Adjust your approach based on what that reveals."
+		],
+		"pros": [
+			"Surfaces reactions you wouldn't have predicted from your own perspective alone.",
+			"Cheap and fast — no need to actually involve the other person to get value from it.",
+			"Builds general empathy skill with repeated use."
+		],
+		"cons": [
+			"You're still guessing — it's your model of them, not their actual perspective.",
+			"Can lead to false confidence if you mistake your simulation for real understanding.",
+			"Doesn't replace actually asking them directly when that's an option."
+		],
+		"example": {
+			"scenario": "Preparing to ask a hesitant client for a scope change on a project that's already behind schedule.",
+			"result": {
+				"sections": [
+					{
+						"heading": "Their Position",
+						"body": "They're likely anxious about further delay and may suspect this is you covering for slipped timelines."
+					},
+					{
+						"heading": "What They're Not Saying",
+						"body": "They may not want to look difficult to their own stakeholders by pushing back too hard."
+					},
+					{
+						"heading": "Likely Reaction",
+						"body": "Cautious agreement if you lead with the timeline benefit, resistance if it sounds like you're asking for more without giving anything back."
+					}
+				],
+				"summary": "Lead with what the scope change protects (the deadline), not what it costs them, and expect them to need to sell it internally too."
+			}
+		},
+		"promptTemplate": "You are helping someone prepare for an interaction by mentally role-playing the other party's perspective. Given their question: \"{{question}}\", write narrative sections covering: the other person's likely position and motivations, what they might not be saying openly, and their likely reaction to the user's intended approach. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Their Position\", \"body\": \"...\"}, {\"heading\": \"What They're Not Saying\", \"body\": \"...\"}, {\"heading\": \"Likely Reaction\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "result-optimisation-model",
+		"slug": "result-optimisation-model",
+		"name": "Result Optimisation Model",
+		"category": "decision-making",
+		"description": "Identifies which specific levers are most likely to move a particular outcome, and ranks them by expected impact so effort goes to the highest-leverage ones first.",
+		"whenToUse": "Use when you have a clear target outcome and multiple possible levers, and need to know which ones are actually worth pulling.",
+		"origin": "No single credited originator — a general framing drawn from decision analysis and optimization practice.",
+		"howToApply": [
+			"State the specific result you're trying to improve.",
+			"List every lever that could plausibly move that result.",
+			"Estimate each lever's likely impact.",
+			"Rank levers from highest to lowest expected impact.",
+			"Commit effort to the top few before spreading thin across all of them."
+		],
+		"pros": [
+			"Forces explicit prioritization instead of working every lever equally.",
+			"Makes the reasoning behind priority visible and arguable, not just intuition.",
+			"Reusable for almost any outcome-improvement question."
+		],
+		"cons": [
+			"Impact estimates are often rough guesses dressed up as numbers.",
+			"Ignores effort or cost required to pull each lever, only ranks impact.",
+			"Can undervalue levers with compounding, slow-building effects."
+		],
+		"example": {
+			"scenario": "Trying to improve a landing page's conversion rate with limited engineering time available.",
+			"result": {
+				"items": [
+					{
+						"rank": 1,
+						"label": "Rewrite the headline to state the core benefit directly",
+						"weight": 50,
+						"rationale": "Highest-traffic element, cheapest to test"
+					},
+					{
+						"rank": 2,
+						"label": "Add a single clear call-to-action above the fold",
+						"weight": 30,
+						"rationale": "Removes friction for already-interested visitors"
+					},
+					{
+						"rank": 3,
+						"label": "Add customer testimonials",
+						"weight": 15,
+						"rationale": "Helps trust but lower leverage than clarity and friction fixes"
+					}
+				],
+				"summary": "Fix the headline first — it's the highest-leverage, lowest-effort change available."
+			}
+		},
+		"promptTemplate": "You are helping someone identify and rank the highest-leverage actions for improving a specific result. Given their question: \"{{question}}\", identify the levers available, rank them by expected impact (rank 1 = highest), and give each a weight (0-100) reflecting relative impact. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 50, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"items",
+				"summary"
+			],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"rank",
+							"label",
+							"weight",
+							"rationale"
+						],
+						"properties": {
+							"rank": {
+								"type": "number"
+							},
+							"label": {
+								"type": "string"
+							},
+							"weight": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 100
+							},
+							"rationale": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "project-management-triangle",
+		"slug": "project-management-triangle",
+		"name": "The Project Management Triangle",
+		"category": "decision-making",
+		"description": "Names the three constraints — scope, time, and cost — that trade off against each other on any project, and scores how much pressure each is under right now.",
+		"whenToUse": "Use when a project feels squeezed and you need to see which constraint is actually being pushed, and what that implies for the others.",
+		"origin": "Commonly attributed to Martin Barnes, who is credited with articulating the 'iron triangle' of project constraints around 1969.",
+		"howToApply": [
+			"Name the project and what's prompting the question.",
+			"Score how much pressure Scope is under right now (0-10).",
+			"Score how much pressure Time is under right now (0-10).",
+			"Score how much pressure Cost is under right now (0-10).",
+			"Accept that pushing on one constraint will pull on at least one of the others.",
+			"Decide deliberately which constraint you're willing to flex."
+		],
+		"pros": [
+			"Makes trade-offs explicit instead of pretending you can improve all three at once.",
+			"Quick shared language for stakeholders arguing past each other about a squeezed project.",
+			"Forces a deliberate choice about which constraint absorbs the pressure."
+		],
+		"cons": [
+			"Oversimplifies real projects, which have more than three relevant dimensions (e.g. quality, risk).",
+			"Doesn't say how to actually manage the trade-off, just names that one exists.",
+			"Can be used to excuse poor planning as an inevitable trade-off."
+		],
+		"example": {
+			"scenario": "A client has added new requirements to a project without moving the deadline or the budget.",
+			"result": {
+				"factors": [
+					{
+						"label": "Scope",
+						"score": 9
+					},
+					{
+						"label": "Time",
+						"score": 6
+					},
+					{
+						"label": "Cost",
+						"score": 4
+					}
+				],
+				"summary": "Scope has grown without releasing Time or Cost — something has to give, most realistically the deadline."
+			}
+		},
+		"promptTemplate": "You are helping someone apply the Project Management Triangle (Scope, Time, Cost) to a squeezed project. Given their question: \"{{question}}\", score each of the three constraints (0-10) by how much pressure it's under right now. Respond with ONLY JSON matching this shape: {\"factors\": [{\"label\": \"Scope\", \"score\": 7}, {\"label\": \"Time\", \"score\": 5}, {\"label\": \"Cost\", \"score\": 4}], \"summary\": \"...\"}",
+		"outputSchemaType": "radar",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"factors",
+				"summary"
+			],
+			"properties": {
+				"factors": {
+					"type": "array",
+					"minItems": 3,
+					"items": {
+						"type": "object",
+						"required": [
+							"label",
+							"score"
+						],
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"score": {
+								"type": "number",
+								"minimum": 0,
+								"maximum": 10
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "RadarChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "drexler-sibbet-team-performance",
+		"slug": "drexler-sibbet-team-performance",
+		"name": "The Drexler-Sibbet Team Performance Model",
+		"category": "improve-others",
+		"description": "Diagnoses which of seven stages a team is in on its way to (or away from) high performance, from initial Orientation through to Renewal.",
+		"whenToUse": "Use when a team's performance seems stuck and you want a more granular diagnosis than 'we're just not gelling'.",
+		"origin": "Developed by Allan Drexler and David Sibbet, building on earlier team-development research, and published as the Team Performance Model in the 1980s.",
+		"howToApply": [
+			"Name the team and the concern prompting the question.",
+			"Orientation — is there still confusion about why the team exists?",
+			"Trust Building — is there enough psychological safety to be candid?",
+			"Goal Clarification — are goals and roles genuinely clear and agreed?",
+			"Commitment — has the team actually committed to a plan, or just discussed one?",
+			"Implementation — is execution happening smoothly?",
+			"High Performance — is the team exceeding expectations?",
+			"Renewal — does the team need to revisit its purpose after a change?"
+		],
+		"pros": [
+			"More granular than most team-stage models, useful for pinpointing exactly where things stall.",
+			"Distinguishes 'trust' and 'clarity' problems, which need very different fixes.",
+			"Includes Renewal, acknowledging teams need periodic re-founding, not just formation once."
+		],
+		"cons": [
+			"Seven stages is a lot to hold in mind compared to simpler models.",
+			"Diagnosing which stage a team is 'really' in is still a judgment call.",
+			"Less widely known, so it takes more effort to introduce to a team as shared language."
+		],
+		"example": {
+			"scenario": "A team that agreed on goals months ago but still isn't executing consistently.",
+			"result": {
+				"steps": [
+					{
+						"order": 1,
+						"title": "Goal Clarification",
+						"description": "Goals were set, but check whether they're actually understood the same way by everyone."
+					},
+					{
+						"order": 2,
+						"title": "Commitment",
+						"description": "This is the likely gap — agreement in a meeting isn't the same as real commitment to trade-offs."
+					},
+					{
+						"order": 3,
+						"title": "Implementation",
+						"description": "Execution is inconsistent because commitment underneath it is shaky."
+					},
+					{
+						"order": 4,
+						"title": "High Performance",
+						"description": "Not reachable until commitment is genuinely secured."
+					}
+				],
+				"summary": "The team likely skipped real Commitment on the way to Implementation — worth revisiting explicitly."
+			}
+		},
+		"promptTemplate": "You are helping someone diagnose a team's stage using the Drexler-Sibbet Team Performance Model (Orientation, Trust Building, Goal Clarification, Commitment, Implementation, High Performance, Renewal). Given their question: \"{{question}}\", identify the relevant stages and describe the team's status at each, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"...\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"steps",
+				"summary"
+			],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"order",
+							"title",
+							"description"
+						],
+						"properties": {
+							"order": {
+								"type": "number"
+							},
+							"title": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "expectations-model",
+		"slug": "expectations-model",
+		"name": "The Expectations Model",
+		"category": "know-others",
+		"description": "Breaks down what's really driving (or undermining) someone's motivation into three factors: whether effort leads to performance, performance leads to reward, and whether the reward is actually valued.",
+		"whenToUse": "Use when someone (including yourself) seems unmotivated and you want to know which specific link in the chain is broken.",
+		"origin": "Developed by Victor Vroom in his 1964 book 'Work and Motivation', known as Expectancy Theory.",
+		"howToApply": [
+			"Name the person and the behavior or effort in question.",
+			"Assess Expectancy — do they believe effort will actually lead to good performance?",
+			"Assess Instrumentality — do they believe good performance will actually lead to the reward?",
+			"Assess Valence — do they actually value that reward?",
+			"Identify which of the three is weakest — that's the real motivation gap."
+		],
+		"pros": [
+			"Pinpoints exactly which link in the motivation chain is broken instead of a vague 'they're not motivated'.",
+			"Applies equally well to understanding your own stalled motivation.",
+			"Prevents wasted effort — no point improving rewards if the real issue is that effort doesn't feel connected to performance."
+		],
+		"cons": [
+			"Requires honest insight into someone's beliefs, which can be hard to assess from outside.",
+			"Assumes fairly rational, calculated motivation, which doesn't capture every source of drive.",
+			"Doesn't address motivation rooted in identity, habit, or emotion rather than expected payoff."
+		],
+		"example": {
+			"scenario": "A normally strong performer has been visibly coasting on a project for weeks.",
+			"result": {
+				"sections": [
+					{
+						"heading": "Expectancy",
+						"body": "They likely still believe effort translates to good work — their skill hasn't wavered."
+					},
+					{
+						"heading": "Instrumentality",
+						"body": "The real gap: recent decisions on this project were made without their input, so performance may not feel connected to influence over the outcome."
+					},
+					{
+						"heading": "Valence",
+						"body": "The reward on offer (recognition) may no longer feel worth the effort if their input isn't valued regardless."
+					}
+				],
+				"summary": "This reads as an Instrumentality problem, not a skill or reward problem — restoring their influence over decisions is likely to matter more than praise."
+			}
+		},
+		"promptTemplate": "You are helping someone diagnose a motivation problem using Vroom's Expectancy Theory (Expectancy, Instrumentality, Valence). Given their question: \"{{question}}\", write narrative sections assessing each of the three factors and which one is weakest. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"Expectancy\", \"body\": \"...\"}, {\"heading\": \"Instrumentality\", \"body\": \"...\"}, {\"heading\": \"Valence\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": [
+				"sections",
+				"summary"
+			],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": [
+							"heading",
+							"body"
+						],
+						"properties": {
+							"heading": {
+								"type": "string"
+							},
+							"body": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"summary": {
+					"type": "string"
+				}
+			}
+		},
+		"chartComponent": "NarrativeChart",
 		"createdAt": "2026-08-22T00:00:00.000Z",
 		"updatedAt": "2026-08-22T00:00:00.000Z"
 	}

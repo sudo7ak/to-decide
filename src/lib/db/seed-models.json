@@ -6,26 +6,29 @@
 		"category": "decision-making",
 		"description": "Sorts the tasks or choices bound up in your question into four boxes by urgency and importance, so you can see what actually deserves your attention first.",
 		"whenToUse": "Use when you're overwhelmed by competing tasks or options and need to decide what to act on now versus later.",
-		"origin": "Popularized by Stephen Covey in 'The 7 Habits of Highly Effective People', built around a principle credited to U.S. President Dwight D. Eisenhower, who reportedly said: 'What is important is seldom urgent, and what is urgent is seldom important.'",
+		"origin": "Popularized as the 'Time Management Matrix' by Stephen Covey in 'The 7 Habits of Highly Effective People' (1989), built on a distinction Dwight D. Eisenhower drew in a 1954 speech at Northwestern University. Eisenhower himself credited the idea to an unnamed 'former college president,' and his actual words were: 'I have two kinds of problems, the urgent and the important. The urgent are not important, and the important are never urgent.' The now-common paraphrase — 'What is important is seldom urgent, and what is urgent is seldom important' — is a later, looser rendering that hardened into the standard quote; Eisenhower never said it verbatim, and he wasn't its original source either.",
 		"howToApply": [
-			"List everything competing for your attention.",
-			"Ask whether each item is urgent — does it have a near-term deadline or consequence?",
-			"Ask whether each item is important — does it move you toward a goal you actually care about?",
-			"Sort each item into one of the four boxes.",
-			"Act on Do First immediately, schedule time for Schedule, delegate what you can, and drop or ignore Eliminate."
+			"List everything competing for your attention right now.",
+			"Ask whether each item is urgent — does it carry a hard deadline or an immediate consequence if you wait?",
+			"Ask whether each item is important — does it move you toward a goal or value you actually care about, independent of when it's due?",
+			"Sort each item into one of the four boxes: Do First, Schedule, Delegate, or Eliminate.",
+			"Act on Do First immediately, but treat Schedule as the real priority — Covey's point was that a starved Schedule box is what keeps generating more Do First crises.",
+			"Delegate or batch what you can, and consciously drop or ignore Eliminate rather than let it quietly fill your day."
 		],
 		"pros": [
 			"Extremely fast to apply, no special training needed.",
 			"Forces an explicit urgent-vs-important distinction most people blur.",
-			"Good antidote to constantly firefighting urgent-but-unimportant work."
+			"Good antidote to constantly firefighting urgent-but-unimportant work.",
+			"Widely implemented in real tools (Todoist, dedicated apps like eisenhower.me), so the four-box vocabulary already travels well across teams."
 		],
 		"cons": [
 			"Binary low/high buckets hide real nuance — many tasks sit in between.",
 			"Says nothing about how to actually do the important work, just where to place it.",
-			"Easy to rationalize almost anything into 'urgent' under pressure."
+			"Easy to rationalize almost anything into 'urgent' under pressure.",
+			"The Delegate box assumes you have someone to delegate to — for solo work or individual contributors it often just becomes a second Do First."
 		],
 		"example": {
-			"scenario": "Deciding how to spend a chaotic Monday with a client emergency, a strategy doc due Friday, three routine status emails, and an invitation to browse an industry newsletter.",
+			"scenario": "Deciding how to spend a chaotic Monday: a client emergency, a strategy doc due Friday, a backlog of routine status emails, a teammate's request for 1:1 feedback on their draft, and an invitation to browse an industry newsletter.",
 			"result": {
 				"xAxisLabel": "Urgency",
 				"yAxisLabel": "Importance",
@@ -43,7 +46,8 @@
 						"x": "low",
 						"y": "high",
 						"items": [
-							"Draft the Friday strategy doc"
+							"Draft the Friday strategy doc",
+							"Give the teammate real feedback on their draft"
 						]
 					},
 					{
@@ -51,7 +55,7 @@
 						"x": "high",
 						"y": "low",
 						"items": [
-							"Reply to routine status emails"
+							"Clear the routine status email backlog"
 						]
 					},
 					{
@@ -63,7 +67,7 @@
 						]
 					}
 				],
-				"summary": "Handle the client emergency now, block time this week for the strategy doc, hand off the emails, skip the newsletter."
+				"summary": "Handle the client emergency now. Protect real blocks this week for the strategy doc and the teammate's feedback — that Schedule box is the one actually worth defending. Batch the routine emails, skip the newsletter."
 			}
 		},
 		"promptTemplate": "You are helping someone apply the Eisenhower Matrix to a decision. Given their question: \"{{question}}\", identify the concrete tasks or considerations implied by it and classify each into one of four quadrants by urgency (x: low or high) and importance (y: low or high). Respond with ONLY JSON matching this shape, no prose outside the JSON: {\"xAxisLabel\": \"Urgency\", \"yAxisLabel\": \"Importance\", \"quadrants\": [{\"name\": \"Do First\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Schedule\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Delegate\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Eliminate\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",

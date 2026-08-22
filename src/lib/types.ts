@@ -8,6 +8,11 @@ export type OutputSchemaType =
 	| 'flow_diagram'
 	| 'freeform_narrative';
 
+export interface ModelExample {
+	scenario: string;
+	result: Record<string, unknown>;
+}
+
 export interface ModelDef {
 	id: string;
 	slug: string;
@@ -15,12 +20,49 @@ export interface ModelDef {
 	category: Category;
 	description: string;
 	whenToUse: string;
+	origin: string;
+	howToApply: string[];
+	pros: string[];
+	cons: string[];
+	example: ModelExample;
 	promptTemplate: string;
 	outputSchemaType: OutputSchemaType;
 	outputJsonSchema: Record<string, unknown>;
 	chartComponent: string;
 	createdAt: string;
 	updatedAt: string;
+}
+
+export interface Quadrant2x2Data {
+	xAxisLabel: string;
+	yAxisLabel: string;
+	quadrants: { name: string; x: 'low' | 'high'; y: 'low' | 'high'; items: string[] }[];
+	summary: string;
+}
+
+export interface MatrixTableData {
+	rows: { label: string; items: string[] }[];
+	summary: string;
+}
+
+export interface RankedListData {
+	items: { rank: number; label: string; weight: number; rationale: string }[];
+	summary: string;
+}
+
+export interface FlowDiagramData {
+	steps: { order: number; title: string; description: string }[];
+	summary: string;
+}
+
+export interface FreeformNarrativeData {
+	sections: { heading: string; body: string }[];
+	summary: string;
+}
+
+export interface RadarData {
+	factors: { label: string; score: number }[];
+	summary: string;
 }
 
 export interface Question {

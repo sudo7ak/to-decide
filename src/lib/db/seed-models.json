@@ -6,6 +6,38 @@
 		"category": "decision-making",
 		"description": "Sorts the tasks or choices bound up in your question into four boxes by urgency and importance, so you can see what actually deserves your attention first.",
 		"whenToUse": "Use when you're overwhelmed by competing tasks or options and need to decide what to act on now versus later.",
+		"origin": "Popularized by Stephen Covey in 'The 7 Habits of Highly Effective People', built around a principle credited to U.S. President Dwight D. Eisenhower, who reportedly said: 'What is important is seldom urgent, and what is urgent is seldom important.'",
+		"howToApply": [
+			"List everything competing for your attention.",
+			"Ask whether each item is urgent — does it have a near-term deadline or consequence?",
+			"Ask whether each item is important — does it move you toward a goal you actually care about?",
+			"Sort each item into one of the four boxes.",
+			"Act on Do First immediately, schedule time for Schedule, delegate what you can, and drop or ignore Eliminate."
+		],
+		"pros": [
+			"Extremely fast to apply, no special training needed.",
+			"Forces an explicit urgent-vs-important distinction most people blur.",
+			"Good antidote to constantly firefighting urgent-but-unimportant work."
+		],
+		"cons": [
+			"Binary low/high buckets hide real nuance — many tasks sit in between.",
+			"Says nothing about how to actually do the important work, just where to place it.",
+			"Easy to rationalize almost anything into 'urgent' under pressure."
+		],
+		"example": {
+			"scenario": "Deciding how to spend a chaotic Monday with a client emergency, a strategy doc due Friday, three routine status emails, and an invitation to browse an industry newsletter.",
+			"result": {
+				"xAxisLabel": "Urgency",
+				"yAxisLabel": "Importance",
+				"quadrants": [
+					{ "name": "Do First", "x": "high", "y": "high", "items": ["Resolve the client emergency"] },
+					{ "name": "Schedule", "x": "low", "y": "high", "items": ["Draft the Friday strategy doc"] },
+					{ "name": "Delegate", "x": "high", "y": "low", "items": ["Reply to routine status emails"] },
+					{ "name": "Eliminate", "x": "low", "y": "low", "items": ["Browse the industry newsletter"] }
+				],
+				"summary": "Handle the client emergency now, block time this week for the strategy doc, hand off the emails, skip the newsletter."
+			}
+		},
 		"promptTemplate": "You are helping someone apply the Eisenhower Matrix to a decision. Given their question: \"{{question}}\", identify the concrete tasks or considerations implied by it and classify each into one of four quadrants by urgency (x: low or high) and importance (y: low or high). Respond with ONLY JSON matching this shape, no prose outside the JSON: {\"xAxisLabel\": \"Urgency\", \"yAxisLabel\": \"Importance\", \"quadrants\": [{\"name\": \"Do First\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Schedule\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Delegate\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Eliminate\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
@@ -43,6 +75,37 @@
 		"category": "decision-making",
 		"description": "Breaks your question down into Strengths, Weaknesses, Opportunities and Threats.",
 		"whenToUse": "Use when evaluating a plan, venture, or choice against both your own capabilities and the outside environment.",
+		"origin": "Credited to Albert Humphrey and colleagues at the Stanford Research Institute in the 1960s-70s, developed while studying why corporate strategic planning consistently failed.",
+		"howToApply": [
+			"Name the specific decision or venture you're evaluating.",
+			"List Strengths — internal advantages you already have.",
+			"List Weaknesses — internal gaps or disadvantages.",
+			"List Opportunities — external factors that could work in your favor.",
+			"List Threats — external factors that could work against you.",
+			"Look for pairings: which strengths let you capture which opportunities, and which weaknesses expose you to which threats."
+		],
+		"pros": [
+			"Simple four-box structure anyone can follow without training.",
+			"Forces you to look outward at the market or environment, not just inward.",
+			"Works at almost any scale — a single decision or a whole company."
+		],
+		"cons": [
+			"Produces a list, not a plan — nothing tells you what to do with the four boxes.",
+			"Easy to generate generic, interchangeable items that don't sharpen the decision.",
+			"No weighting — a minor strength sits next to a critical one with equal visual weight."
+		],
+		"example": {
+			"scenario": "Deciding whether to leave a stable corporate job to freelance full-time.",
+			"result": {
+				"rows": [
+					{ "label": "Strengths", "items": ["Deep client network from 8 years in the industry", "Savings covering 6 months of expenses"] },
+					{ "label": "Weaknesses", "items": ["No experience running a business", "Untested tolerance for inconsistent income"] },
+					{ "label": "Opportunities", "items": ["Rising demand for freelance specialists in this niche"] },
+					{ "label": "Threats", "items": ["An economic downturn could shrink client budgets first"] }
+				],
+				"summary": "Savings and network make this a viable bet, but build a business-basics plan before the safety net matters."
+			}
+		},
 		"promptTemplate": "You are helping someone apply a SWOT Analysis to a decision. Given their question: \"{{question}}\", produce Strengths, Weaknesses, Opportunities, and Threats relevant to it. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"Strengths\", \"items\": [\"...\"]}, {\"label\": \"Weaknesses\", \"items\": [\"...\"]}, {\"label\": \"Opportunities\", \"items\": [\"...\"]}, {\"label\": \"Threats\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
 		"outputSchemaType": "matrix_table",
 		"outputJsonSchema": {
@@ -74,6 +137,38 @@
 		"category": "decision-making",
 		"description": "Plots the options or initiatives in your question on market growth versus relative share to see which deserve investment, which to hold, and which to drop.",
 		"whenToUse": "Use when comparing multiple options, initiatives, or products for where to put limited resources.",
+		"origin": "Developed by Bruce Henderson and the Boston Consulting Group in 1970 to help companies decide where to allocate cash across a portfolio of products.",
+		"howToApply": [
+			"List the products, initiatives, or options you're comparing.",
+			"Estimate each one's relative market share (or your relative strength) — low or high.",
+			"Estimate each one's market growth (or momentum and opportunity) — low or high.",
+			"Place each in Star, Cash Cow, Question Mark, or Dog.",
+			"Invest in Stars, harvest Cash Cows, decide selectively on Question Marks, and consider dropping Dogs."
+		],
+		"pros": [
+			"Forces explicit prioritization instead of funding everything equally.",
+			"Good visual shorthand for portfolio-level conversations.",
+			"Highlights products quietly draining resources (Dogs) that habit keeps alive."
+		],
+		"cons": [
+			"Only two dimensions — ignores strategic fit, brand value, or synergy across products.",
+			"'Low/high' judgments are often subjective and easy to bend toward a preferred conclusion.",
+			"Designed for product portfolios, so it translates awkwardly to personal or non-market decisions."
+		],
+		"example": {
+			"scenario": "A small agency deciding which service lines to keep investing in for next year.",
+			"result": {
+				"xAxisLabel": "Relative Market Share",
+				"yAxisLabel": "Market Growth",
+				"quadrants": [
+					{ "name": "Star", "x": "high", "y": "high", "items": ["Brand strategy consulting"] },
+					{ "name": "Cash Cow", "x": "high", "y": "low", "items": ["Logo and identity design"] },
+					{ "name": "Question Mark", "x": "low", "y": "high", "items": ["AI content tooling"] },
+					{ "name": "Dog", "x": "low", "y": "low", "items": ["Print collateral design"] }
+				],
+				"summary": "Double down on brand strategy, keep identity design funding the business, place a small bet on AI tooling, and wind down print work."
+			}
+		},
 		"promptTemplate": "You are helping someone apply the BCG Growth-Share Box to a decision. Given their question: \"{{question}}\", identify the options or initiatives implied by it and classify each by relative share (x: low or high) and market growth (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Relative Market Share\", \"yAxisLabel\": \"Market Growth\", \"quadrants\": [{\"name\": \"Star\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Cash Cow\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Question Mark\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Dog\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
@@ -111,6 +206,39 @@
 		"category": "know-self",
 		"description": "Maps what's known and unknown to you and to others about the situation in your question, to surface blind spots.",
 		"whenToUse": "Use when trying to understand yourself better, or close a gap between how you see yourself and how others see you.",
+		"origin": "Developed in 1955 by psychologists Joseph Luft and Harrington Ingham — the name blends their first names, 'Jo' and 'Harri'.",
+		"howToApply": [
+			"Pick a specific trait, behavior, or situation you want to understand better.",
+			"Fill the Arena — what you know about yourself here and others also see.",
+			"Fill the Blind Spot — what others likely see that you don't recognize in yourself.",
+			"Fill the Facade — what you know about yourself but keep from others.",
+			"Fill the Unknown — what neither you nor others have surfaced yet.",
+			"Seek feedback to shrink the Blind Spot, and consider disclosure to shrink the Facade."
+		],
+		"pros": [
+			"One of the few models that explicitly surfaces blind spots — things you can't see about yourself by definition.",
+			"Encourages a concrete conversation about feedback and disclosure, not just abstract self-reflection.",
+			"Simple enough to redo periodically and track how the panes shift."
+		],
+		"cons": [
+			"The Blind Spot and Unknown panes are inherently hard to fill in without honest outside input.",
+			"Can feel exposing — some people resist naming their own Facade honestly.",
+			"Says nothing about how to act on what's uncovered."
+		],
+		"example": {
+			"scenario": "Understanding why colleagues seem hesitant to challenge your ideas in meetings.",
+			"result": {
+				"xAxisLabel": "Known to Self",
+				"yAxisLabel": "Known to Others",
+				"quadrants": [
+					{ "name": "Arena", "x": "high", "y": "high", "items": ["You know you interrupt when excited about an idea"] },
+					{ "name": "Blind Spot", "x": "low", "y": "high", "items": ["Your tone reads as final even when you're open to debate"] },
+					{ "name": "Facade", "x": "high", "y": "low", "items": ["You're privately unsure about this direction too"] },
+					{ "name": "Unknown", "x": "low", "y": "low", "items": ["How your reaction to past pushback shaped the team's caution"] }
+				],
+				"summary": "The Blind Spot is likely doing the most damage — ask a trusted colleague directly how your tone lands."
+			}
+		},
 		"promptTemplate": "You are helping someone apply the Johari Window to a question about themselves. Given their question: \"{{question}}\", populate the four panes: Arena (known to self, known to others), Blind Spot (unknown to self, known to others), Facade (known to self, unknown to others), Unknown (unknown to self, unknown to others). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to Self\", \"yAxisLabel\": \"Known to Others\", \"quadrants\": [{\"name\": \"Arena\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Blind Spot\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Facade\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Unknown\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
 		"outputSchemaType": "quadrant2x2",
 		"outputJsonSchema": {
@@ -148,6 +276,35 @@
 		"category": "improve-others",
 		"description": "Walks your question through Goal, Reality, Options, Will — John Whitmore's coaching model for moving from stuck to a concrete next action.",
 		"whenToUse": "Use when coaching yourself or someone else through a specific goal or performance question.",
+		"origin": "Developed in the UK in the late 1980s by Graham Alexander, Alan Fine, and Sir John Whitmore, and popularized through Whitmore's book 'Coaching for Performance'.",
+		"howToApply": [
+			"Goal — define specifically what you or the person being coached wants to achieve.",
+			"Reality — honestly assess where things stand today relative to that goal.",
+			"Options — brainstorm possible paths forward without judging them yet.",
+			"Will — commit to a specific next action and a timeframe."
+		],
+		"pros": [
+			"Simple four-step structure that works in a single conversation.",
+			"Separates 'what do I want' from 'what will I do', preventing a jump straight to action without clarity.",
+			"Widely used and taught, so it's easy to find coaching partners who already know it."
+		],
+		"cons": [
+			"Assumes the goal is basically sound — doesn't question whether it's the right goal.",
+			"Can feel mechanical if run as a checklist rather than a real conversation.",
+			"Depends heavily on how well Reality is assessed — sugar-coating it undermines everything after."
+		],
+		"example": {
+			"scenario": "A manager coaching a report who wants to move into a team-lead role but keeps getting passed over.",
+			"result": {
+				"steps": [
+					{ "order": 1, "title": "Goal", "description": "Become team lead within the next two review cycles." },
+					{ "order": 2, "title": "Reality", "description": "Strong technically, but has never run a project end-to-end or given peer feedback." },
+					{ "order": 3, "title": "Options", "description": "Volunteer to lead the next small project; ask for stretch feedback duties; find a mentor already in the role." },
+					{ "order": 4, "title": "Will", "description": "Ask to lead the upcoming migration project starting next sprint." }
+				],
+				"summary": "Owning a visible project is the fastest path from 'strong technically' to 'ready to lead'."
+			}
+		},
 		"promptTemplate": "You are helping someone apply the GROW coaching model (Goal, Reality, Options, Will) to a question. Given their question: \"{{question}}\", produce one step for each of the four stages, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Goal\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Reality\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Options\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Will\", \"description\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "flow_diagram",
 		"outputJsonSchema": {
@@ -180,6 +337,35 @@
 		"category": "decision-making",
 		"description": "Identifies the small subset of factors in your question likely responsible for most of the outcome — the 80/20 view.",
 		"whenToUse": "Use when you have many possible causes or actions and need to find the vital few worth focusing on.",
+		"origin": "Named after economist Vilfredo Pareto, who observed in 1896 that roughly 80% of Italy's land was owned by 20% of the population; later generalized into the '80/20 rule' by quality theorist Joseph Juran.",
+		"howToApply": [
+			"List every factor, cause, or task contributing to the outcome you care about.",
+			"Estimate how much each one actually contributes to the result.",
+			"Rank them from highest to lowest contribution.",
+			"Identify the small top slice responsible for most of the impact.",
+			"Focus effort there first, and deprioritize the long tail."
+		],
+		"pros": [
+			"Cuts through busywork by making you name what actually moves the needle.",
+			"Backed by a real, frequently observed pattern across many domains — sales, bugs, complaints.",
+			"Simple enough to apply to almost any list of competing priorities."
+		],
+		"cons": [
+			"The exact 80/20 split is a rough heuristic, not a law — real ratios vary a lot.",
+			"Estimating 'contribution' is often a guess, especially without real data.",
+			"Can wrongly justify ignoring the long tail entirely, when small items sometimes compound."
+		],
+		"example": {
+			"scenario": "A support team trying to reduce the volume of incoming tickets.",
+			"result": {
+				"items": [
+					{ "rank": 1, "label": "Confusing password reset flow", "weight": 45, "rationale": "Single largest ticket category by volume" },
+					{ "rank": 2, "label": "Unclear billing cycle dates", "weight": 20, "rationale": "Recurring monthly spike in tickets" },
+					{ "rank": 3, "label": "Missing empty-state guidance in app", "weight": 10, "rationale": "Occasional but easy fix" }
+				],
+				"summary": "Fixing the password reset flow alone would likely cut ticket volume nearly in half."
+			}
+		},
 		"promptTemplate": "You are helping someone apply the Pareto Principle (80/20 rule) to a question. Given their question: \"{{question}}\", identify the factors involved, rank them by how much of the outcome each one likely drives, and give each a weight (0-100) reflecting its share of the impact. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 40, \"rationale\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "ranked_list",
 		"outputJsonSchema": {
@@ -213,6 +399,35 @@
 		"category": "know-self",
 		"description": "Looks at the tension between conflicting beliefs, values, or actions embedded in your question, and how that discomfort might be shaping your thinking.",
 		"whenToUse": "Use when you notice you're rationalizing a choice, or your stated values and actual behavior seem to conflict.",
+		"origin": "Coined by psychologist Leon Festinger in his 1957 book 'A Theory of Cognitive Dissonance', based on his study of a doomsday cult whose members intensified belief after their prophecy publicly failed.",
+		"howToApply": [
+			"Name the two or more beliefs, values, or actions that seem to conflict.",
+			"Notice the discomfort itself — dissonance usually shows up as unease, defensiveness, or over-justification.",
+			"Identify the rationalizations you're currently using to reduce that discomfort.",
+			"Ask what would actually resolve the conflict — changing the belief, the action, or your justification.",
+			"Choose deliberately rather than letting the rationalization quietly win by default."
+		],
+		"pros": [
+			"Explains a specific, common trap: justifying a choice after the fact instead of evaluating it honestly.",
+			"Helps you notice when you're arguing with yourself, not just deciding.",
+			"Applies broadly — decisions, relationships, habits, beliefs."
+		],
+		"cons": [
+			"Purely diagnostic — it names the tension but doesn't tell you which side should win.",
+			"Requires real self-honesty; it's easy to use the model itself as another rationalization.",
+			"Can be uncomfortable to sit with, which is exactly what makes people avoid doing it."
+		],
+		"example": {
+			"scenario": "Feeling oddly defensive about an expensive purchase that isn't getting much use.",
+			"result": {
+				"sections": [
+					{ "heading": "The Conflicting Beliefs", "body": "You believe you're a careful spender, but you spent significantly on something now sitting unused." },
+					{ "heading": "The Rationalization at Work", "body": "Telling yourself 'I'll use it more once things calm down' rather than questioning the purchase." },
+					{ "heading": "What Resolving It Would Require", "body": "Either genuinely committing to use it, or admitting the purchase missed and adjusting future spending habits." }
+				],
+				"summary": "The defensiveness is a signal, not noise — it's pointing at a purchase decision worth reassessing honestly."
+			}
+		},
 		"promptTemplate": "You are helping someone examine cognitive dissonance in a question about their own beliefs or behavior. Given their question: \"{{question}}\", write short narrative sections covering: the conflicting beliefs or actions at play, the rationalizations likely being used to reduce the discomfort, and what genuinely resolving the conflict would require. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Conflicting Beliefs\", \"body\": \"...\"}, {\"heading\": \"The Rationalization at Work\", \"body\": \"...\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "freeform_narrative",
 		"outputJsonSchema": {
@@ -244,6 +459,42 @@
 		"category": "decision-making",
 		"description": "Generates fresh options for your question by forcing it through seven lenses: Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse.",
 		"whenToUse": "Use when you feel stuck on a decision and want to force fresh alternatives into view.",
+		"origin": "Devised by Bob Eberle in 1971 as a mnemonic checklist, building on brainstorming techniques originated by advertising executive Alex Osborn.",
+		"howToApply": [
+			"State the thing you're trying to improve or rethink.",
+			"Substitute — what could you swap out?",
+			"Combine — what could you merge with something else?",
+			"Adapt — what could you borrow from elsewhere?",
+			"Modify — what could you exaggerate, minimize, or change?",
+			"Put to another use — how else could this be used?",
+			"Eliminate — what could you remove entirely?",
+			"Reverse — what if you flipped it around?"
+		],
+		"pros": [
+			"Seven distinct lenses force genuinely different angles instead of one more pass at the same idea.",
+			"Works well solo or in a group brainstorm.",
+			"Concrete letters make it easy to remember and reuse without notes."
+		],
+		"cons": [
+			"Not every lens fits every problem — some prompts produce forced, low-quality ideas.",
+			"Generates raw options, not evaluation — you still need a separate step to pick the good ones.",
+			"Can feel gimmicky if used mechanically rather than as a genuine creative prompt."
+		],
+		"example": {
+			"scenario": "Rethinking a weekly team status meeting that's become a dreaded time-sink.",
+			"result": {
+				"items": [
+					{ "rank": 1, "label": "Substitute", "weight": 70, "rationale": "Replace the live meeting with an async written update" },
+					{ "rank": 2, "label": "Combine", "weight": 40, "rationale": "Merge with the planning meeting to cut total time" },
+					{ "rank": 3, "label": "Adapt", "weight": 35, "rationale": "Borrow the standup format from engineering teams" },
+					{ "rank": 4, "label": "Modify", "weight": 30, "rationale": "Shrink from 60 to 15 minutes" },
+					{ "rank": 5, "label": "Put to another use", "weight": 20, "rationale": "Repurpose the slot for skill-sharing instead" },
+					{ "rank": 6, "label": "Eliminate", "weight": 55, "rationale": "Cancel it entirely, rely on the written update" },
+					{ "rank": 7, "label": "Reverse", "weight": 25, "rationale": "Have the team ask questions of the manager instead" }
+				],
+				"summary": "Substitute and Eliminate score highest — the meeting itself may be the problem, not its format."
+			}
+		},
 		"promptTemplate": "You are helping someone apply SCAMPER to generate options for a decision. Given their question: \"{{question}}\", generate exactly one concrete idea for each of the seven SCAMPER lenses (Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse), ranked 1-7 in that order, with a weight (0-100) for how promising each idea seems. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"Substitute\", \"weight\": 70, \"rationale\": \"...\"}], \"summary\": \"...\"}",
 		"outputSchemaType": "ranked_list",
 		"outputJsonSchema": {

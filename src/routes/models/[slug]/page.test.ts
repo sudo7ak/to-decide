@@ -29,4 +29,29 @@ describe('/models/[slug] page', () => {
 			)
 		).toBeTruthy();
 	});
+
+	it('shows origin, how-to-apply steps, and pros/cons', async () => {
+		render(Page);
+		expect(
+			await screen.findByText(/Credited to Albert Humphrey/)
+		).toBeTruthy();
+		expect(
+			await screen.findByText('Name the specific decision or venture you\'re evaluating.')
+		).toBeTruthy();
+		expect(
+			await screen.findByText('Simple four-box structure anyone can follow without training.')
+		).toBeTruthy();
+		expect(
+			await screen.findByText('Produces a list, not a plan — nothing tells you what to do with the four boxes.')
+		).toBeTruthy();
+	});
+
+	it('shows the worked example scenario and its chart', async () => {
+		const { container } = render(Page);
+		expect(
+			await screen.findByText('Deciding whether to leave a stable corporate job to freelance full-time.')
+		).toBeTruthy();
+		expect(await screen.findByText('Strengths')).toBeTruthy();
+		expect(container.querySelector('svg')).toBeTruthy();
+	});
 });

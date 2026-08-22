@@ -8,7 +8,9 @@
 	let notFound = $state(false);
 
 	onMount(async () => {
-		model = await getModelBySlug(page.params.slug);
+		const slug = page.params.slug;
+		if (!slug) return;
+		model = await getModelBySlug(slug);
 		notFound = model === undefined;
 	});
 </script>

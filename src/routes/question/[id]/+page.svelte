@@ -16,7 +16,9 @@
 	let models = $state<ModelDef[]>([]);
 
 	onMount(async () => {
-		question = await getQuestion(page.params.id);
+		const id = page.params.id;
+		if (!id) return;
+		question = await getQuestion(id);
 		models = await listModels();
 	});
 

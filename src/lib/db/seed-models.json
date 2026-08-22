@@ -1,0 +1,273 @@
+[
+	{
+		"id": "eisenhower-matrix",
+		"slug": "eisenhower-matrix",
+		"name": "Eisenhower Matrix",
+		"category": "decision-making",
+		"description": "Sorts the tasks or choices bound up in your question into four boxes by urgency and importance, so you can see what actually deserves your attention first.",
+		"whenToUse": "Use when you're overwhelmed by competing tasks or options and need to decide what to act on now versus later.",
+		"promptTemplate": "You are helping someone apply the Eisenhower Matrix to a decision. Given their question: \"{{question}}\", identify the concrete tasks or considerations implied by it and classify each into one of four quadrants by urgency (x: low or high) and importance (y: low or high). Respond with ONLY JSON matching this shape, no prose outside the JSON: {\"xAxisLabel\": \"Urgency\", \"yAxisLabel\": \"Importance\", \"quadrants\": [{\"name\": \"Do First\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Schedule\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Delegate\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Eliminate\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["xAxisLabel", "yAxisLabel", "quadrants", "summary"],
+			"properties": {
+				"xAxisLabel": { "type": "string" },
+				"yAxisLabel": { "type": "string" },
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": ["name", "x", "y", "items"],
+						"properties": {
+							"name": { "type": "string" },
+							"x": { "type": "string", "enum": ["low", "high"] },
+							"y": { "type": "string", "enum": ["low", "high"] },
+							"items": { "type": "array", "items": { "type": "string" } }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "swot-analysis",
+		"slug": "swot-analysis",
+		"name": "SWOT Analysis",
+		"category": "decision-making",
+		"description": "Breaks your question down into Strengths, Weaknesses, Opportunities and Threats.",
+		"whenToUse": "Use when evaluating a plan, venture, or choice against both your own capabilities and the outside environment.",
+		"promptTemplate": "You are helping someone apply a SWOT Analysis to a decision. Given their question: \"{{question}}\", produce Strengths, Weaknesses, Opportunities, and Threats relevant to it. Respond with ONLY JSON matching this shape: {\"rows\": [{\"label\": \"Strengths\", \"items\": [\"...\"]}, {\"label\": \"Weaknesses\", \"items\": [\"...\"]}, {\"label\": \"Opportunities\", \"items\": [\"...\"]}, {\"label\": \"Threats\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "matrix_table",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["rows", "summary"],
+			"properties": {
+				"rows": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": ["label", "items"],
+						"properties": {
+							"label": { "type": "string" },
+							"items": { "type": "array", "items": { "type": "string" } }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "MatrixTableChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "bcg-box",
+		"slug": "bcg-box",
+		"name": "BCG Box",
+		"category": "decision-making",
+		"description": "Plots the options or initiatives in your question on market growth versus relative share to see which deserve investment, which to hold, and which to drop.",
+		"whenToUse": "Use when comparing multiple options, initiatives, or products for where to put limited resources.",
+		"promptTemplate": "You are helping someone apply the BCG Growth-Share Box to a decision. Given their question: \"{{question}}\", identify the options or initiatives implied by it and classify each by relative share (x: low or high) and market growth (y: low or high). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Relative Market Share\", \"yAxisLabel\": \"Market Growth\", \"quadrants\": [{\"name\": \"Star\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Cash Cow\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Question Mark\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Dog\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["xAxisLabel", "yAxisLabel", "quadrants", "summary"],
+			"properties": {
+				"xAxisLabel": { "type": "string" },
+				"yAxisLabel": { "type": "string" },
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": ["name", "x", "y", "items"],
+						"properties": {
+							"name": { "type": "string" },
+							"x": { "type": "string", "enum": ["low", "high"] },
+							"y": { "type": "string", "enum": ["low", "high"] },
+							"items": { "type": "array", "items": { "type": "string" } }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "johari-window",
+		"slug": "johari-window",
+		"name": "Johari Window",
+		"category": "know-self",
+		"description": "Maps what's known and unknown to you and to others about the situation in your question, to surface blind spots.",
+		"whenToUse": "Use when trying to understand yourself better, or close a gap between how you see yourself and how others see you.",
+		"promptTemplate": "You are helping someone apply the Johari Window to a question about themselves. Given their question: \"{{question}}\", populate the four panes: Arena (known to self, known to others), Blind Spot (unknown to self, known to others), Facade (known to self, unknown to others), Unknown (unknown to self, unknown to others). Respond with ONLY JSON matching this shape: {\"xAxisLabel\": \"Known to Self\", \"yAxisLabel\": \"Known to Others\", \"quadrants\": [{\"name\": \"Arena\", \"x\": \"high\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Blind Spot\", \"x\": \"low\", \"y\": \"high\", \"items\": [\"...\"]}, {\"name\": \"Facade\", \"x\": \"high\", \"y\": \"low\", \"items\": [\"...\"]}, {\"name\": \"Unknown\", \"x\": \"low\", \"y\": \"low\", \"items\": [\"...\"]}], \"summary\": \"...\"}",
+		"outputSchemaType": "quadrant2x2",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["xAxisLabel", "yAxisLabel", "quadrants", "summary"],
+			"properties": {
+				"xAxisLabel": { "type": "string" },
+				"yAxisLabel": { "type": "string" },
+				"quadrants": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"required": ["name", "x", "y", "items"],
+						"properties": {
+							"name": { "type": "string" },
+							"x": { "type": "string", "enum": ["low", "high"] },
+							"y": { "type": "string", "enum": ["low", "high"] },
+							"items": { "type": "array", "items": { "type": "string" } }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "Quadrant2x2Chart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "grow-whitmore",
+		"slug": "grow-whitmore",
+		"name": "GROW Model (Whitmore)",
+		"category": "improve-others",
+		"description": "Walks your question through Goal, Reality, Options, Will — John Whitmore's coaching model for moving from stuck to a concrete next action.",
+		"whenToUse": "Use when coaching yourself or someone else through a specific goal or performance question.",
+		"promptTemplate": "You are helping someone apply the GROW coaching model (Goal, Reality, Options, Will) to a question. Given their question: \"{{question}}\", produce one step for each of the four stages, in order. Respond with ONLY JSON matching this shape: {\"steps\": [{\"order\": 1, \"title\": \"Goal\", \"description\": \"...\"}, {\"order\": 2, \"title\": \"Reality\", \"description\": \"...\"}, {\"order\": 3, \"title\": \"Options\", \"description\": \"...\"}, {\"order\": 4, \"title\": \"Will\", \"description\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "flow_diagram",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["steps", "summary"],
+			"properties": {
+				"steps": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": ["order", "title", "description"],
+						"properties": {
+							"order": { "type": "number" },
+							"title": { "type": "string" },
+							"description": { "type": "string" }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "FlowDiagramChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "pareto-principle",
+		"slug": "pareto-principle",
+		"name": "Pareto Principle",
+		"category": "decision-making",
+		"description": "Identifies the small subset of factors in your question likely responsible for most of the outcome — the 80/20 view.",
+		"whenToUse": "Use when you have many possible causes or actions and need to find the vital few worth focusing on.",
+		"promptTemplate": "You are helping someone apply the Pareto Principle (80/20 rule) to a question. Given their question: \"{{question}}\", identify the factors involved, rank them by how much of the outcome each one likely drives, and give each a weight (0-100) reflecting its share of the impact. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"...\", \"weight\": 40, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["items", "summary"],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": ["rank", "label", "weight", "rationale"],
+						"properties": {
+							"rank": { "type": "number" },
+							"label": { "type": "string" },
+							"weight": { "type": "number", "minimum": 0, "maximum": 100 },
+							"rationale": { "type": "string" }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "cognitive-dissonance",
+		"slug": "cognitive-dissonance",
+		"name": "Cognitive Dissonance",
+		"category": "know-self",
+		"description": "Looks at the tension between conflicting beliefs, values, or actions embedded in your question, and how that discomfort might be shaping your thinking.",
+		"whenToUse": "Use when you notice you're rationalizing a choice, or your stated values and actual behavior seem to conflict.",
+		"promptTemplate": "You are helping someone examine cognitive dissonance in a question about their own beliefs or behavior. Given their question: \"{{question}}\", write short narrative sections covering: the conflicting beliefs or actions at play, the rationalizations likely being used to reduce the discomfort, and what genuinely resolving the conflict would require. Respond with ONLY JSON matching this shape: {\"sections\": [{\"heading\": \"The Conflicting Beliefs\", \"body\": \"...\"}, {\"heading\": \"The Rationalization at Work\", \"body\": \"...\"}, {\"heading\": \"What Resolving It Would Require\", \"body\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "freeform_narrative",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["sections", "summary"],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": ["heading", "body"],
+						"properties": {
+							"heading": { "type": "string" },
+							"body": { "type": "string" }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "NarrativeChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	},
+	{
+		"id": "scamper",
+		"slug": "scamper",
+		"name": "SCAMPER",
+		"category": "decision-making",
+		"description": "Generates fresh options for your question by forcing it through seven lenses: Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse.",
+		"whenToUse": "Use when you feel stuck on a decision and want to force fresh alternatives into view.",
+		"promptTemplate": "You are helping someone apply SCAMPER to generate options for a decision. Given their question: \"{{question}}\", generate exactly one concrete idea for each of the seven SCAMPER lenses (Substitute, Combine, Adapt, Modify, Put to another use, Eliminate, Reverse), ranked 1-7 in that order, with a weight (0-100) for how promising each idea seems. Respond with ONLY JSON matching this shape: {\"items\": [{\"rank\": 1, \"label\": \"Substitute\", \"weight\": 70, \"rationale\": \"...\"}], \"summary\": \"...\"}",
+		"outputSchemaType": "ranked_list",
+		"outputJsonSchema": {
+			"type": "object",
+			"required": ["items", "summary"],
+			"properties": {
+				"items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"required": ["rank", "label", "weight", "rationale"],
+						"properties": {
+							"rank": { "type": "number" },
+							"label": { "type": "string" },
+							"weight": { "type": "number", "minimum": 0, "maximum": 100 },
+							"rationale": { "type": "string" }
+						}
+					}
+				},
+				"summary": { "type": "string" }
+			}
+		},
+		"chartComponent": "RankedListChart",
+		"createdAt": "2026-08-22T00:00:00.000Z",
+		"updatedAt": "2026-08-22T00:00:00.000Z"
+	}
+]

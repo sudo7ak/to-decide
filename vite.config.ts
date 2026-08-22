@@ -6,6 +6,10 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	test: {
 		environment: 'jsdom',
-		globals: true
+		globals: true,
+		setupFiles: []
+	},
+	resolve: {
+		conditions: process.env.VITEST ? ['svelte', 'browser'] : []
 	}
 });

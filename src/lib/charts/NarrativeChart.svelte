@@ -1,34 +1,47 @@
 <script lang="ts">
-	import { scaleLinear } from 'd3-scale';
-	import { max } from 'd3-array';
+	import { scalePoint } from 'd3-scale';
 	import type { FreeformNarrativeData } from '$lib/types';
 
 	let { data }: { data: FreeformNarrativeData } = $props();
 
-	const barWidth = 120;
-	const barHeight = 8;
+	const chartWidth = 480;
+	const baselineY = 56;
+	const nodeRadius = 9;
 
-	const maxLength = $derived(max(data.sections, (section) => section.body.length) ?? 1);
-	const widthScale = $derived(
-		scaleLinear().domain([0, maxLength]).range([8, barWidth]).clamp(true)
+	const xScale = $derived(
+		scalePoint()
+			.domain(data.sections.map((_, i) => String(i)))
+			.range([32, chartWidth - 32])
 	);
+
+	function arcPath(x1: number, x2: number) {
+		const height = (x2 - x1) * 0.5;
+		return `M ${x1} ${baselineY} A ${(x2 - x1) / 2} ${height} 0 0 1 ${x2} ${baselineY}`;
+	}
 </script>
 
 <figure>
+	<svg viewBox="0 0 {chartWidth} 80" role="img" aria-label="Throughline of {data.sections.length} sections">
+		{#each data.sections as section, i (section.heading)}
+			{#if i > 0}
+				{@const x1 = xScale(String(i - 1)) ?? 0}
+				{@const x2 = xScale(String(i)) ?? 0}
+				<path d={arcPath(x1, x2)} class="narrative-arc" fill="none" />
+			{/if}
+		{/each}
+		{#each data.sections as section, i (section.heading)}
+			{@const x = xScale(String(i)) ?? 0}
+			<circle cx={x} cy={baselineY} r={nodeRadius} class="narrative-node" />
+			<text x={x} y={baselineY} dy="0.35em" text-anchor="middle" class="node-number">
+				{i + 1}
+			</text>
+		{/each}
+	</svg>
+
 	<div class="sections">
-		{#each data.sections as section (section.heading)}
+		{#each data.sections as section, i (section.heading)}
 			<section>
-				<div class="section-header">
-					<h3>{section.heading}</h3>
-					<svg width={barWidth} height={barHeight} role="img" aria-label="{section.heading} weight">
-						<rect
-							class="section-bar"
-							width={widthScale(section.body.length)}
-							height={barHeight}
-							rx={2}
-						/>
-					</svg>
-				</div>
+				<h3><span class="heading-number">{i + 1}</span>{section.heading}</h3>
 				<p>{section.body}</p>
 			</section>
 		{/each}
@@ -37,25 +50,49 @@
 </figure>
 
 <style>
+	svg {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+	.narrative-arc {
+		stroke: var(--chart-box-stroke, #cbd5e1);
+		stroke-width: 1.5;
+	}
+	.narrative-node {
+		fill: var(--chart-accent, #0f172a);
+	}
+	.node-number {
+		font-size: 11px;
+		font-weight: 600;
+		fill: white;
+	}
 	.sections {
+		margin-top: 0.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-	}
-	.section-header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 0.75rem;
 	}
 	h3 {
 		font-size: 0.875rem;
 		font-weight: 600;
 		color: var(--chart-text, #0f172a);
 		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
 	}
-	.section-bar {
-		fill: var(--chart-accent, #0f172a);
+	.heading-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.25rem;
+		height: 1.25rem;
+		border-radius: 999px;
+		background: var(--chart-accent, #0f172a);
+		color: white;
+		font-size: 0.6875rem;
+		flex-shrink: 0;
 	}
 	p {
 		font-size: 0.875rem;

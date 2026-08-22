@@ -51,7 +51,7 @@ describe('/models/[slug] page', () => {
 		expect(
 			await screen.findByText('Deciding whether to leave a stable corporate job to freelance full-time.')
 		).toBeTruthy();
-		expect(await screen.findByText('Strengths')).toBeTruthy();
+		expect((await screen.findAllByText('Strengths')).length).toBeGreaterThan(0);
 		expect(container.querySelector('svg')).toBeTruthy();
 	});
 });

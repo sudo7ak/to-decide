@@ -1,13 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-	import { onMount } from 'svelte';
-	import { seedModelsIfEmpty } from '$lib/db/seed';
 
 	let { children } = $props();
-
-	onMount(() => {
-		seedModelsIfEmpty();
-	});
 </script>
 
 <div class="min-h-screen bg-white">

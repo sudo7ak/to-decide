@@ -2,7 +2,7 @@ import type { LlmProvider } from './provider';
 import { ProviderUnavailableError, ProviderOutputError } from './provider';
 
 const GEMINI_URL =
-	'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+	'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent';
 
 export class GeminiProvider implements LlmProvider {
 	constructor(private apiKey: string) {}

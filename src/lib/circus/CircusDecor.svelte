@@ -41,47 +41,43 @@
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<path
-			d="M12 2 L16 8 L8 8 Z"
+			d="M12 1 L17 7.5 L7 7.5 Z"
 			stroke="currentColor"
-			stroke-width="1.5"
+			stroke-width="1.6"
 			stroke-linejoin="round"
 			stroke-linecap="round"
 		/>
-		<line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-		<circle cx="12" cy="2" r="1" fill="currentColor" />
-		<circle cx="12" cy="15" r="6" stroke="currentColor" stroke-width="1.5" />
-		<circle cx="9.5" cy="13.5" r="0.8" fill="currentColor" />
-		<circle cx="14.5" cy="13.5" r="0.8" fill="currentColor" />
-		<circle class="circus-clown-nose" cx="12" cy="16" r="1.6" />
-		<path d="M9 17.5 Q12 20.5 15 17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+		<line x1="6" y1="7.5" x2="18" y2="7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+		<circle cx="12" cy="1" r="1.3" fill="currentColor" />
+		<circle cx="12" cy="15" r="7" stroke="currentColor" stroke-width="1.6" />
+		<circle cx="2.6" cy="13.5" r="1" fill="currentColor" />
+		<circle cx="4.4" cy="10.5" r="1" fill="currentColor" />
+		<circle cx="21.4" cy="13.5" r="1" fill="currentColor" />
+		<circle cx="19.6" cy="10.5" r="1" fill="currentColor" />
+		<circle cx="9" cy="13.5" r="1.1" fill="currentColor" />
+		<circle cx="15" cy="13.5" r="1.1" fill="currentColor" />
+		<circle class="circus-clown-nose" cx="12" cy="17" r="2.4" />
+		<path d="M7.5 19 Q12 23.5 16.5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
 	</svg>
 
 	<svg
 		class="circus-cycle text-ink"
-		viewBox="0 0 36 24"
+		viewBox="0 0 24 24"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 	>
-		<circle cx="8" cy="18" r="5" stroke="currentColor" stroke-width="1.4" />
-		<circle cx="28" cy="18" r="5" stroke="currentColor" stroke-width="1.4" />
+		<circle cx="5.5" cy="17.5" r="3.5" stroke="currentColor" stroke-width="1.6" />
+		<circle cx="18.5" cy="17.5" r="3.5" stroke="currentColor" stroke-width="1.6" />
 		<path
-			d="M8 18 L17 18 L14 9 L24 9 L28 18 M17 18 L24 9"
+			d="M5.5 17.5 L12 17.5 L9 10 L15 8 L18.5 17.5 M12 17.5 L15 8"
 			stroke="currentColor"
-			stroke-width="1.4"
-			stroke-linejoin="round"
-			stroke-linecap="round"
-		/>
-		<path d="M12.5 8.5 L15.5 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
-		<path d="M24 9 L22 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
-		<circle cx="17" cy="18" r="1" fill="currentColor" />
-		<circle cx="20" cy="3.5" r="2" fill="currentColor" />
-		<path
-			d="M20 5.5 L14 8.5 M20 5.5 L22 6 M14 8.5 L17 18"
-			stroke="currentColor"
-			stroke-width="1.4"
+			stroke-width="1.6"
 			stroke-linecap="round"
 			stroke-linejoin="round"
 		/>
+		<path d="M7.5 9.7 L10.5 10.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+		<path d="M13.5 6.7 L16.5 7.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+		<circle cx="12" cy="17.5" r="1" fill="currentColor" />
 	</svg>
 </div>
 

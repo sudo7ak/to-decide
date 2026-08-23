@@ -174,6 +174,8 @@ export interface Question {
 	id: string;
 	text: string;
 	createdAt: string;
+	/** Model slugs the LLM recommended for this question, computed once on first view. */
+	recommendedModelIds?: string[];
 }
 
 export interface Analysis {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
-	import { getQuestion } from '$lib/stores/questions';
+	import { getQuestion, setRecommendedModels } from '$lib/stores/questions';
 	import { listModels } from '$lib/stores/models';
 	import { listAnalysesForQuestion } from '$lib/stores/analyses';
 	import type { Category, ModelDef, Question } from '$lib/types';
@@ -17,6 +17,7 @@
 	let models = $state<ModelDef[]>([]);
 	let notFound = $state(false);
 	let analyzedModelIds = $state<Set<string>>(new Set());
+	let recommendedModelIds = $state<Set<string>>(new Set());
 
 	onMount(async () => {
 		const id = page.params.id;
@@ -27,14 +28,49 @@
 			models = await listModels();
 			const analyses = await listAnalysesForQuestion(question.id);
 			analyzedModelIds = new Set(analyses.map((a) => a.modelId));
+
+			if (question.recommendedModelIds) {
+				recommendedModelIds = new Set(question.recommendedModelIds);
+			} else {
+				fetchRecommendations(question, models);
+			}
 		}
 	});
+
+	async function fetchRecommendations(q: Question, allModels: ModelDef[]) {
+		try {
+			const res = await fetch('/api/recommend-models', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					questionText: q.text,
+					models: allModels.map((m) => ({
+						slug: m.slug,
+						name: m.name,
+						description: m.description
+					}))
+				})
+			});
+			if (!res.ok) return;
+			const { modelSlugs } = (await res.json()) as { modelSlugs: string[] };
+			const ids = allModels.filter((m) => modelSlugs.includes(m.slug)).map((m) => m.id);
+			await setRecommendedModels(q.id, ids);
+			recommendedModelIds = new Set(ids);
+		} catch {
+			// recommendations are a non-critical enhancement — fail silently
+		}
+	}
 
 	let byCategory = $derived(
 		(Object.keys(categoryLabels) as Category[]).map((category) => ({
 			category,
 			label: categoryLabels[category],
-			models: models.filter((m) => m.category === category)
+			models: models
+				.filter((m) => m.category === category)
+				.sort(
+					(a, b) =>
+						Number(recommendedModelIds.has(b.id)) - Number(recommendedModelIds.has(a.id))
+				)
 		}))
 	);
 </script>
@@ -63,11 +99,18 @@
 							>
 								<div class="flex items-start justify-between gap-2">
 									<span class="font-medium text-slate-900">{model.name}</span>
-									{#if analyzedModelIds.has(model.id)}
-										<span class="shrink-0 text-xs font-medium uppercase tracking-wide text-emerald-600">
-											Analyzed
-										</span>
-									{/if}
+									<div class="flex shrink-0 gap-1.5">
+										{#if recommendedModelIds.has(model.id)}
+											<span class="text-xs font-medium uppercase tracking-wide text-indigo-600">
+												Recommended
+											</span>
+										{/if}
+										{#if analyzedModelIds.has(model.id)}
+											<span class="text-xs font-medium uppercase tracking-wide text-emerald-600">
+												Analyzed
+											</span>
+										{/if}
+									</div>
 								</div>
 								<p class="mt-1 text-sm text-slate-500">{model.description}</p>
 							</a>

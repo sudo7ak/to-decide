@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { db } from '../db';
-import { createQuestion, listQuestions, getQuestion } from './questions';
+import { createQuestion, listQuestions, getQuestion, setRecommendedModels } from './questions';
 
 describe('questions store', () => {
 	beforeEach(async () => {
@@ -31,5 +31,15 @@ describe('questions store', () => {
 		const created = await createQuestion('Should I move cities?');
 		const found = await getQuestion(created.id);
 		expect(found?.text).toBe('Should I move cities?');
+	});
+
+	it('sets recommended model ids on a question', async () => {
+		const created = await createQuestion('Should I take the job?');
+		expect(created.recommendedModelIds).toBeUndefined();
+
+		await setRecommendedModels(created.id, ['m1', 'm2']);
+
+		const found = await getQuestion(created.id);
+		expect(found?.recommendedModelIds).toEqual(['m1', 'm2']);
 	});
 });

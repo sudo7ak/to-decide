@@ -23,3 +23,10 @@ export async function listQuestions(): Promise<Question[]> {
 export async function getQuestion(id: string): Promise<Question | undefined> {
 	return db.questions.get(id);
 }
+
+export async function setRecommendedModels(
+	questionId: string,
+	modelIds: string[]
+): Promise<void> {
+	await db.questions.update(questionId, { recommendedModelIds: modelIds });
+}

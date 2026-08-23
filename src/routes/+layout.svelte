@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import CircusDecor from '$lib/circus/CircusDecor.svelte';
 
 	let { children } = $props();
 </script>
@@ -28,5 +29,6 @@
 			</a>
 		</nav>
 	</header>
+	<CircusDecor />
 	{@render children()}
 </div>

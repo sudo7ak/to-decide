@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { createQuestion, listQuestions } from '$lib/stores/questions';
+	import { listModels } from '$lib/stores/models';
 	import type { Question } from '$lib/types';
 
 	let questionText = $state('');
 	let questions = $state<Question[]>([]);
+	let modelNameById = $state<Record<string, string>>({});
 
 	async function refresh() {
 		questions = await listQuestions();
@@ -17,7 +19,11 @@
 		await refresh();
 	}
 
-	onMount(refresh);
+	onMount(async () => {
+		await refresh();
+		const models = await listModels();
+		modelNameById = Object.fromEntries(models.map((m) => [m.id, m.name]));
+	});
 </script>
 
 <main class="mx-auto max-w-2xl px-6 py-16">
@@ -50,10 +56,23 @@
 
 	<ul class="mt-12 divide-y divide-border">
 		{#each questions as question (question.id)}
-			<li>
-				<a href={`/question/${question.id}`} class="block py-4 text-ink hover:text-accent">
+			<li class="py-4">
+				<a href={`/question/${question.id}`} class="block text-ink hover:text-accent">
 					{question.text}
 				</a>
+				{#if question.recommendedModelIds?.length}
+					<div class="mt-2 flex flex-wrap gap-1.5">
+						{#each question.recommendedModelIds as modelId (modelId)}
+							{#if modelNameById[modelId]}
+								<span
+									class="rounded-full border border-accent/30 bg-accent/5 px-2 py-0.5 text-xs font-medium text-accent"
+								>
+									{modelNameById[modelId]}
+								</span>
+							{/if}
+						{/each}
+					</div>
+				{/if}
 			</li>
 		{/each}
 	</ul>

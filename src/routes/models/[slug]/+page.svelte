@@ -3,21 +3,7 @@
 	import { page } from '$app/state';
 	import { getModelBySlug } from '$lib/stores/models';
 	import type { ModelDef } from '$lib/types';
-	import Quadrant2x2Chart from '$lib/charts/Quadrant2x2Chart.svelte';
-	import MatrixTableChart from '$lib/charts/MatrixTableChart.svelte';
-	import RankedListChart from '$lib/charts/RankedListChart.svelte';
-	import FlowDiagramChart from '$lib/charts/FlowDiagramChart.svelte';
-	import NarrativeChart from '$lib/charts/NarrativeChart.svelte';
-	import RadarChart from '$lib/charts/RadarChart.svelte';
-
-	const chartComponents = {
-		Quadrant2x2Chart,
-		MatrixTableChart,
-		RankedListChart,
-		FlowDiagramChart,
-		NarrativeChart,
-		RadarChart
-	};
+	import { chartComponents } from '$lib/charts/registry';
 
 	let model = $state<ModelDef | undefined>(undefined);
 	let notFound = $state(false);

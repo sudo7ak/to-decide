@@ -21,8 +21,10 @@
 </script>
 
 <main class="mx-auto max-w-2xl px-6 py-16">
-	<h1 class="text-3xl font-semibold tracking-tight text-slate-900">What are you deciding?</h1>
-	<p class="mt-2 text-slate-500">
+	<h1 class="font-display text-5xl font-semibold tracking-tight text-ink">
+		Think it through.<br />Properly.
+	</h1>
+	<p class="mt-3 text-ink-muted">
 		Write the question or doubt you're weighing. Then pick a model to think it through.
 	</p>
 
@@ -34,25 +36,22 @@
 		}}
 	>
 		<input
-			class="flex-1 rounded-lg border border-slate-300 px-4 py-3 text-slate-900 focus:border-slate-500 focus:outline-none"
+			class="flex-1 rounded-lg border border-border bg-surface px-4 py-3 text-ink focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
 			placeholder="What are you trying to decide?"
 			bind:value={questionText}
 		/>
 		<button
 			type="submit"
-			class="rounded-lg bg-slate-900 px-5 py-3 font-medium text-white hover:bg-slate-700"
+			class="rounded-lg bg-accent px-5 py-3 font-medium text-white transition-colors hover:bg-accent/90"
 		>
 			Ask
 		</button>
 	</form>
 
-	<ul class="mt-12 divide-y divide-slate-200">
+	<ul class="mt-12 divide-y divide-border">
 		{#each questions as question (question.id)}
 			<li>
-				<a
-					href={`/question/${question.id}`}
-					class="block py-4 text-slate-800 hover:text-slate-500"
-				>
+				<a href={`/question/${question.id}`} class="block py-4 text-ink hover:text-accent">
 					{question.text}
 				</a>
 			</li>
@@ -60,6 +59,6 @@
 	</ul>
 
 	{#if questions.length === 0}
-		<p class="mt-12 text-slate-400">No questions yet.</p>
+		<p class="mt-12 text-ink-muted">No questions yet.</p>
 	{/if}
 </main>

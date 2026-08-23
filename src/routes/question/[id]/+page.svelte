@@ -21,8 +21,8 @@
 	let expandedModelId = $state<string | null>(null);
 	let analysesByModel = $state<Record<string, Analysis[]>>({});
 	let activeAnalysisId = $state<Record<string, string>>({});
-	let loadingModelId = $state<string | null>(null);
-	let errorModelId = $state<string | null>(null);
+	let loadingByModel = $state<Record<string, boolean>>({});
+	let errorByModel = $state<Record<string, boolean>>({});
 
 	onMount(async () => {
 		const id = page.params.id;
@@ -69,7 +69,7 @@
 			return;
 		}
 		expandedModelId = model.id;
-		errorModelId = null;
+		errorByModel = { ...errorByModel, [model.id]: false };
 		if (!analysesByModel[model.id]) {
 			const list = await listAnalysesForQuestionAndModel(question!.id, model.id);
 			analysesByModel = { ...analysesByModel, [model.id]: list };
@@ -81,8 +81,8 @@
 
 	async function runAnalysis(model: ModelDef) {
 		if (!question) return;
-		loadingModelId = model.id;
-		errorModelId = null;
+		loadingByModel = { ...loadingByModel, [model.id]: true };
+		errorByModel = { ...errorByModel, [model.id]: false };
 		try {
 			const prompt = model.promptTemplate.replaceAll('{{question}}', question.text);
 			const res = await fetch('/api/analyze', {
@@ -99,9 +99,9 @@
 			};
 			activeAnalysisId = { ...activeAnalysisId, [model.id]: created.id };
 		} catch {
-			errorModelId = model.id;
+			errorByModel = { ...errorByModel, [model.id]: true };
 		} finally {
-			loadingModelId = null;
+			loadingByModel = { ...loadingByModel, [model.id]: false };
 		}
 	}
 </script>
@@ -147,10 +147,10 @@
 											<button
 												type="button"
 												class="rounded bg-slate-900 px-3 py-1.5 text-sm text-white disabled:opacity-50"
-												disabled={loadingModelId === model.id}
+												disabled={loadingByModel[model.id]}
 												onclick={() => runAnalysis(model)}
 											>
-												{loadingModelId === model.id ? 'Analyzing…' : 'Analyze'}
+												{loadingByModel[model.id] ? 'Analyzing…' : 'Analyze'}
 											</button>
 										{:else}
 											<div class="flex flex-wrap gap-2 text-xs">
@@ -177,14 +177,14 @@
 											<button
 												type="button"
 												class="mt-3 rounded border border-slate-300 px-3 py-1.5 text-sm text-slate-700 disabled:opacity-50"
-												disabled={loadingModelId === model.id}
+												disabled={loadingByModel[model.id]}
 												onclick={() => runAnalysis(model)}
 											>
-												{loadingModelId === model.id ? 'Analyzing…' : 'Re-analyze'}
+												{loadingByModel[model.id] ? 'Analyzing…' : 'Re-analyze'}
 											</button>
 										{/if}
 
-										{#if errorModelId === model.id}
+										{#if errorByModel[model.id]}
 											<p class="mt-2 text-sm text-red-600">
 												Analysis failed.
 												<button

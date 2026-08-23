@@ -1,7 +1,7 @@
 import 'fake-indexeddb/auto';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { db } from '../db';
-import { createAnalysis, listAnalysesForQuestionAndModel } from './analyses';
+import { createAnalysis, listAnalysesForQuestionAndModel, listAnalysesForQuestion } from './analyses';
 
 describe('analyses store', () => {
 	beforeEach(async () => {
@@ -40,5 +40,13 @@ describe('analyses store', () => {
 		const list = await listAnalysesForQuestionAndModel('q1', 'm1');
 		expect(list).toHaveLength(1);
 		expect(list[0].resultJson).toEqual({ summary: 'for q1' });
+	});
+
+	it('lists analyses for a question across every model, excluding other questions', async () => {
+		await createAnalysis('q1', 'm1', { summary: 'q1/m1' });
+		await createAnalysis('q1', 'm2', { summary: 'q1/m2' });
+		await createAnalysis('q2', 'm1', { summary: 'q2/m1' });
+		const list = await listAnalysesForQuestion('q1');
+		expect(list.map((a) => a.modelId).sort()).toEqual(['m1', 'm2']);
 	});
 });

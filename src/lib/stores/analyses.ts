@@ -20,6 +20,10 @@ export async function createAnalysis(
 	return analysis;
 }
 
+export async function listAnalysesForQuestion(questionId: string): Promise<Analysis[]> {
+	return db.analyses.where('questionId').equals(questionId).toArray();
+}
+
 export async function listAnalysesForQuestionAndModel(
 	questionId: string,
 	modelId: string

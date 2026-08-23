@@ -35,7 +35,7 @@
 	</svg>
 
 	<svg
-		class="circus-clown absolute bottom-2 right-4 h-12 w-12 text-accent-moss"
+		class="absolute bottom-2 right-4 h-12 w-12 text-accent-moss"
 		viewBox="0 0 24 24"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
@@ -96,52 +96,24 @@
 		fill: var(--color-accent);
 	}
 
-	.circus-clown {
-		animation: circus-bounce 2.4s ease-in-out infinite;
-	}
-
-	@keyframes circus-bounce {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-3px);
-		}
-	}
-
 	.circus-cycle {
 		position: absolute;
 		bottom: 8px;
 		left: -60px;
 		width: 56px;
-		animation: circus-roam 40s linear infinite;
+		animation: circus-roam 70s linear infinite;
 	}
 
 	@keyframes circus-roam {
 		0% {
 			transform: translateX(0);
-			opacity: 0;
-		}
-		5% {
-			opacity: 1;
-		}
-		45% {
-			transform: translateX(calc(100vw + 60px));
-			opacity: 1;
-		}
-		50% {
-			transform: translateX(calc(100vw + 60px));
-			opacity: 0;
 		}
 		100% {
-			transform: translateX(calc(100vw + 60px));
-			opacity: 0;
+			transform: translateX(calc(100vw + 116px));
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.circus-clown,
 		.circus-cycle {
 			animation: none;
 		}

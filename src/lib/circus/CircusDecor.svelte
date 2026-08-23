@@ -1,87 +1,95 @@
-<div class="circus-bunting no-print" aria-hidden="true"></div>
+<svg
+	class="circus-bunting no-print"
+	viewBox="0 0 1600 14"
+	preserveAspectRatio="none"
+	aria-hidden="true"
+>
+	<defs>
+		<pattern id="circus-bunting-pattern" width="16" height="14" patternUnits="userSpaceOnUse">
+			<line x1="0" y1="1" x2="16" y2="1" stroke="var(--color-border)" stroke-width="1" />
+			<path d="M1 1.5 L5 10.5 L9 1.5 Z" fill="var(--color-accent)" opacity="0.55" />
+			<path d="M9 1.5 L13 10.5 L17 1.5 Z" fill="var(--color-accent-moss)" opacity="0.55" />
+		</pattern>
+	</defs>
+	<rect width="1600" height="14" fill="url(#circus-bunting-pattern)" />
+</svg>
 
 <div class="no-print pointer-events-none fixed inset-x-0 bottom-0 z-0 hidden md:block" aria-hidden="true">
 	<svg
-		class="absolute bottom-2 left-4 h-14 w-14 text-accent/70"
-		viewBox="0 0 64 56"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<line x1="32" y1="2" x2="32" y2="12" stroke="currentColor" stroke-width="1.5" />
-		<path d="M32 2 L40 5 L32 8 Z" fill="currentColor" />
-		<path
-			d="M32 10 L58 50 H6 Z"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linejoin="round"
-		/>
-		<path d="M32 10 L20 50" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-		<path d="M32 10 L44 50" stroke="currentColor" stroke-width="1.5" opacity="0.5" />
-		<path d="M26 50 L32 30 L38 50" fill="none" stroke="currentColor" stroke-width="1.5" />
-		<line x1="4" y1="50" x2="60" y2="50" stroke="currentColor" stroke-width="2" />
-	</svg>
-
-	<svg
-		class="circus-clown absolute bottom-2 right-4 h-12 w-12 text-accent-moss/80"
-		viewBox="0 0 48 48"
+		class="absolute bottom-2 left-4 h-14 w-14 text-accent"
+		viewBox="0 0 24 24"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 	>
 		<path
-			d="M24 2 L34 16 H14 Z"
-			fill="currentColor"
-			fill-opacity="0.15"
+			d="M3 21 L7 11 L9.5 15 L12 5 L14.5 15 L17 11 L21 21 Z"
 			stroke="currentColor"
 			stroke-width="1.5"
 			stroke-linejoin="round"
-		/>
-		<circle cx="24" cy="2" r="2" fill="currentColor" />
-		<circle cx="24" cy="26" r="14" fill="none" stroke="currentColor" stroke-width="1.5" />
-		<circle cx="19" cy="24" r="1.4" fill="currentColor" />
-		<circle cx="29" cy="24" r="1.4" fill="currentColor" />
-		<circle class="circus-clown-nose" cx="24" cy="29" r="3" />
-		<path
-			d="M17 32 Q24 38 31 32"
-			stroke="currentColor"
-			stroke-width="1.5"
-			fill="none"
 			stroke-linecap="round"
 		/>
+		<path d="M9.5 15 L9.5 21 M14.5 15 L14.5 21" stroke="currentColor" stroke-width="1" opacity="0.5" />
+		<path d="M10 21 L12 15 L14 21" stroke="currentColor" stroke-width="1" stroke-linejoin="round" />
+		<path d="M12 5 L12 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+		<path d="M12 1.5 L16 3 L12 4.5 Z" fill="currentColor" />
 	</svg>
 
 	<svg
-		class="circus-cycle text-ink/70"
-		viewBox="0 0 64 40"
+		class="circus-clown absolute bottom-2 right-4 h-12 w-12 text-accent-moss"
+		viewBox="0 0 24 24"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 	>
-		<circle cx="14" cy="32" r="7" stroke="currentColor" stroke-width="1.6" />
-		<circle cx="50" cy="32" r="7" stroke="currentColor" stroke-width="1.6" />
 		<path
-			d="M14 32 L28 14 H40 L50 32 M28 14 L22 32 M28 14 L34 22 L50 32 M34 22 L26 22"
+			d="M12 2 L16 8 L8 8 Z"
 			stroke="currentColor"
-			stroke-width="1.6"
+			stroke-width="1.5"
 			stroke-linejoin="round"
 			stroke-linecap="round"
 		/>
-		<line x1="34" y1="22" x2="34" y2="10" stroke="currentColor" stroke-width="1.6" />
-		<circle cx="34" cy="6" r="3" fill="currentColor" />
+		<line x1="7" y1="8" x2="17" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+		<circle cx="12" cy="2" r="1" fill="currentColor" />
+		<circle cx="12" cy="15" r="6" stroke="currentColor" stroke-width="1.5" />
+		<circle cx="9.5" cy="13.5" r="0.8" fill="currentColor" />
+		<circle cx="14.5" cy="13.5" r="0.8" fill="currentColor" />
+		<circle class="circus-clown-nose" cx="12" cy="16" r="1.6" />
+		<path d="M9 17.5 Q12 20.5 15 17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+	</svg>
+
+	<svg
+		class="circus-cycle text-ink"
+		viewBox="0 0 36 24"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<circle cx="8" cy="18" r="5" stroke="currentColor" stroke-width="1.4" />
+		<circle cx="28" cy="18" r="5" stroke="currentColor" stroke-width="1.4" />
 		<path
-			d="M34 9 L30 18 M34 9 L38 16"
+			d="M8 18 L17 18 L14 9 L24 9 L28 18 M17 18 L24 9"
 			stroke="currentColor"
-			stroke-width="1.6"
+			stroke-width="1.4"
+			stroke-linejoin="round"
 			stroke-linecap="round"
+		/>
+		<path d="M12.5 8.5 L15.5 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+		<path d="M24 9 L22 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+		<circle cx="17" cy="18" r="1" fill="currentColor" />
+		<circle cx="20" cy="3.5" r="2" fill="currentColor" />
+		<path
+			d="M20 5.5 L14 8.5 M20 5.5 L22 6 M14 8.5 L17 18"
+			stroke="currentColor"
+			stroke-width="1.4"
+			stroke-linecap="round"
+			stroke-linejoin="round"
 		/>
 	</svg>
 </div>
 
 <style>
 	.circus-bunting {
+		display: block;
+		width: 100%;
 		height: 14px;
-		background: linear-gradient(-45deg, transparent 7px, var(--color-accent) 7px) 0 0 / 14px 14px
-			repeat-x;
-		opacity: 0.35;
 	}
 
 	.circus-clown-nose {
@@ -98,7 +106,7 @@
 			transform: translateY(0);
 		}
 		50% {
-			transform: translateY(-4px);
+			transform: translateY(-3px);
 		}
 	}
 

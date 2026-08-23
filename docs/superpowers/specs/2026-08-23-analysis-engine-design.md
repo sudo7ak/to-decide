@@ -108,11 +108,15 @@ validation failure — see retry below).
   call, same prompt). Second failure → `502 { error: "validation_failed" }`.
 - Provider network/timeout error → `502 { error: "provider_unavailable" }`.
 - Success → `200 { resultJson }`.
-- API key read from `platform.env.GEMINI_API_KEY` (Cloudflare Pages
-  Function binding). Local dev needs `wrangler pages dev` (not plain
-  `vite dev`) with a gitignored `.dev.vars` file holding the key —
-  documented in the plan's setup step, `.dev.vars` added to
-  `.gitignore`.
+- API key read from `platform.env.GEMINI_API_KEY` (Cloudflare
+  binding). `@sveltejs/adapter-cloudflare` ships an `emulate()` hook
+  that calls wrangler's `getPlatformProxy()` under plain `vite dev` —
+  no `wrangler` CLI invocation needed locally. That proxy reads a
+  gitignored `.dev.vars` file in the project root for env vars, so
+  local dev is just `npm run dev` plus a `.dev.vars` holding the key.
+  `App.Platform.env` needs a type declaration in `src/app.d.ts` (the
+  adapter deliberately omits typing `env` itself, to avoid overriding
+  a user-supplied type).
 
 ## Frontend
 

@@ -69,7 +69,10 @@
 
 <main class="mx-auto max-w-2xl px-6 py-16">
 	{#if question && model}
-		<a href={`/question/${question.id}`} class="text-sm text-ink-muted hover:text-accent">
+		<a
+			href={`/question/${question.id}`}
+			class="no-print text-sm text-ink-muted hover:text-accent"
+		>
 			&larr; Back to question
 		</a>
 		<p class="mt-4 text-sm text-ink-muted">{question.text}</p>
@@ -86,7 +89,7 @@
 					{loading ? 'Analyzing…' : 'Analyze'}
 				</button>
 			{:else}
-				<div class="flex flex-wrap gap-2 text-xs">
+				<div class="no-print flex flex-wrap gap-2 text-xs">
 					{#each analyses as run (run.id)}
 						<button
 							type="button"
@@ -101,23 +104,37 @@
 				</div>
 
 				{#if ActiveChart && activeAnalysis}
+					<p class="print-only mt-3 hidden text-xs text-ink-muted">
+						{formatTimestamp(activeAnalysis.createdAt)}
+					</p>
 					<div class="mt-3">
 						<ActiveChart data={activeAnalysis.resultJson as never} />
 					</div>
 				{/if}
 
-				<button
-					type="button"
-					class="mt-3 rounded-lg border border-border px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent disabled:opacity-50"
-					disabled={loading}
-					onclick={runAnalysis}
-				>
-					{loading ? 'Analyzing…' : 'Re-analyze'}
-				</button>
+				<div class="no-print mt-3 flex gap-2">
+					<button
+						type="button"
+						class="rounded-lg border border-border px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent disabled:opacity-50"
+						disabled={loading}
+						onclick={runAnalysis}
+					>
+						{loading ? 'Analyzing…' : 'Re-analyze'}
+					</button>
+					{#if activeAnalysis}
+						<button
+							type="button"
+							class="rounded-lg border border-border px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent"
+							onclick={() => window.print()}
+						>
+							Print / Save as PDF
+						</button>
+					{/if}
+				</div>
 			{/if}
 
 			{#if error}
-				<p class="mt-2 text-sm text-error">
+				<p class="no-print mt-2 text-sm text-error">
 					Analysis failed.
 					<button type="button" class="underline" onclick={runAnalysis}>Try again</button>
 				</p>

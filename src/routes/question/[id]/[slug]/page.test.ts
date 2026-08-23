@@ -97,4 +97,21 @@ describe('/question/[id]/[slug] page', () => {
 		render(Page);
 		expect(await screen.findByText('Question or model not found.')).toBeTruthy();
 	});
+
+	it('shows a Print button once a chart is rendered, and it calls window.print', async () => {
+		await createAnalysis(questionId, eisenhower.id, eisenhower.example.result);
+		const printSpy = vi.fn();
+		vi.stubGlobal('print', printSpy);
+
+		render(Page);
+		await fireEvent.click(await screen.findByRole('button', { name: 'Print / Save as PDF' }));
+
+		expect(printSpy).toHaveBeenCalledOnce();
+	});
+
+	it('does not show a Print button before any analysis exists', async () => {
+		render(Page);
+		await screen.findByRole('button', { name: 'Analyze' });
+		expect(screen.queryByRole('button', { name: 'Print / Save as PDF' })).toBeNull();
+	});
 });

@@ -76,43 +76,45 @@
 </script>
 
 <main class="mx-auto max-w-2xl px-6 py-16">
-	<a href="/" class="text-sm text-slate-400 hover:text-slate-600">&larr; All questions</a>
+	<a href="/" class="text-sm text-ink-muted hover:text-accent">&larr; All questions</a>
 
 	{#if question}
-		<h1 class="mt-4 text-2xl font-semibold tracking-tight text-slate-900">{question.text}</h1>
+		<h1 class="font-display mt-4 text-2xl font-semibold tracking-tight text-ink">
+			{question.text}
+		</h1>
 
-		<h2 class="mt-10 text-sm font-semibold uppercase tracking-wide text-slate-400">
+		<h2 class="font-display mt-10 text-sm font-semibold uppercase tracking-wide text-ink-muted">
 			Pick a model
 		</h2>
 		{#each byCategory as group (group.category)}
 			{#if group.models.length > 0}
 				<div class="mt-6">
-					<h3 class="text-xs font-medium uppercase tracking-wide text-slate-400">
+					<h3 class="text-xs font-medium uppercase tracking-wide text-ink-muted">
 						{group.label}
 					</h3>
 					<div class="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
 						{#each group.models as model (model.id)}
 							<a
 								href={`/question/${question.id}/${model.slug}`}
-								class="block rounded-lg border border-slate-200 p-4 hover:border-slate-400"
+								class="block rounded-lg border border-border bg-surface p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md"
 								data-testid={`model-card-${model.slug}`}
 							>
 								<div class="flex items-start justify-between gap-2">
-									<span class="font-medium text-slate-900">{model.name}</span>
+									<span class="font-medium text-ink">{model.name}</span>
 									<div class="flex shrink-0 gap-1.5">
 										{#if recommendedModelIds.has(model.id)}
-											<span class="text-xs font-medium uppercase tracking-wide text-indigo-600">
+											<span class="text-xs font-medium uppercase tracking-wide text-accent">
 												Recommended
 											</span>
 										{/if}
 										{#if analyzedModelIds.has(model.id)}
-											<span class="text-xs font-medium uppercase tracking-wide text-emerald-600">
+											<span class="text-xs font-medium uppercase tracking-wide text-accent-moss">
 												Analyzed
 											</span>
 										{/if}
 									</div>
 								</div>
-								<p class="mt-1 text-sm text-slate-500">{model.description}</p>
+								<p class="mt-1 text-sm text-ink-muted">{model.description}</p>
 							</a>
 						{/each}
 					</div>
@@ -120,6 +122,6 @@
 			{/if}
 		{/each}
 	{:else if notFound}
-		<p class="mt-4 text-slate-500">Question not found.</p>
+		<p class="mt-4 text-ink-muted">Question not found.</p>
 	{/if}
 </main>

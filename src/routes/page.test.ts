@@ -50,6 +50,16 @@ describe('/ page', () => {
 
 		const link = await screen.findByText('Should I take the job?');
 		const item = link.closest('li') as HTMLElement;
-		expect(item.querySelectorAll('span').length).toBe(0);
+		expect(item.querySelectorAll('.rounded-full').length).toBe(0);
+	});
+
+	it('shows a relative timestamp next to each question', async () => {
+		await createQuestion('Should I take the job?');
+
+		render(Page);
+
+		const link = await screen.findByText('Should I take the job?');
+		const item = link.closest('li') as HTMLElement;
+		expect(await within(item).findByText('just now')).toBeTruthy();
 	});
 });

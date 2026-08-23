@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { createQuestion, listQuestions } from '$lib/stores/questions';
 	import { listModels } from '$lib/stores/models';
+	import { relativeTime } from '$lib/relativeTime';
 	import type { Question } from '$lib/types';
 
 	let questionText = $state('');
@@ -57,9 +58,12 @@
 	<ul class="mt-12 divide-y divide-border">
 		{#each questions as question (question.id)}
 			<li class="py-4">
-				<a href={`/question/${question.id}`} class="block text-ink hover:text-accent">
-					{question.text}
-				</a>
+				<div class="flex items-baseline justify-between gap-4">
+					<a href={`/question/${question.id}`} class="text-ink hover:text-accent">
+						{question.text}
+					</a>
+					<span class="shrink-0 text-xs text-ink-muted">{relativeTime(question.createdAt)}</span>
+				</div>
 				{#if question.recommendedModelIds?.length}
 					<div class="mt-2 flex flex-wrap gap-1.5">
 						{#each question.recommendedModelIds as modelId (modelId)}

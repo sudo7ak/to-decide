@@ -69,17 +69,17 @@
 
 <main class="mx-auto max-w-2xl px-6 py-16">
 	{#if question && model}
-		<a href={`/question/${question.id}`} class="text-sm text-slate-400 hover:text-slate-600">
+		<a href={`/question/${question.id}`} class="text-sm text-ink-muted hover:text-accent">
 			&larr; Back to question
 		</a>
-		<p class="mt-4 text-sm text-slate-500">{question.text}</p>
-		<h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-900">{model.name}</h1>
+		<p class="mt-4 text-sm text-ink-muted">{question.text}</p>
+		<h1 class="font-display mt-1 text-2xl font-semibold tracking-tight text-ink">{model.name}</h1>
 
-		<div class="mt-6 border-t border-slate-100 pt-6">
+		<div class="mt-6 border-t border-border pt-6">
 			{#if analyses.length === 0}
 				<button
 					type="button"
-					class="rounded bg-slate-900 px-3 py-1.5 text-sm text-white disabled:opacity-50"
+					class="rounded-lg bg-accent px-3 py-1.5 text-sm text-white transition-colors hover:bg-accent/90 disabled:opacity-50"
 					disabled={loading}
 					onclick={runAnalysis}
 				>
@@ -91,8 +91,8 @@
 						<button
 							type="button"
 							class={activeAnalysisId === run.id
-								? 'font-semibold text-slate-900'
-								: 'text-slate-400 hover:text-slate-600'}
+								? 'font-semibold text-accent'
+								: 'text-ink-muted hover:text-accent'}
 							onclick={() => (activeAnalysisId = run.id)}
 						>
 							{formatTimestamp(run.createdAt)}
@@ -108,7 +108,7 @@
 
 				<button
 					type="button"
-					class="mt-3 rounded border border-slate-300 px-3 py-1.5 text-sm text-slate-700 disabled:opacity-50"
+					class="mt-3 rounded-lg border border-border px-3 py-1.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent disabled:opacity-50"
 					disabled={loading}
 					onclick={runAnalysis}
 				>
@@ -117,13 +117,13 @@
 			{/if}
 
 			{#if error}
-				<p class="mt-2 text-sm text-red-600">
+				<p class="mt-2 text-sm text-error">
 					Analysis failed.
 					<button type="button" class="underline" onclick={runAnalysis}>Try again</button>
 				</p>
 			{/if}
 		</div>
 	{:else if notFound}
-		<p class="mt-4 text-slate-500">Question or model not found.</p>
+		<p class="mt-4 text-ink-muted">Question or model not found.</p>
 	{/if}
 </main>

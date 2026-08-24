@@ -15,69 +15,49 @@
 </svg>
 
 <div class="no-print pointer-events-none fixed inset-x-0 bottom-0 z-0 hidden md:block" aria-hidden="true">
-	<svg
-		class="absolute bottom-2 left-4 h-14 w-14 text-accent"
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			d="M3 21 L7 11 L9.5 15 L12 5 L14.5 15 L17 11 L21 21 Z"
-			stroke="currentColor"
-			stroke-width="1.5"
-			stroke-linejoin="round"
-			stroke-linecap="round"
-		/>
-		<path d="M9.5 15 L9.5 21 M14.5 15 L14.5 21" stroke="currentColor" stroke-width="1" opacity="0.5" />
-		<path d="M10 21 L12 15 L14 21" stroke="currentColor" stroke-width="1" stroke-linejoin="round" />
-		<path d="M12 5 L12 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-		<path d="M12 1.5 L16 3 L12 4.5 Z" fill="currentColor" />
+	<svg class="absolute bottom-0 left-4 h-24 w-24" viewBox="0 0 40 38" xmlns="http://www.w3.org/2000/svg">
+		<path d="M20 6 L4 33 L20 33 Z" fill="var(--color-accent)" />
+		<path d="M20 6 L36 33 L20 33 Z" fill="var(--color-accent)" opacity="0.6" />
+		<path d="M15 33 L20 21 L25 33 Z" fill="var(--color-ink)" opacity="0.18" />
+		<path d="M4 33 L36 33 L20 37 Z" fill="var(--color-border)" opacity="0.7" />
+		<path d="M20 6 L20 1" stroke="var(--color-ink)" stroke-width="1.2" stroke-linecap="round" />
+		<path d="M20 1 L27 3.2 L20 5.8 Z" fill="var(--color-accent-moss)" />
 	</svg>
 
-	<svg
-		class="absolute bottom-2 right-4 h-12 w-12 text-accent-moss"
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			d="M12 1 L17 7.5 L7 7.5 Z"
-			stroke="currentColor"
-			stroke-width="1.6"
-			stroke-linejoin="round"
-			stroke-linecap="round"
-		/>
-		<line x1="6" y1="7.5" x2="18" y2="7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-		<circle cx="12" cy="1" r="1.3" fill="currentColor" />
-		<circle cx="12" cy="15" r="7" stroke="currentColor" stroke-width="1.6" />
-		<circle cx="2.6" cy="13.5" r="1" fill="currentColor" />
-		<circle cx="4.4" cy="10.5" r="1" fill="currentColor" />
-		<circle cx="21.4" cy="13.5" r="1" fill="currentColor" />
-		<circle cx="19.6" cy="10.5" r="1" fill="currentColor" />
-		<circle cx="9" cy="13.5" r="1.1" fill="currentColor" />
-		<circle cx="15" cy="13.5" r="1.1" fill="currentColor" />
-		<circle class="circus-clown-nose" cx="12" cy="17" r="2.4" />
-		<path d="M7.5 19 Q12 23.5 16.5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+	<svg class="absolute bottom-0 right-4 h-20 w-20" viewBox="0 0 32 26" xmlns="http://www.w3.org/2000/svg">
+		<path d="M16 1 L8 11 L16 11 Z" fill="var(--color-accent)" />
+		<path d="M16 1 L24 11 L16 11 Z" fill="var(--color-accent)" opacity="0.6" />
+		<circle cx="16" cy="1.4" r="1.4" fill="var(--color-accent-moss)" />
+		<path d="M16 18 L24 18 L20 11.1 Z" fill="var(--color-accent-moss)" />
+		<path d="M16 18 L20 11.1 L12 11.1 Z" fill="var(--color-accent-moss)" opacity="0.7" />
+		<path d="M16 18 L12 11.1 L8 18 Z" fill="var(--color-accent-moss)" opacity="0.85" />
+		<path d="M16 18 L8 18 L12 24.9 Z" fill="var(--color-accent-moss)" opacity="0.55" />
+		<path d="M16 18 L12 24.9 L20 24.9 Z" fill="var(--color-accent-moss)" opacity="0.75" />
+		<path d="M16 18 L20 24.9 L24 18 Z" fill="var(--color-accent-moss)" opacity="0.45" />
+		<path d="M11.5 13.5 L13.5 13.5 L12.5 16 Z" fill="var(--color-ink)" />
+		<path d="M18.5 13.5 L20.5 13.5 L19.5 16 Z" fill="var(--color-ink)" />
+		<path d="M16 16.6 L18.2 18.8 L16 21 L13.8 18.8 Z" fill="var(--color-accent)" />
 	</svg>
 
-	<svg
-		class="circus-cycle text-ink"
-		viewBox="0 0 24 24"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<circle cx="5.5" cy="17.5" r="3.5" stroke="currentColor" stroke-width="1.6" />
-		<circle cx="18.5" cy="17.5" r="3.5" stroke="currentColor" stroke-width="1.6" />
-		<path
-			d="M5.5 17.5 L12 17.5 L9 10 L15 8 L18.5 17.5 M12 17.5 L15 8"
-			stroke="currentColor"
+	<svg class="circus-cycle" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg">
+		<polygon
+			points="16,22 14.2,26.2 10,28 5.8,26.2 4,22 5.8,17.8 10,16 14.2,17.8"
+			fill="none"
+			stroke="var(--color-ink)"
 			stroke-width="1.6"
-			stroke-linecap="round"
 			stroke-linejoin="round"
 		/>
-		<path d="M7.5 9.7 L10.5 10.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-		<path d="M13.5 6.7 L16.5 7.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-		<circle cx="12" cy="17.5" r="1" fill="currentColor" />
+		<polygon
+			points="44,22 42.2,26.2 38,28 33.8,26.2 32,22 33.8,17.8 38,16 42.2,17.8"
+			fill="none"
+			stroke="var(--color-ink)"
+			stroke-width="1.6"
+			stroke-linejoin="round"
+		/>
+		<path d="M10 22 L24 22 L19 12 Z" fill="var(--color-accent)" />
+		<path d="M24 22 L29 10 L19 12 Z" fill="var(--color-accent)" opacity="0.6" />
+		<path d="M24 22 L38 22 L29 10 Z" fill="var(--color-accent-moss)" opacity="0.8" />
+		<circle cx="24" cy="22" r="1.6" fill="var(--color-ink)" />
 	</svg>
 </div>
 
@@ -88,15 +68,11 @@
 		height: 14px;
 	}
 
-	.circus-clown-nose {
-		fill: var(--color-accent);
-	}
-
 	.circus-cycle {
 		position: absolute;
-		bottom: 8px;
-		left: -60px;
-		width: 56px;
+		bottom: 6px;
+		left: -92px;
+		width: 90px;
 		animation: circus-roam 70s linear infinite;
 	}
 
@@ -105,7 +81,7 @@
 			transform: translateX(0);
 		}
 		100% {
-			transform: translateX(calc(100vw + 116px));
+			transform: translateX(calc(100vw + 182px));
 		}
 	}
 

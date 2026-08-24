@@ -82,6 +82,24 @@
 	</ul>
 
 	{#if questions.length === 0}
-		<p class="mt-12 text-ink-muted">No questions yet.</p>
+		<div class="mt-12 flex flex-col items-center gap-3 text-center">
+			<svg
+				width="40"
+				height="40"
+				viewBox="0 0 40 40"
+				class="text-ink-muted/40"
+				aria-hidden="true"
+			>
+				<path
+					d="M20 8 C13 8 9 12 9 17 C9 20.5 11 23 14 24.5 L14 29"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+				/>
+				<circle cx="14" cy="33" r="1.4" fill="currentColor" />
+			</svg>
+			<p class="text-ink-muted">No questions yet.</p>
+		</div>
 	{/if}
 </main>

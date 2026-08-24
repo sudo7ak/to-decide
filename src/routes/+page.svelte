@@ -31,7 +31,7 @@
 	<h1 class="font-display text-5xl font-semibold tracking-tight text-ink">
 		Think it through.<br />Properly.
 	</h1>
-	<p class="mt-3 text-ink-muted">
+	<p class="mt-6 text-ink-muted">
 		Write the question or doubt you're weighing. Then pick a model to think it through.
 	</p>
 

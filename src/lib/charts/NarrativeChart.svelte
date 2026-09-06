@@ -82,7 +82,10 @@
 
 	<div class="sections">
 		{#each data.sections as section, i (section.heading)}
-			<section data-kind={allKinded ? section.kind : undefined}>
+			<section
+				data-kind={allKinded ? section.kind : undefined}
+				style="animation-delay: {i * 80}ms"
+			>
 				<div class="section-head">
 					{#if allKinded}
 						<span class="kind-badge" data-kind={section.kind}>
@@ -145,21 +148,23 @@
 		border-color: var(--chart-box-stroke, #cbd5e1);
 		color: var(--chart-text-muted, #64748b);
 	}
-	/* tension: the named friction — a step darker to draw the eye */
+	/* tension: warm amber */
 	[data-kind='tension'] {
-		border-color: var(--chart-text-muted, #94a3b8);
-		color: var(--chart-text, #0f172a);
+		border-color: #d97706;
+		color: #92400e;
+		background: #fffbeb;
 	}
-	/* insight: the mechanism/realization — outlined in the accent */
+	/* insight: cool indigo */
 	[data-kind='insight'] {
-		border-color: var(--chart-accent, #0f172a);
-		color: var(--chart-accent, #0f172a);
+		border-color: #4f46e5;
+		color: #3730a3;
+		background: #eef2ff;
 	}
-	/* implication: the payoff — solid accent fill, strongest weight */
+	/* implication: forest green — solid fill for maximum weight */
 	.kind-chip[data-kind='implication'],
 	.kind-badge[data-kind='implication'] {
-		border-color: var(--chart-accent, #0f172a);
-		background: var(--chart-accent, #0f172a);
+		border-color: #16a34a;
+		background: #16a34a;
 		color: white;
 	}
 	.sections {
@@ -167,20 +172,38 @@
 		flex-direction: column;
 		gap: 1rem;
 	}
+	@keyframes section-in {
+		from {
+			opacity: 0;
+			transform: translateY(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 	section {
 		border-left: 3px solid var(--chart-box-stroke, #e2e8f0);
 		padding-left: 0.875rem;
-	}
-	section[data-kind='tension'] {
-		border-left-color: var(--chart-text-muted, #94a3b8);
-	}
-	section[data-kind='insight'] {
-		border-left-color: var(--chart-accent, #0f172a);
-	}
-	section[data-kind='implication'] {
-		border-left-color: var(--chart-accent, #0f172a);
-		background: color-mix(in srgb, var(--chart-accent, #0f172a) 6%, transparent);
 		border-radius: 0 0.375rem 0.375rem 0;
+		animation: section-in 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	}
+	/* tension: warm amber — friction, risk, conflict */
+	section[data-kind='tension'] {
+		border-left-color: #d97706;
+		background: #fffbeb;
+		padding: 0.625rem 0.875rem;
+	}
+	/* insight: cool indigo — mechanism, realisation */
+	section[data-kind='insight'] {
+		border-left-color: #4f46e5;
+		background: #eef2ff;
+		padding: 0.625rem 0.875rem;
+	}
+	/* implication: forest green — action, consequence */
+	section[data-kind='implication'] {
+		border-left-color: #16a34a;
+		background: #f0fdf4;
 		padding: 0.625rem 0.875rem;
 	}
 	.section-head {

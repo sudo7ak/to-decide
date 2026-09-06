@@ -97,9 +97,14 @@
 		{/each}
 
 		{#if hasTarget}
-			<polygon points={targetPointsAttr} class="radar-shape radar-shape-target" />
+			<!-- Amber fill shows the target zone — the "where you want to be" area -->
+			<polygon points={targetPointsAttr} class="radar-shape radar-shape-gap" />
 		{/if}
 		<polygon points={currentPointsAttr} class="radar-shape radar-shape-current" />
+		{#if hasTarget}
+			<!-- Target outline drawn on top so it reads against the current fill -->
+			<polygon points={targetPointsAttr} class="radar-shape radar-shape-target" />
+		{/if}
 
 		{#if hasTarget}
 			{#each targetPoints as point, i (data.factors[i].label)}
@@ -147,9 +152,15 @@
 		stroke: var(--chart-accent, #0f172a);
 		stroke-width: 2;
 	}
+	/* Amber "aspiration zone" — the target area rendered behind current */
+	.radar-shape-gap {
+		fill: #d97706;
+		fill-opacity: 0.18;
+		stroke: none;
+	}
 	.radar-shape-target {
 		fill: none;
-		stroke: var(--chart-text-muted, #64748b);
+		stroke: #d97706;
 		stroke-width: 2;
 		stroke-dasharray: 5 4;
 	}
@@ -157,8 +168,8 @@
 		fill: var(--chart-accent, #0f172a);
 	}
 	.radar-point-target {
-		fill: var(--chart-box-fill, #ffffff);
-		stroke: var(--chart-text-muted, #64748b);
+		fill: #fff7ed;
+		stroke: #d97706;
 		stroke-width: 1.5;
 	}
 	.radar-tick {
@@ -200,7 +211,7 @@
 		border-top-color: var(--chart-accent, #0f172a);
 	}
 	.radar-swatch-target {
-		border-top-color: var(--chart-text-muted, #64748b);
+		border-top-color: #d97706;
 		border-top-style: dashed;
 	}
 	figcaption {

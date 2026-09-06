@@ -3,8 +3,9 @@
 	import { page } from '$app/state';
 	import { getQuestion } from '$lib/stores/questions';
 	import { getModelBySlug } from '$lib/stores/models';
-	import { createAnalysis, listAnalysesForQuestionAndModel } from '$lib/stores/analyses';
+	import { createAnalysis, listAnalysesForQuestionAndModel, rateAnalysis } from '$lib/stores/analyses';
 	import { chartComponents } from '$lib/charts/registry';
+	import ConfidenceVote from '$lib/ConfidenceVote.svelte';
 	import type { Analysis, ModelDef, Question } from '$lib/types';
 
 	let question = $state<Question | undefined>(undefined);
@@ -41,6 +42,14 @@
 			hour: 'numeric',
 			minute: '2-digit'
 		});
+	}
+
+	async function handleRate(rating: 1 | 2 | 3 | 4 | 5) {
+		if (!activeAnalysisId) return;
+		await rateAnalysis(activeAnalysisId, rating);
+		analyses = analyses.map((a) =>
+			a.id === activeAnalysisId ? { ...a, userRating: rating } : a
+		);
 	}
 
 	async function runAnalysis() {
@@ -109,6 +118,12 @@
 					</p>
 					<div class="mt-3">
 						<ActiveChart data={activeAnalysis.resultJson as never} />
+					</div>
+					<div class="no-print">
+						<ConfidenceVote
+							rating={activeAnalysis.userRating}
+							onRate={handleRate}
+						/>
 					</div>
 				{/if}
 

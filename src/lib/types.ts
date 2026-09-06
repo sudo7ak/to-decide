@@ -186,4 +186,6 @@ export interface Analysis {
 	createdAt: string;
 	updatedAt: string;
 	syncedAt: string | null;
+	/** User's self-rated confidence in this analysis result (1 = not useful, 5 = very useful). */
+	userRating?: 1 | 2 | 3 | 4 | 5;
 }

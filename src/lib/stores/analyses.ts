@@ -33,3 +33,10 @@ export async function listAnalysesForQuestionAndModel(
 		.filter((a) => a.modelId === modelId)
 		.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
+
+export async function rateAnalysis(
+	analysisId: string,
+	rating: 1 | 2 | 3 | 4 | 5
+): Promise<void> {
+	await db.analyses.update(analysisId, { userRating: rating });
+}

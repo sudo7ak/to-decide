@@ -50,9 +50,10 @@
 
 <figure>
 	<ol>
-		{#each sorted as item (item.rank)}
+		{#each sorted as item, idx (item.rank)}
 			{@const tier = tierOf(item.weight, maxWeight)}
-			<li class="tier-{tier}">
+			{@const delay = `${idx * 60}ms`}
+			<li class="tier-{tier}" style="animation: fade-up 0.4s {delay} cubic-bezier(0.25,0.46,0.45,0.94) both">
 				<span class="rank-badge">{item.rank}</span>
 				<div class="item-body">
 					<div class="item-header">
@@ -68,7 +69,13 @@
 						aria-label="{item.label}: {item.weight} out of 100"
 					>
 						<rect class="item-track" width={barMaxWidth} height={barHeight} rx={4} />
-						<rect class="item-bar" width={widthScale(item.weight)} height={barHeight} rx={4} />
+						<rect
+							class="item-bar"
+							width={widthScale(item.weight)}
+							height={barHeight}
+							rx={4}
+							style="animation-delay: {delay}"
+						/>
 					</svg>
 					<p class="item-rationale">{item.rationale}</p>
 				</div>
@@ -174,8 +181,28 @@
 	.item-track {
 		fill: var(--chart-box-stroke, #e2e8f0);
 	}
+	@keyframes grow-bar {
+		from {
+			transform: scaleX(0);
+		}
+		to {
+			transform: scaleX(1);
+		}
+	}
+	@keyframes fade-up {
+		from {
+			opacity: 0;
+			transform: translateY(6px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 	.item-bar {
 		fill: var(--chart-accent, #0f172a);
+		transform-origin: left center;
+		animation: grow-bar 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 	}
 	.tier-mid .item-bar {
 		fill-opacity: 0.7;

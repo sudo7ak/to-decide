@@ -1,7 +1,6 @@
-import Ajv from 'ajv';
+import { Validator, type Schema } from '@cfworker/json-schema';
 
 export function isValidAgainstSchema(schema: Record<string, unknown>, data: unknown): boolean {
-	const ajv = new Ajv({ allErrors: true });
-	const validate = ajv.compile(schema);
-	return validate(data) === true;
+	const validator = new Validator(schema as Schema);
+	return validator.validate(data).valid;
 }

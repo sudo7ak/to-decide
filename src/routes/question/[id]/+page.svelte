@@ -42,14 +42,7 @@
 			const res = await fetch('/api/recommend-models', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					questionText: q.text,
-					models: allModels.map((m) => ({
-						slug: m.slug,
-						name: m.name,
-						description: m.description
-					}))
-				})
+				body: JSON.stringify({ questionText: q.text })
 			});
 			if (!res.ok) return;
 			const { modelSlugs } = (await res.json()) as { modelSlugs: string[] };

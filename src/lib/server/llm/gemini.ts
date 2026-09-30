@@ -4,6 +4,12 @@ import { ProviderUnavailableError, ProviderOutputError } from './provider';
 const GEMINI_URL =
 	'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent';
 
+/**
+ * Without this a hung upstream holds the Worker open until the platform kills
+ * it, and the caller sees nothing at all rather than a failure it can retry.
+ */
+const REQUEST_TIMEOUT_MS = 20_000;
+
 export class GeminiProvider implements LlmProvider {
 	constructor(private apiKey: string) {}
 
@@ -25,10 +31,11 @@ export class GeminiProvider implements LlmProvider {
 						responseMimeType: 'application/json',
 						responseSchema: schema
 					}
-				})
+				}),
+				signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
 			});
 		} catch {
-			throw new ProviderUnavailableError('Gemini request failed: network error');
+			throw new ProviderUnavailableError('Gemini request failed: network error or timeout');
 		}
 
 		if (!res.ok) {

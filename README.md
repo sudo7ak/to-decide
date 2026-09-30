@@ -32,9 +32,9 @@ response.
 - [SvelteKit](https://svelte.dev/docs/kit) (Svelte 5, runes) on
   [`adapter-cloudflare`](https://svelte.dev/docs/kit/adapter-cloudflare)
 - [Dexie](https://dexie.org/) (IndexedDB) for local-first storage
-- [D3](https://d3js.org/) for the chart renderers, [Tailwind CSS](https://tailwindcss.com/) for styling
+- [d3-scale](https://d3js.org/d3-scale) for the chart renderers, [Tailwind CSS](https://tailwindcss.com/) for styling
 - [Google Gemini](https://ai.google.dev/) (`gemini-3.1-flash-lite`) for analysis + model recommendations, via a stateless SvelteKit server route
-- [Ajv](https://ajv.js.org/) for validating LLM output against each model's JSON Schema
+- [@cfworker/json-schema](https://github.com/cfworker/cfworker/tree/main/packages/json-schema) for validating LLM output against each model's JSON Schema (Workers-compatible)
 - [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) + [fake-indexeddb](https://github.com/dumbmatter/fakeIndexedDB) for tests
 
 ## Getting started
@@ -84,11 +84,14 @@ Analyze.
 ```
 src/
 ├── lib/
-│   ├── charts/           # 6 D3 chart renderers + shared registry
+│   ├── charts/            # 6 chart renderers + shared registry
 │   ├── db/                # Dexie schema, seed-models.json (the 52-model catalog), seeding
 │   ├── server/
 │   │   ├── llm/           # LlmProvider interface + GeminiProvider
-│   │   └── validation.ts  # Ajv JSON-Schema validation
+│   │   ├── catalog.ts     # the 52-model catalog, read server-side
+│   │   ├── rateLimit.ts   # Cloudflare rate-limit binding for the LLM routes
+│   │   ├── requestBody.ts # JSON body parsing + question-text validation
+│   │   └── validation.ts  # JSON-Schema validation of LLM output
 │   ├── stores/             # questions / models / analyses — plain async fns over Dexie
 │   └── types.ts
 └── routes/
@@ -97,9 +100,24 @@ src/
     ├── question/[id]/                   # a question's model picker
     │   └── [slug]/                      # Analyze / history / chart for one model
     └── api/
-        ├── analyze/                     # POST — run a model against a question
-        └── recommend-models/            # POST — suggest best-fit models for a question
+        ├── analyze/                     # POST { slug, questionText }
+        └── recommend-models/            # POST { questionText }
 ```
+
+### API routes
+
+Both routes spend the project's Gemini quota, so neither takes anything
+from the caller beyond a model slug and the question text:
+
+- The prompt template and output JSON Schema come from the server's own
+  copy of `seed-models.json` (`$lib/server/catalog`), never from the
+  request body — otherwise the analyze route would be an open proxy to
+  Gemini for anyone who found the URL.
+- `questionText` is capped at 1000 characters; a malformed body, an
+  unknown slug, or unusable question text answers `400`.
+- Both are rate-limited per client IP by the `RATE_LIMITER` binding
+  (20 requests/minute, see `wrangler.jsonc`). The binding only exists on
+  the deployed Worker; under `vite dev` there is no limit.
 
 ## Testing
 

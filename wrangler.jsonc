@@ -10,5 +10,17 @@
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
+	},
+	// Caps how often one IP can reach the LLM-backed routes. Every call there
+	// spends the project's Gemini quota, so the limit is deliberately low.
+	"unsafe": {
+		"bindings": [
+			{
+				"name": "RATE_LIMITER",
+				"type": "ratelimit",
+				"namespace_id": "1001",
+				"simple": { "limit": 20, "period": 60 }
+			}
+		]
 	}
 }

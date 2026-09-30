@@ -57,11 +57,10 @@
 		loading = true;
 		error = false;
 		try {
-			const prompt = model.promptTemplate.replaceAll('{{question}}', question.text);
 			const res = await fetch('/api/analyze', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ promptTemplate: prompt, outputJsonSchema: model.outputJsonSchema })
+				body: JSON.stringify({ slug: model.slug, questionText: question.text })
 			});
 			if (!res.ok) throw new Error('analyze request failed');
 			const { resultJson } = (await res.json()) as { resultJson: Record<string, unknown> };

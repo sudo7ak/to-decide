@@ -2,19 +2,20 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
 import type { LlmProvider } from '$lib/server/llm/provider';
 import { generateValidatedWithRetry } from '$lib/server/llm/generateValidated';
+import { listCatalogEntries, type CatalogEntry } from '$lib/server/catalog';
+import { readJsonBody, readQuestionText } from '$lib/server/requestBody';
+import { rateLimitResponse } from '$lib/server/rateLimit';
 
-interface ModelSummary {
-	slug: string;
-	name: string;
-	description: string;
-}
-
+/**
+ * The caller supplies only its question — the catalog offered to the LLM is the
+ * server's own, so this route can't be steered into summarising caller-supplied
+ * text under the guise of a model list.
+ */
 interface RecommendRequestBody {
-	questionText: string;
-	models: ModelSummary[];
+	questionText?: unknown;
 }
 
-function buildPrompt(questionText: string, models: ModelSummary[]): string {
+function buildPrompt(questionText: string, models: CatalogEntry[]): string {
 	const catalog = models.map((m) => `- ${m.slug}: ${m.name} — ${m.description}`).join('\n');
 	return `You are helping someone pick which mental models would give the most useful lens on their question.
 
@@ -26,7 +27,7 @@ ${catalog}
 Pick between 1 and 5 models from the list above that would be most useful for reasoning through this specific question. Return their slugs exactly as written above.`;
 }
 
-function buildSchema(models: ModelSummary[]): Record<string, unknown> {
+function buildSchema(models: CatalogEntry[]): Record<string, unknown> {
 	return {
 		type: 'object',
 		required: ['modelSlugs'],
@@ -50,12 +51,22 @@ export function createRecommendModelsHandler(
 			throw error(500, 'GEMINI_API_KEY is not configured');
 		}
 
-		const body = (await event.request.json()) as RecommendRequestBody;
-		const provider = makeProvider(apiKey);
-		const prompt = buildPrompt(body.questionText, body.models);
-		const schema = buildSchema(body.models);
+		const limited = await rateLimitResponse(event);
+		if (limited) {
+			return limited;
+		}
 
-		const result = await generateValidatedWithRetry(provider, prompt, schema);
+		const body = await readJsonBody<RecommendRequestBody>(event.request);
+		const questionText = readQuestionText(body.questionText);
+
+		const models = listCatalogEntries();
+		const provider = makeProvider(apiKey);
+
+		const result = await generateValidatedWithRetry(
+			provider,
+			buildPrompt(questionText, models),
+			buildSchema(models)
+		);
 		if (result.ok) {
 			return json({ modelSlugs: result.resultJson.modelSlugs as string[] });
 		}
